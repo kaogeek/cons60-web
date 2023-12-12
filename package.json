@@ -1,5 +1,6 @@
 {
   "name": "cons60-web",
+  "homepage": "https://kaogeek.github.io/cons60-web/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
