@@ -60,19 +60,20 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='bg-neutral-700  flex justify-center py-4'>
-        <div className=' w-3/4 '>
-          <div className='text-3xl font-bold w-3/4 text-white'>
-            ทุกหมวด
+      <div className='bg-neutral-700 py-4 text-white'>
+        <div className=' flex justify-center items-center'>
+          <div className='text-3xl font-bold pl-4 w-2/4'>ทุกหมวด</div>
+          <div className=''>
+            <div className='bg-neutral-900 rounded-full ml-4  py-2 px-2'>
+              <select name="mainsorts" id="mainsorts" className='bg-neutral-900 rounded-full'>
+                <option value="ascendingedit">เรียงตามมาตราที่แก้ไขมาก-น้อย</option>
+                <option value="decendingedit">เรียงตามมาตราที่แก้ไขน้อย-มาก</option>
+                <option value="ascendingdiscuss">เรียงตามผู้อภิปรายมาก-น้อย</option>
+                <option value="decendingdiscuss">เรียงตามผู้อภิปรายน้อย-มาก</option>
+              </select>
+            </div>
           </div>
-          <div>
-            <select name="mainsorts" id="mainsorts">
-              <option value="ascendingedit">เรียงตามมาตราที่แก้ไขมาก-น้อย</option>
-              <option value="decendingedit">เรียงตามมาตราที่แก้ไขน้อย-มาก</option>
-              <option value="ascendingdiscuss">เรียงตามผู้อภิปรายมาก-น้อย</option>
-              <option value="decendingdiscuss">เรียงตามผู้อภิปรายน้อย-มาก</option>
-            </select>
-          </div>
+
         </div>
       </div>
 
