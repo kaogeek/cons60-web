@@ -47,30 +47,30 @@ export default function Home() {
 
 
       <div className='bg-black text-white flex justify-center'>
-        <div className='text-3xl font-bold w-3/4 '>
-          ภาพรวม
-        </div>
+        <div className='text-3xl font-bold pl-4 w-3/4'>ภาพรวม</div>
       </div>
 
       <div className='bg-black text-white flex justify-center py-4'>
         <div className='bg-neutral-700 lg:w-3/6 w-5/6 rounded-full'>
-          <button className='py-4 w-1/3 bg-white rounded-full text-black '>ตามหมวด</button>
+          <button className='py-4 w-1/3 bg-white rounded-full text-black'>ตามหมวด</button>
           <button className='py-4 w-1/3'>ตามผู้อภิปราย</button>
           <button className='py-4 w-1/3'>ตามมาตรา</button>
         </div>
       </div>
 
       <div className='bg-neutral-700 py-4 text-white'>
-        <div className=' flex justify-center items-center'>
-          <div className='text-3xl font-bold pl-4 w-2/4'>ทุกหมวด</div>
-          <div className=''>
-            <div className='bg-neutral-900 rounded-full ml-4  py-2 px-2'>
-              <select name="mainsorts" id="mainsorts" className='bg-neutral-900 rounded-full'>
-                <option value="ascendingedit">เรียงตามมาตราที่แก้ไขมาก-น้อย</option>
-                <option value="decendingedit">เรียงตามมาตราที่แก้ไขน้อย-มาก</option>
-                <option value="ascendingdiscuss">เรียงตามผู้อภิปรายมาก-น้อย</option>
-                <option value="decendingdiscuss">เรียงตามผู้อภิปรายน้อย-มาก</option>
-              </select>
+        <div className='flex justify-center items-center'>
+          <div className='w-3/4 flex flex-row'>
+            <div className='text-3xl font-bold pl-4'>ทุกหมวด</div>
+            <div className=''>
+              <div className='bg-neutral-900 rounded-full ml-4 py-2 px-2'>
+                <select name="mainsorts" id="mainsorts" className='bg-neutral-900 rounded-full'>
+                  <option value="ascendingedit">เรียงตามมาตราที่แก้ไขมาก-น้อย</option>
+                  <option value="decendingedit">เรียงตามมาตราที่แก้ไขน้อย-มาก</option>
+                  <option value="ascendingdiscuss">เรียงตามผู้อภิปรายมาก-น้อย</option>
+                  <option value="decendingdiscuss">เรียงตามผู้อภิปรายน้อย-มาก</option>
+                </select>
+              </div>
             </div>
           </div>
 
