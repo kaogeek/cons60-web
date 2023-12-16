@@ -47,7 +47,7 @@ export default function Home() {
 
 
       <div className='bg-black text-white flex justify-center'>
-        <div className='text-3xl font-bold pl-4 w-3/4'>ภาพรวม</div>
+        <div className='text-3xl font-bold pt-4 w-3/4'>ภาพรวม</div>
       </div>
 
       <div className='bg-black text-white flex justify-center py-4'>
@@ -60,8 +60,8 @@ export default function Home() {
 
       <div className='bg-neutral-700 py-4 text-white'>
         <div className='flex justify-center items-center'>
-          <div className='w-3/4 flex flex-row'>
-            <div className='text-3xl font-bold pl-4'>ทุกหมวด</div>
+          <div className='w-3/4 flex flex-row justify-between'>
+            <div className='text-3xl font-bold'>ทุกหมวด</div>
             <div className=''>
               <div className='bg-neutral-900 rounded-full ml-4 py-2 px-2'>
                 <select name="mainsorts" id="mainsorts" className='bg-neutral-900 rounded-full'>
@@ -74,7 +74,23 @@ export default function Home() {
             </div>
           </div>
 
+
+
         </div>
+
+
+        <div className='flex flex-col justify-center items-center pt-8 '>
+          <div className='flex flex-row bg-neutral-500 rounded-2xl w-3/4 text-xl font-bold px-4 py-4 justify-between'>
+            <div>
+              บทเฉพาะกาล
+            </div>
+            <div>
+              100 ครั้ง
+            </div>
+          </div>
+          
+        </div>
+
       </div>
 
     </div>
