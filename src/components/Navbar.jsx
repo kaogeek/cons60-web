@@ -50,18 +50,24 @@ function Navbar() {
           {showMenu && (
             <div className="md:hidden absolute top-16 left-0 right-0 bg-black">
               {/* Mobile menu items */}
-              <Link
-                to="/"
-                className="text-white hover:underline underline-offset-4"
-              >
-                ภาพรวม
-              </Link>
-              <Link
-                to="/about"
-                className="text-white hover:underline underline-offset-4"
-              >
-                เกี่ยวกับโครงการ
-              </Link>
+              <div className="flex flex-col gap-2 mx-4 mb-4">
+                <div className="w-auto inline-block">
+                  <Link
+                    to="/"
+                    className="text-white hover:underline underline-offset-4"
+                  >
+                    ภาพรวม
+                  </Link>
+                </div>
+                <div className="w-auto inline-block">
+                  <Link
+                    to="/about"
+                    className="text-white hover:underline underline-offset-4"
+                  >
+                    เกี่ยวกับโครงการ
+                  </Link>
+                </div>
+              </div>
             </div>
           )}
         </div>
