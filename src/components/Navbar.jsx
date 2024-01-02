@@ -8,7 +8,7 @@ function Navbar() {
   const [showMenu, setShowMenu] = React.useState(false);
 
   return (
-    <div className="h-16 bg-black">
+    <div className="h-16 bg-black" data-testid="navbar">
       <div className="max-w-screen-xl h-full mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-white">
           <Logo />

@@ -3,7 +3,7 @@ import '../styles/Home.css';
 
 export default function Home() {
   return (
-    <div>
+    <div data-testid="home">
       <div className='bg-black'>
         <div className='Landing-Page-Banner-PC text-center lg:pt-40 pt-40 px-2'>
           <div className="lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-orange-500">
