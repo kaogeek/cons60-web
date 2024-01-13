@@ -51,7 +51,7 @@ function ByDiscussionist() {
             </div>
           </div>
           <div className="flex flex-col justify-center items-center gap-2.5 w-full">
-            <Link to="/บทเฉพาะกาล" className="w-full">
+            <Link to="/นายมีชัย ฤชุพันธุ์" className="w-full">
               <PersonListItem
                 name="นายมีชัย ฤชุพันธุ์"
                 sectionCountMap={{
@@ -59,13 +59,6 @@ function ByDiscussionist() {
                   สิทธิและเสรีภาพของปวงชนชาวไทย: 20,
                   การปฏิรูปประเทศ: 20,
                 }}
-              />
-            </Link>
-            <Link to="/การปฏิรูปประเทศ" className="w-full">
-              <ListItem
-                title="การปฏิรูปประเทศ"
-                count={85}
-                chartColor={sectionColorCode["การปฏิรูปประเทศ"]}
               />
             </Link>
           </div>

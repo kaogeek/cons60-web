@@ -1,4 +1,5 @@
 import sectionColorCode from "../constants/sectionColorCode";
+import ProfileImages from "./ProfileImages";
 
 function PersonListItem(props) {
   const { name, sectionCountMap } = props;
@@ -32,9 +33,17 @@ function PersonListItem(props) {
     gap-4 text-xl font-bold w-full"
     >
       <div className="flex flex-row  justify-between">
-        <div>{name}</div>
+        <div className="flex items-center gap-4">
+          <ProfileImages
+            size={"40px"}
+            imageUrl={
+              "https://mpics.mgronline.com/pics/Images/558000011197301.JPEG"
+            }
+          />
+          <div>{name}</div>
+        </div>
         <div>
-          {totalCount} <span className="text-base font-normal">ครั้ง</span>
+          {totalCount()} <span className="text-base font-normal">ครั้ง</span>
         </div>
       </div>
       {createChart()}
