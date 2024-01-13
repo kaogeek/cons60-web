@@ -1,10 +1,14 @@
+import React, { useState } from "react";
 import { Icon } from "@iconify/react";
+
 import "../styles/Home.css";
-import ListItem from "../components/ListItem";
-import sectionColorCode from "../constants/sectionColorCode";
-import { Link } from "react-router-dom";
+import BySection from "../components/Overview/BySection";
+import ByDiscussionist from "../components/Overview/ByDiscussionist";
+import ByArticle from "../components/Overview/ByArticle";
 
 export default function Home() {
+  const [view, setView] = useState("section");
+
   return (
     <div data-testid="home">
       <div className="bg-black">
@@ -59,62 +63,45 @@ export default function Home() {
         <div className="text-3xl font-bold pt-4 w-3/4">ภาพรวม</div>
       </div>
 
-      <div className="bg-black text-white flex justify-center py-4">
-        <div className="bg-neutral-700 lg:w-3/6 w-5/6 rounded-full">
-          <button className="py-4 w-1/3 bg-white rounded-full text-black">
+      <div className="bg-black text-white flex justify-center py-5">
+        <div className="bg-[#131313] lg:w-3/6 w-5/6 rounded-full font-bold">
+          <button
+            className={
+              view === "section"
+                ? "bg-white rounded-full text-black py-2 w-1/3"
+                : "py-2 w-1/3 text-[#9f9f9f]"
+            }
+            onClick={() => setView("section")}
+          >
             ตามหมวด
           </button>
-          <button className="py-4 w-1/3">ตามผู้อภิปราย</button>
-          <button className="py-4 w-1/3">ตามมาตรา</button>
+          <button
+            className={
+              view === "discussionist"
+                ? "bg-white rounded-full text-black py-2 w-1/3"
+                : "py-2 w-1/3 text-[#9f9f9f]"
+            }
+            onClick={() => setView("discussionist")}
+          >
+            ตามผู้อภิปราย
+          </button>
+          <button
+            className={
+              view === "article"
+                ? "bg-white rounded-full text-black py-2 w-1/3"
+                : "py-2 w-1/3 text-[#9f9f9f]"
+            }
+            onClick={() => setView("article")}
+          >
+            ตามมาตรา
+          </button>
         </div>
       </div>
 
-      <div className="bg-neutral-700 py-8 text-white">
-        <div className="flex justify-center items-center">
-          <div className="w-3/4 flex flex-col gap-4">
-            <div className="flex flex-row justify-between flex-wrap gap-4">
-              <div className="text-3xl font-bold">ทุกหมวด</div>
-              <div className="">
-                <div className="bg-neutral-900 rounded-full py-2 px-2">
-                  <select
-                    name="mainsorts"
-                    id="mainsorts"
-                    className="bg-neutral-900 rounded-full"
-                  >
-                    <option value="ascendingedit">
-                      เรียงตามมาตราที่แก้ไขมาก-น้อย
-                    </option>
-                    <option value="decendingedit">
-                      เรียงตามมาตราที่แก้ไขน้อย-มาก
-                    </option>
-                    <option value="ascendingdiscuss">
-                      เรียงตามผู้อภิปรายมาก-น้อย
-                    </option>
-                    <option value="decendingdiscuss">
-                      เรียงตามผู้อภิปรายน้อย-มาก
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col justify-center items-center gap-2.5 w-full">
-              <Link to="/บทเฉพาะกาล" className="w-full">
-                <ListItem
-                  title="บทเฉพาะกาล"
-                  count={100}
-                  chartColor={sectionColorCode["บทเฉพาะกาล"]}
-                />
-              </Link>
-              <Link to="/การปฏิรูปประเทศ" className="w-full">
-                <ListItem
-                  title="การปฏิรูปประเทศ"
-                  count={85}
-                  chartColor={sectionColorCode["การปฏิรูปประเทศ"]}
-                />
-              </Link>
-            </div>
-          </div>
-        </div>
+      <div className="bg-[#1a1a1a] py-8 text-white">
+        {view === "section" && (<BySection />)}
+        {view === "discussionist" && (<ByDiscussionist />)}
+        {view === "article" && (<ByArticle />)}
       </div>
     </div>
   );
