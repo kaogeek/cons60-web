@@ -87,7 +87,7 @@ function ByArticle() {
           </div>
           <div className="flex flex-col justify-center items-center gap-2.5 w-full">
             {result.map(([article, {sectionName, total}]) => (
-              <Link to={`/${article}`} className="w-full" key={article}>
+              <Link to={`/section/${article}`} className="w-full" key={article}>
                 <ListItem
                   title={`มาตรา ${article}`}
                   count={total}
