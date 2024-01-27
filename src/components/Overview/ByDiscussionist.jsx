@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 import SelectSections from "../SelectSections/SelectSections";
@@ -9,14 +9,15 @@ import data from "../../c60-data-query/data.js";
 import { sectionIdToName } from "../../constants/sections.js";
 
 function ByDiscussionist() {
-  const [selectedSections, setSelectedSections] = useState(["บททั่วไป"]);
-  const [result, setResult] = useState({});
+  const [sortMostToLeast, setSortMostToLeast] = useState(true);
+  const [selectedSections, setSelectedSections] = useState([]);
+  const [result, setResult] = useState([]);
 
   const handleSelectSections = (newSelected) => {
     setSelectedSections(newSelected);
   };
 
-  useEffect(() => {
+  const queryData = useCallback(() => {
     const dataObject = createDataObject(data.doc);
 
     // No section selected, query all
@@ -41,12 +42,32 @@ function ByDiscussionist() {
             acc[discussionist][sectionName] += 1;
           }
         }
+        acc[discussionist]["total"] = acc[discussionist]["total"] + 1 || 1;
       });
       return acc;
     }, {});
 
-    setResult(newResult);
+    // Convert to array for sorting later
+    // [name, {section: count, section: count, total: count}]
+    return Object.entries(newResult);
   }, [selectedSections]);
+
+  const sortResult = useCallback(
+    (result) => {
+      return result.sort((a, b) =>
+        sortMostToLeast
+          ? b[1].total - a[1].total
+          : a[1].total - b[1].total
+      );
+    },
+    [sortMostToLeast]
+  );
+
+  useEffect(() => {
+    const editRecord = queryData();
+    const sortedEditRecord = sortResult(editRecord);
+    setResult(sortedEditRecord);
+  }, [queryData, sortResult]);
 
   return (
     <div className="flex justify-center items-center">
@@ -69,24 +90,15 @@ function ByDiscussionist() {
                 name="mainsorts"
                 id="mainsorts"
                 className="bg-neutral-900 rounded-full"
+                onChange={(e) => setSortMostToLeast(e.target.value === "asc")}
               >
-                <option value="ascendingedit">
-                  เรียงตามมาตราที่แก้ไขมาก-น้อย
-                </option>
-                <option value="decendingedit">
-                  เรียงตามมาตราที่แก้ไขน้อย-มาก
-                </option>
-                <option value="ascendingdiscuss">
-                  เรียงตามผู้อภิปรายมาก-น้อย
-                </option>
-                <option value="decendingdiscuss">
-                  เรียงตามผู้อภิปรายน้อย-มาก
-                </option>
+                <option value="asc">เรียงจากแก้ไขมาก-น้อย</option>
+                <option value="dec">เรียงจากแก้ไขน้อย-มาก</option>
               </select>
             </div>
           </div>
           <div className="flex flex-col justify-center items-center gap-2.5 w-full">
-            {Object.keys(result).map((discussionist) => (
+            {result.map(([discussionist, sectionCountMap]) => (
               <Link
                 to={`/${discussionist}`}
                 className="w-full"
@@ -94,7 +106,7 @@ function ByDiscussionist() {
               >
                 <PersonListItem
                   name={discussionist}
-                  sectionCountMap={result[discussionist]}
+                  sectionCountMap={sectionCountMap}
                 />
               </Link>
             ))}

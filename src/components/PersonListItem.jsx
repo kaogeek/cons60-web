@@ -8,6 +8,7 @@ function PersonListItem(props) {
     let boxes = [];
     for (const [key, value] of Object.entries(sectionCountMap)) {
       for (let i = 0; i < value; i++) {
+        if (key === "total") continue;
         boxes.push(
           <div
             className="w-2 h-4"
@@ -17,14 +18,6 @@ function PersonListItem(props) {
       }
     }
     return <div className="flex gap-1 w-full flex-wrap">{boxes}</div>;
-  };
-
-  const totalCount = () => {
-    let total = 0;
-    for (const [key, value] of Object.entries(sectionCountMap)) {
-      total += value;
-    }
-    return total;
   };
 
   return (
@@ -43,7 +36,7 @@ function PersonListItem(props) {
           <div>{name}</div>
         </div>
         <div>
-          {totalCount()} <span className="text-base font-normal">ครั้ง</span>
+          {sectionCountMap.total} <span className="text-base font-normal">ครั้ง</span>
         </div>
       </div>
       {createChart()}
