@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 
 import SelectSections from "../SelectSections/SelectSections";
 import PersonListItem from "../PersonListItem";
+import SortBy from "../SortBy";
 
 import createDataObject from "../../c60-data-query/data-object.js";
 import data from "../../c60-data-query/data.js";
 import { sectionIdToName } from "../../constants/sections.js";
 
 function ByDiscussionist() {
-  const [sortMostToLeast, setSortMostToLeast] = useState(true);
+  const [sort, setSort] = useState(0);
   const [selectedSections, setSelectedSections] = useState([]);
   const [result, setResult] = useState([]);
 
@@ -55,12 +56,10 @@ function ByDiscussionist() {
   const sortResult = useCallback(
     (result) => {
       return result.sort((a, b) =>
-        sortMostToLeast
-          ? b[1].total - a[1].total
-          : a[1].total - b[1].total
+        sort === 0 ? b[1].total - a[1].total : a[1].total - b[1].total
       );
     },
-    [sortMostToLeast]
+    [sort]
   );
 
   useEffect(() => {
@@ -85,17 +84,7 @@ function ByDiscussionist() {
             ) : (
               <div className="text-3xl font-bold">ทุกหมวด</div>
             )}
-            <div className="bg-neutral-900 rounded-full py-2 px-2">
-              <select
-                name="mainsorts"
-                id="mainsorts"
-                className="bg-neutral-900 rounded-full"
-                onChange={(e) => setSortMostToLeast(e.target.value === "asc")}
-              >
-                <option value="asc">เรียงจากแก้ไขมาก-น้อย</option>
-                <option value="dec">เรียงจากแก้ไขน้อย-มาก</option>
-              </select>
-            </div>
+            <SortBy sort={sort} setSort={setSort} />
           </div>
           <div className="flex flex-col justify-center items-center gap-2.5 w-full">
             {result.map(([discussionist, sectionCountMap]) => (
