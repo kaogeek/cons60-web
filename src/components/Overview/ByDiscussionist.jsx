@@ -22,14 +22,14 @@ function ByDiscussionist() {
     const dataObject = createDataObject(data.doc);
 
     // No section selected, query all
-    const sectionQuery =
+    const filteredBySectionData =
       selectedSections.length === 0
         ? dataObject.data
         : dataObject.data.filter((row) =>
             selectedSections.includes(sectionIdToName[row["หมวด"]])
           );
 
-    const newResult = sectionQuery.reduce((acc, row) => {
+    const newResult = filteredBySectionData.reduce((acc, row) => {
       const sectionName = sectionIdToName[row["หมวด"]];
       const discussionists = row["ผู้อภิปราย"];
       discussionists.forEach((discussionist) => {
