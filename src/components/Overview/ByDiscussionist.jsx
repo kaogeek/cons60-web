@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Icon } from "@iconify/react";
 
+import SectionMobilePillButton from "../SelectSections/SectionMobilePillButton";
 import SelectSectionsMobile from "../SelectSections/SelectSectionsMobile";
 import SelectSections from "../SelectSections/SelectSections";
 import PersonListItem from "../PersonListItem";
@@ -11,7 +12,6 @@ import SortBy from "../SortBy";
 import createDataObject from "../../c60-data-query/data-object.js";
 import data from "../../c60-data-query/data.js";
 import { sectionIdToName } from "../../constants/sections.js";
-import SectionMobilePillButton from "../SelectSections/SectionMobilePillButton.jsx";
 
 function ByDiscussionist() {
   const [sort, setSort] = useState(0);

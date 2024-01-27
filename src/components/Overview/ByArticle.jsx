@@ -1,6 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import { Icon } from "@iconify/react";
 
+import SectionMobilePillButton from "../SelectSections/SectionMobilePillButton.jsx";
+import SelectSectionsMobile from "../SelectSections/SelectSectionsMobile";
 import SelectSections from "../SelectSections/SelectSections";
 import ListItem from "../ListItem";
 import sectionColorCode from "../../constants/sectionColorCode";
@@ -14,8 +18,26 @@ function ByArticle() {
   const [sort, setSort] = useState(0);
   const [selectedSections, setSelectedSections] = useState([]);
   const [result, setResult] = useState([]);
+
+  // Mobile
+  const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
+  const [showSelectSections, setShowSelectSections] = useState(false);
+
+  const resultDivRef = useRef(null);
+
   const handleSelectSections = (newSelected) => {
     setSelectedSections(newSelected);
+  };
+
+  const handleSectionsModalClose = () => {
+    setShowSelectSections(false);
+    if (resultDivRef && resultDivRef.current) {
+      resultDivRef.current.scrollIntoView();
+    }
+  };
+
+  const handleRemoveSection = (section) => {
+    setSelectedSections((prev) => prev.filter((s) => s !== section));
   };
 
   const queryData = useCallback(() => {
@@ -68,37 +90,79 @@ function ByArticle() {
   }, [queryData, sortResult]);
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="flex flex-row w-3/4 gap-4">
-        <SelectSections
-          selectedSections={selectedSections}
-          onChange={handleSelectSections}
-        />
-        <div className="flex flex-col gap-4 w-full">
-          <div className="flex flex-row justify-between flex-wrap gap-4">
-            {selectedSections.length >= 1 ? (
-              <div className="text-3xl font-bold">
-                ได้เลือก {selectedSections.length} จากทั้งหมด
-              </div>
-            ) : (
-              <div className="text-3xl font-bold">ทุกหมวด</div>
-            )}
-            <SortBy sort={sort} setSort={setSort} />
-          </div>
-          <div className="flex flex-col justify-center items-center gap-2.5 w-full">
-            {result.map(([article, {sectionName, total}]) => (
-              <Link to={`/section/${article}`} className="w-full" key={article}>
-                <ListItem
-                  title={`มาตรา ${article}`}
-                  count={total}
-                  chartColor={sectionColorCode[sectionName]}
-                />
-              </Link>
-            ))}
+    <>
+      <div className="flex justify-center items-center" ref={resultDivRef}>
+        <div className="flex flex-row w-3/4 gap-4">
+          {isMobile ? null : (
+            <SelectSections
+              selectedSections={selectedSections}
+              onChange={handleSelectSections}
+            />
+          )}
+          <div className="flex flex-col gap-4 w-full">
+            <div className="flex flex-col md:flex-row justify-between flex-wrap gap-4">
+              {isMobile ? (
+                <div className="flex flex-col w-full gap-1">
+                  <button
+                    className="py-4 flex justify-center gap-2 w-max text-lg font-bold"
+                    onClick={() => setShowSelectSections(true)}
+                  >
+                    {selectedSections.length >= 1
+                      ? "เลือก " + selectedSections.length + " หมวด"
+                      : "ทุกหมวด"}
+                    <Icon
+                      style={{ fontSize: "32px" }}
+                      icon="gridicons:dropdown"
+                    ></Icon>
+                  </button>
+                  <div className="w-full flex flex-wrap gap-2">
+                    {selectedSections.map((section) => (
+                      <SectionMobilePillButton
+                        section={section}
+                        remove={handleRemoveSection}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <>
+                  {selectedSections.length >= 1 ? (
+                    <div className="text-3xl font-bold">
+                      ได้เลือก {selectedSections.length} จากทั้งหมด
+                    </div>
+                  ) : (
+                    <div className="text-3xl font-bold">ทุกหมวด</div>
+                  )}
+                </>
+              )}
+              <SortBy sort={sort} setSort={setSort} />
+            </div>
+            <div className="flex flex-col justify-center items-center gap-2.5 w-full">
+              {result.map(([article, { sectionName, total }]) => (
+                <Link
+                  to={`/section/${article}`}
+                  className="w-full"
+                  key={article}
+                >
+                  <ListItem
+                    title={`มาตรา ${article}`}
+                    count={total}
+                    chartColor={sectionColorCode[sectionName]}
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      {showSelectSections && isMobile ? (
+        <SelectSectionsMobile
+          selectedSections={selectedSections}
+          onChange={handleSelectSections}
+          close={handleSectionsModalClose}
+        />
+      ) : null}
+    </>
   );
 }
 
