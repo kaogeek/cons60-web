@@ -98,7 +98,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-[#1a1a1a] py-8 text-white">
+      <div className="bg-[#1a1a1a] py-4 md:py-8 text-white">
         {view === "section" && (<BySection />)}
         {view === "discussionist" && (<ByDiscussionist />)}
         {view === "article" && (<ByArticle />)}

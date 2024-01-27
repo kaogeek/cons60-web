@@ -8,7 +8,7 @@ function SectionButton({ section, selected, onClick }) {
 
   return (
     <button
-      className={`py-2 font-bold text-left w-64 ${
+      className={`py-2 font-bold text-left w-full md:w-64 ${
         selected ? activeStyle : inactiveStyle
       }`}
       style={{
