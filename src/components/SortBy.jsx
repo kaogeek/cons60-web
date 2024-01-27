@@ -3,7 +3,6 @@ function SortBy({ sort, setSort }) {
     <div className="bg-neutral-900 rounded-full py-2 px-2">
       <select
         className="bg-neutral-900 rounded-full"
-        defaultValue={0}
         value={sort}
         onChange={(e) => setSort(parseInt(e.target.value))}
       >

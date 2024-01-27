@@ -1,3 +1,4 @@
+import React from "react";
 import sectionColorCode from "../constants/sectionColorCode";
 import ProfileImages from "./ProfileImages";
 
@@ -17,7 +18,12 @@ function PersonListItem(props) {
         );
       }
     }
-    return <div className="flex gap-1 w-full flex-wrap">{boxes}</div>;
+    // Create static list to avoid warning from React
+    const staticList = (...children) =>
+      React.createElement(React.Fragment, {}, ...children);
+    return (
+      <div className="flex gap-1 w-full flex-wrap">{staticList(...boxes)}</div>
+    );
   };
 
   return (
@@ -36,7 +42,8 @@ function PersonListItem(props) {
           <div>{name}</div>
         </div>
         <div>
-          {sectionCountMap.total} <span className="text-base font-normal">ครั้ง</span>
+          {sectionCountMap.total}{" "}
+          <span className="text-base font-normal">ครั้ง</span>
         </div>
       </div>
       {createChart()}

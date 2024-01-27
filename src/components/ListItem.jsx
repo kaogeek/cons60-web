@@ -1,3 +1,5 @@
+import React from "react";
+
 function ListItem({ title, count, chartColor }) {
   const createChart = () => {
     let boxes = [];
@@ -6,7 +8,12 @@ function ListItem({ title, count, chartColor }) {
         <div className="w-2 h-4" style={{ backgroundColor: chartColor }}></div>
       );
     }
-    return <div className="flex gap-1 w-full flex-wrap">{boxes}</div>;
+    // Create static list to avoid warning from React
+    const staticList = (...children) =>
+      React.createElement(React.Fragment, {}, ...children);
+    return (
+      <div className="flex gap-1 w-full flex-wrap">{staticList(...boxes)}</div>
+    );
   };
 
   return (

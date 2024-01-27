@@ -43,7 +43,7 @@ function BySection() {
         </div>
         <div className="flex flex-col justify-center items-center gap-2.5 w-full">
           {result.map(([sectionName, count]) => (
-            <Link to={`/${sectionName}`} className="w-full">
+            <Link to={`/${sectionName}`} className="w-full" key={sectionName}>
               <ListItem
                 title={sectionName}
                 count={count}
