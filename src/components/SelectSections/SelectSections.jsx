@@ -5,7 +5,7 @@ function SelectSections(props) {
   const { selectedSections, onChange } = props;
   return (
     <div className="bg-[#131313] p-4 rounded-2xl flex flex-col gap-2">
-      <div className="text-xl font-bold">เนื้อหาแบ่งออกเป็น 18 หมวด</div>
+      <div className="text-xl font-bold">เนื้อหาแบ่งออกเป็น 19 หมวด</div>
       <SectionButton
         key={"ทั้งหมด"}
         section={"ทั้งหมด"}
