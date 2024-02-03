@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 
 import "../styles/Home.css";
-import BySection from "../components/Overview/BySection";
+import ByChapter from "../components/Overview/ByChapter";
 import ByDiscussionist from "../components/Overview/ByDiscussionist";
-import ByArticle from "../components/Overview/ByArticle";
+import BySection from "../components/Overview/BySection";
 
 export default function Home() {
-  const [view, setView] = useState("section");
+  const [view, setView] = useState("chapter");
 
   return (
     <div data-testid="home">
@@ -67,11 +67,11 @@ export default function Home() {
         <div className="bg-[#131313] lg:w-3/6 w-5/6 rounded-full font-bold">
           <button
             className={
-              view === "section"
+              view === "chapter"
                 ? "bg-white rounded-full text-black py-2 w-1/3"
                 : "py-2 w-1/3 text-[#9f9f9f]"
             }
-            onClick={() => setView("section")}
+            onClick={() => setView("chapter")}
           >
             ตามหมวด
           </button>
@@ -87,11 +87,11 @@ export default function Home() {
           </button>
           <button
             className={
-              view === "article"
+              view === "section"
                 ? "bg-white rounded-full text-black py-2 w-1/3"
                 : "py-2 w-1/3 text-[#9f9f9f]"
             }
-            onClick={() => setView("article")}
+            onClick={() => setView("section")}
           >
             ตามมาตรา
           </button>
@@ -99,9 +99,9 @@ export default function Home() {
       </div>
 
       <div className="bg-[#1a1a1a] py-4 md:py-8 text-white">
-        {view === "section" && (<BySection />)}
+        {view === "chapter" && (<ByChapter />)}
         {view === "discussionist" && (<ByDiscussionist />)}
-        {view === "article" && (<ByArticle />)}
+        {view === "section" && (<BySection />)}
       </div>
     </div>
   );

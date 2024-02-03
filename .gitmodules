@@ -1,0 +1,3 @@
+[submodule "src/c60-data-query"]
+	path = src/c60-data-query
+	url = https://github.com/iampz/c60-data-query

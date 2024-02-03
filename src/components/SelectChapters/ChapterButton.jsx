@@ -1,8 +1,8 @@
 import { Icon } from "@iconify/react";
 
-import sectionColorCode from "../../constants/sectionColorCode";
+import chapterColorCode from "../../constants/chapterColorCode";
 
-function SectionButton({ section, selected, onClick }) {
+function ChapterButton({ chapter, selected, onClick }) {
   const activeStyle = "rounded-full text-black px-2";
   const inactiveStyle = "text-[#9f9f9f] px-4";
 
@@ -12,7 +12,7 @@ function SectionButton({ section, selected, onClick }) {
         selected ? activeStyle : inactiveStyle
       }`}
       style={{
-        backgroundColor: selected ? sectionColorCode[section] : "#131313",
+        backgroundColor: selected ? chapterColorCode[chapter] : "#131313",
       }}
       onClick={() => onClick(() => onClick())}
     >
@@ -20,7 +20,7 @@ function SectionButton({ section, selected, onClick }) {
         {!selected ? (
           <div
             style={{
-              backgroundColor: sectionColorCode[section],
+              backgroundColor: chapterColorCode[chapter],
               width: "16px",
               height: "16px",
               borderRadius: "50%",
@@ -33,11 +33,11 @@ function SectionButton({ section, selected, onClick }) {
           </div>
         )}
         <div className="text-ellipsis whitespace-nowrap overflow-hidden">
-          {section}
+          {chapter}
         </div>
       </div>
     </button>
   );
 }
 
-export default SectionButton;
+export default ChapterButton;
