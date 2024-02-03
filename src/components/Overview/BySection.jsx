@@ -14,7 +14,7 @@ function BySection() {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    const dataObject = createDataObject(data.doc);
+    const dataObject = createDataObject(data);
 
     const newResult = dataObject.data.reduce((acc, row) => {
       const sectionName = sectionIdToName[row["หมวด"]];

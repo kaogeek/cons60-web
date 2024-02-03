@@ -41,7 +41,7 @@ function ByArticle() {
   };
 
   const queryData = useCallback(() => {
-    const dataObject = createDataObject(data.doc);
+    const dataObject = createDataObject(data);
 
     // No section selected, query all
     const filteredBySectionData =
