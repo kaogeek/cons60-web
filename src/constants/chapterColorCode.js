@@ -1,4 +1,4 @@
-const sectionColorCode = {
+const chapterColorCode = {
     "ทั้งหมด": "#FFFFFF",
     "คำปรารภ": "#93785F",
     "บทเฉพาะกาล": "#FF5151",
@@ -20,4 +20,4 @@ const sectionColorCode = {
     "การปฏิรูปประเทศ": "#654375",
 }
 
-export default sectionColorCode;
+export default chapterColorCode;

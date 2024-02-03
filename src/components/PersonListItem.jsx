@@ -1,19 +1,19 @@
 import React from "react";
-import sectionColorCode from "../constants/sectionColorCode";
+import chapterColorCode from "../constants/chapterColorCode";
 import ProfileImages from "./ProfileImages";
 
 function PersonListItem(props) {
-  const { name, sectionCountMap } = props;
+  const { name, chapterCountMap } = props;
 
   const createChart = () => {
     let boxes = [];
-    for (const [key, value] of Object.entries(sectionCountMap)) {
+    for (const [key, value] of Object.entries(chapterCountMap)) {
       for (let i = 0; i < value; i++) {
         if (key === "total") continue;
         boxes.push(
           <div
             className="w-2 h-4"
-            style={{ backgroundColor: sectionColorCode[key] }}
+            style={{ backgroundColor: chapterColorCode[key] }}
           ></div>
         );
       }
@@ -42,7 +42,7 @@ function PersonListItem(props) {
           <div>{name}</div>
         </div>
         <div>
-          {sectionCountMap.total}{" "}
+          {chapterCountMap.total}{" "}
           <span className="text-base font-normal">ครั้ง</span>
         </div>
       </div>

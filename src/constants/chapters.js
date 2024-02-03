@@ -1,4 +1,4 @@
-const sections = [
+const chapters = [
     "คำปรารภ",
     "บทเฉพาะกาล",
     "บททั่วไป",
@@ -20,7 +20,7 @@ const sections = [
 ]
 
 // Used for data query
-export const sectionNameToId = {
+export const chapterNameToId = {
     "บทเฉพาะกาล": "บทเฉพาะกาล",
     "คำปรารภ": "0",
     "บททั่วไป": "1",
@@ -42,9 +42,9 @@ export const sectionNameToId = {
 }
 
 // Used for data query
-export const sectionIdToName = {
+export const chapterIdToName = {
     "บทเฉพาะกาล": "บทเฉพาะกาล",
-    "0": "คำปรารภ",
+    "คำปรารภ": "คำปรารภ",
     "1": "บททั่วไป",
     "2": "พระมหากษัตริย์",
     "3": "สิทธิและเสรีภาพของปวงชนชาวไทย",
@@ -63,4 +63,4 @@ export const sectionIdToName = {
     "16": "การปฏิรูปประเทศ",
 }
 
-export default sections
+export default chapters

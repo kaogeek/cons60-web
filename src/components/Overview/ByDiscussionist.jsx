@@ -3,65 +3,65 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { Icon } from "@iconify/react";
 
-import SectionMobilePillButton from "../SelectSections/SectionMobilePillButton";
-import SelectSectionsMobile from "../SelectSections/SelectSectionsMobile";
-import SelectSections from "../SelectSections/SelectSections";
+import ChapterMobilePillButton from "../SelectChapters/ChapterMobilePillButton";
+import SelectChaptersMobile from "../SelectChapters/SelectChaptersMobile";
+import SelectChapters from "../SelectChapters/SelectChapters";
 import PersonListItem from "../PersonListItem";
 import SortBy from "../SortBy";
 
 import createDataObject from "../../c60-data-query/data-object.js";
 import data from "../../c60-data-query/data.js";
-import { sectionIdToName } from "../../constants/sections.js";
+import { chapterIdToName } from "../../constants/chapters.js";
 
 function ByDiscussionist() {
   const [sort, setSort] = useState(0);
-  const [selectedSections, setSelectedSections] = useState([]);
+  const [selectedChapters, setSelectedChapters] = useState([]);
   const [result, setResult] = useState([]);
 
   // Mobile
   const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
-  const [showSelectSections, setShowSelectSections] = useState(false);
+  const [showSelectChapters, setShowSelectChapters] = useState(false);
 
   const resultDivRef = useRef(null);
 
-  const handleSelectSections = (newSelected) => {
-    setSelectedSections(newSelected);
+  const handleSelectChapters = (newSelected) => {
+    setSelectedChapters(newSelected);
   };
 
-  const handleSectionsModalClose = () => {
-    setShowSelectSections(false);
+  const handleChaptersModalClose = () => {
+    setShowSelectChapters(false);
     if (resultDivRef && resultDivRef.current) {
       resultDivRef.current.scrollIntoView();
     }
   };
 
-  const handleRemoveSection = (section) => {
-    setSelectedSections((prev) => prev.filter((s) => s !== section));
+  const handleRemoveChapter = (chapter) => {
+    setSelectedChapters((prev) => prev.filter((s) => s !== chapter));
   };
 
   const queryData = useCallback(() => {
     const dataObject = createDataObject(data);
 
-    // No section selected, query all
-    const filteredBySectionData =
-      selectedSections.length === 0
+    // No chapter selected, query all
+    const filteredByChapterData =
+      selectedChapters.length === 0
         ? dataObject.data
         : dataObject.data.filter((row) =>
-            selectedSections.includes(sectionIdToName[row["หมวด"]])
+            selectedChapters.includes(chapterIdToName[row["หมวด"]])
           );
 
-    const newResult = filteredBySectionData.reduce((acc, row) => {
-      const sectionName = sectionIdToName[row["หมวด"]];
+    const newResult = filteredByChapterData.reduce((acc, row) => {
+      const chapterName = chapterIdToName[row["หมวด"]];
       const discussionists = row["ผู้อภิปราย"];
       discussionists.forEach((discussionist) => {
         if (!acc[discussionist]) {
           acc[discussionist] = {};
-          acc[discussionist][sectionName] = 1;
+          acc[discussionist][chapterName] = 1;
         } else {
-          if (!acc[discussionist][sectionName]) {
-            acc[discussionist][sectionName] = 1;
+          if (!acc[discussionist][chapterName]) {
+            acc[discussionist][chapterName] = 1;
           } else {
-            acc[discussionist][sectionName] += 1;
+            acc[discussionist][chapterName] += 1;
           }
         }
         acc[discussionist]["total"] = acc[discussionist]["total"] + 1 || 1;
@@ -70,9 +70,9 @@ function ByDiscussionist() {
     }, {});
 
     // Convert to array for sorting later
-    // [name, {section: count, section: count, total: count}]
+    // [name, {chapter: count, chapter: count, total: count}]
     return Object.entries(newResult);
-  }, [selectedSections]);
+  }, [selectedChapters]);
 
   const sortResult = useCallback(
     (result) => {
@@ -94,9 +94,9 @@ function ByDiscussionist() {
       <div className="flex justify-center items-center" ref={resultDivRef}>
         <div className="flex flex-row w-3/4 gap-4">
           {isMobile ? null : (
-            <SelectSections
-              selectedSections={selectedSections}
-              onChange={handleSelectSections}
+            <SelectChapters
+              selectedChapters={selectedChapters}
+              onChange={handleSelectChapters}
             />
           )}
           <div className="flex flex-col gap-4 w-full">
@@ -105,10 +105,10 @@ function ByDiscussionist() {
                 <div className="flex flex-col w-full gap-1">
                   <button
                     className="py-4 flex justify-center gap-2 w-max text-lg font-bold"
-                    onClick={() => setShowSelectSections(true)}
+                    onClick={() => setShowSelectChapters(true)}
                   >
-                    {selectedSections.length >= 1
-                      ? "เลือก " + selectedSections.length + " หมวด"
+                    {selectedChapters.length >= 1
+                      ? "เลือก " + selectedChapters.length + " หมวด"
                       : "ทุกหมวด"}
                     <Icon
                       style={{ fontSize: "32px" }}
@@ -116,19 +116,19 @@ function ByDiscussionist() {
                     ></Icon>
                   </button>
                   <div className="w-full flex flex-wrap gap-2">
-                    {selectedSections.map((section) => (
-                      <SectionMobilePillButton
-                        section={section}
-                        remove={handleRemoveSection}
+                    {selectedChapters.map((chapter) => (
+                      <ChapterMobilePillButton
+                        chapter={chapter}
+                        remove={handleRemoveChapter}
                       />
                     ))}
                   </div>
                 </div>
               ) : (
                 <>
-                  {selectedSections.length >= 1 ? (
+                  {selectedChapters.length >= 1 ? (
                     <div className="text-3xl font-bold">
-                      ได้เลือก {selectedSections.length} จากทั้งหมด
+                      ได้เลือก {selectedChapters.length} จากทั้งหมด
                     </div>
                   ) : (
                     <div className="text-3xl font-bold">ทุกหมวด</div>
@@ -138,7 +138,7 @@ function ByDiscussionist() {
               <SortBy sort={sort} setSort={setSort} />
             </div>
             <div className="flex flex-col justify-center items-center gap-2.5 w-full">
-              {result.map(([discussionist, sectionCountMap]) => (
+              {result.map(([discussionist, chapterCountMap]) => (
                 <Link
                   to={`/${discussionist}`}
                   className="w-full"
@@ -146,7 +146,7 @@ function ByDiscussionist() {
                 >
                   <PersonListItem
                     name={discussionist}
-                    sectionCountMap={sectionCountMap}
+                    chapterCountMap={chapterCountMap}
                   />
                 </Link>
               ))}
@@ -154,11 +154,11 @@ function ByDiscussionist() {
           </div>
         </div>
       </div>
-      {showSelectSections && isMobile ? (
-        <SelectSectionsMobile
-          selectedSections={selectedSections}
-          onChange={handleSelectSections}
-          close={handleSectionsModalClose}
+      {showSelectChapters && isMobile ? (
+        <SelectChaptersMobile
+          selectedChapters={selectedChapters}
+          onChange={handleSelectChapters}
+          close={handleChaptersModalClose}
         />
       ) : null}
     </>
