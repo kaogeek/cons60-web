@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
 import "../styles/Home.css";
 import ByChapter from "../components/Overview/ByChapter";
@@ -32,6 +33,7 @@ export default function Home() {
             ออกมาเพื่อใคร หาคำตอบไปด้วยกัน
           </div>
 
+          <Link to="/search">
           <div className="py-10 px-2 flex justify-center">
             <div className="lg:w-2/5 md:w-3/5 sm:w-4/5 xs:w-4/5">
               <div className="text-2xl text-black px-6 bg-white flex content-center py-2 items-center rounded-full">
@@ -46,6 +48,8 @@ export default function Home() {
               </div>
             </div>
           </div>
+          </Link>
+          
 
           <div className="text-neutral-400 text-center lg:py-8 py-40">
             <div className="flex justify-center">
