@@ -168,7 +168,7 @@ export default function Discussionist() {
             <div className="flex flex-col justify-center items-center gap-2.5 w-full">
               {result.map(([Section, { chapterName, total }]) => (
                 <Link
-                  to={`/chapter/${Section}`}
+                  to={`/section/${Section}`}
                   className="w-full"
                   key={Section}
                 >
