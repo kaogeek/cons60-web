@@ -1,3 +1,38 @@
+# Cloning the Repository
+
+To clone this repository along with its submodules, follow the instructions below. These steps will ensure that you have a complete copy of the project, including [กรธ.60 - Data Query](https://github.com/iampz/c60-data-query.git)
+
+### Steps to Clone
+
+1. **Clone the Repository**
+
+   Open your terminal or command prompt and run the following command:
+
+   ```
+   git clone --recurse-submodules https://github.com/kaogeek/cons60-web
+   ```
+
+ This command clones the repository and all its submodules.
+
+1. **Initialize and Update Submodules**
+
+   If the repository was cloned without using `--recurse-submodules`, you need to run the following commands to initialize and update the submodules:
+
+   ```
+   git submodule update --init --recursive
+   ```
+
+This command initializes your local configuration file for submodules and updates the submodules.
+
+### Troubleshooting
+
+If you encounter any issues with submodules, such as broken links or missing files, you can try re-syncing and updating the submodules:
+
+```
+git submodule sync
+git submodule update --init --recursive
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
