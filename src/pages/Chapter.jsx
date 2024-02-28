@@ -35,13 +35,13 @@ export default function Chapter() {
               />
             </svg>
           </Link>
-          <h1 className="text-white text-3xl">มาตรา {idFromURL}</h1>
+          <h1 className="text-white text-xl md:text-3xl">มาตรา {idFromURL}</h1>
         </div>
       </div>
-      <div className="bg-[#1a1a1a] py-4 md:py-8 text-white min-h-screen">
+      <div className="bg-[#1a1a1a] md:py-8 text-white min-h-screen">
         <div className="flex justify-center items-center ">
-          <div className="flex flex-row w-3/4 gap-4">
-            <div className="bg-[#131313] p-4 rounded-2xl flex flex-col gap-2">
+          <div className="flex flex-row md:w-10/12 gap-4">
+            <div className="bg-[#131313] p-4 rounded-2xl hidden flex-col gap-2 md:flex">
               <div className="text-lg font-bold w-full">บันทึกการแก้ไข</div>
               <button className="py-2 px-5 font-bold text-left w-full md:w-64 bg-white rounded-lg text-[#131313]">
                 ร่างปัจจุบัน
@@ -53,18 +53,43 @@ export default function Chapter() {
                 มติในที่ประชุมครั้งที่ 2
               </button>
             </div>
+
             <div className="flex flex-col gap-4 w-full">
               <div className="flex flex-col md:flex-row justify-between flex-wrap gap-4">
                 <div className="flex flex-col w-full gap-1">
-                  <div className="w-full p-5 rounded-t-xl bg-white bg-opacity-5">
+                <div className="w-full p-5 md:hidden bg-[#FF6000]">
+                    <div className="flex justify-between items-center gap-10 px-2">
+                      <div className="text-sm">เปรียบเทียบกับมติในที่ประชุมครั้งที่ 18</div>
+                      <div>
+                        <svg
+                          width="33"
+                          height="33"
+                          viewBox="0 0 33 33"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M6.74708 25.0795C6.74677 24.9524 6.7717 24.8265 6.82043 24.7091C6.86916 24.5917 6.94072 24.4851 7.03095 24.3956L25.0956 6.33092C25.1854 6.24103 25.292 6.16972 25.4094 6.12106C25.5267 6.07241 25.6525 6.04736 25.7795 6.04736C25.9066 6.04736 26.0323 6.07241 26.1497 6.12106C26.267 6.16972 26.3736 6.24103 26.4634 6.33092C26.5533 6.42079 26.6247 6.5275 26.6733 6.64496C26.722 6.76241 26.7471 6.8883 26.7471 7.01544C26.7471 7.14258 26.722 7.26848 26.6733 7.38593C26.6247 7.50338 26.5533 7.61009 26.4634 7.69997L8.39871 25.7647C8.26329 25.8999 8.09081 25.992 7.90308 26.0292C7.71535 26.0664 7.52079 26.0472 7.34401 25.9738C7.16722 25.9005 7.01616 25.7764 6.90991 25.6172C6.80366 25.458 6.74699 25.2709 6.74708 25.0795Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M6.74704 7.0148C6.74673 6.88769 6.77167 6.76179 6.82039 6.64439C6.86913 6.52699 6.94068 6.42044 7.03092 6.33092C7.12068 6.24103 7.22728 6.16972 7.34463 6.12106C7.46198 6.07241 7.58776 6.04736 7.7148 6.04736C7.84183 6.04736 7.96762 6.07241 8.08496 6.12106C8.20231 6.16972 8.30891 6.24103 8.39867 6.33092L26.4634 24.3956C26.6397 24.5781 26.7374 24.8225 26.7353 25.0762C26.7332 25.33 26.6316 25.5727 26.4522 25.7522C26.2729 25.9318 26.0302 26.0336 25.7765 26.036C25.5227 26.0383 25.2782 25.9409 25.0956 25.7647L7.03092 7.69997C6.94076 7.61012 6.86926 7.50333 6.82054 7.38574C6.77182 7.26815 6.74685 7.14208 6.74704 7.0148Z"
+                            fill="white"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full p-5 md:rounded-t-xl bg-white bg-opacity-5">
+                    
                     <div className="grid grid-cols-2 justify-between">
                       <div className="block">
-                        <h1 className="text-3xl pt-5"> ร่างปัจจุบัน </h1>
+                        <h1 className="text-2xl md:text-3xl pt-5"> ร่างปัจจุบัน </h1>
                         <h5 className="text-sm pt-3 text-[#9F9F9F]">
                           17 กุมภาพันธ์ 2566
                         </h5>
                       </div>
-                      <div className="flex justify-end items-center gap-5 px-5">
+                      <div className="flex justify-end items-center gap-2 px-2 md:gap-5 md:px-5">
                         <svg
                           width="49"
                           height="49"
@@ -133,16 +158,16 @@ export default function Chapter() {
                         </svg>
                       </div>
                     </div>
-                    <hr className="my-5"></hr>
+                    <hr className="my-5 opacity-20"></hr>
                     <div className="py-3">
                       <h3 className="text-sm text-[#FF6000]">ผู้อภิปราย</h3>
-                      <h2 className="text-2xl pt-3">
+                      <h2 className="text-xl md:text-2xl pt-3">
                         นายมีชัย ฤชุพันธุ์, นายอัชพร จารุจินดา
                       </h2>
                     </div>
                     <div className="py-3">
                       <h3 className="text-sm text-[#FF6000]">หน้า</h3>
-                      <h2 className="text-2xl pt-3">7-8</h2>
+                      <h2 className="text-xl md:text-2xl pt-3">7-8</h2>
                     </div>
                     <div className="py-3">
                       <h3 className="text-sm text-[#FF6000]">ผู้อภิปราย</h3>
@@ -154,7 +179,7 @@ export default function Chapter() {
                       </h2>
                     </div>
                   </div>
-                  <div className="w-full p-5  bg-[#FF6000]">
+                  <div className="w-full p-5 hidden md:block bg-[#FF6000]">
                     <div className="flex justify-between items-center gap-10 px-2">
                       <div>เปรียบเทียบกับมติในที่ประชุมครั้งที่ 18</div>
                       <div>
@@ -177,24 +202,24 @@ export default function Chapter() {
                       </div>
                     </div>
                   </div>
-                  <div className="w-full p-5  bg-[#1A1A1A] bg-opacity-10">
-                    <div className="flex items-center gap-10 px-2">
+                  <div className="w-full px-2 py-5 sm:p-5  bg-[#1A1A1A] bg-opacity-10">
+                    <div className="flex items-center gap-3 sm:gap-10 px-2">
                       <div className="flex gap-2 items-center">
-                        <div className="w-5 h-5 rounded-full bg-[#12AD75]"></div>
-                        <h4> เพิ่มใหม่</h4>
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#12AD75]"></div>
+                        <h4 className="text-sm"> เพิ่มใหม่</h4>
                       </div>
                       <div className="flex gap-2 items-center">
-                        <div className="w-5 h-5 rounded-full bg-[#FF5151]"></div>
-                        <h4> ลบออก</h4>
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#FF5151]"></div>
+                        <h4 className="text-sm"> ลบออก</h4>
                       </div>
                       <div className="flex gap-2 items-center">
-                        <div className="w-5 h-5 rounded-full bg-[#4182FF]"></div>
-                        <h4> เปลี่ยนจากเดิม</h4>
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#4182FF]"></div>
+                        <h4 className="text-sm"> เปลี่ยนจากเดิม</h4>
                       </div>
                     </div>
                   </div>
-                  <div className="w-full p-5 rounded-b-xl bg-white">
-                    <p className="py-10 px-5 text-black text-bold text-lg text-justify">
+                  <div className="w-full p-5 md:rounded-b-xl bg-white">
+                    <p className="md:py-10 md:px-5 text-black text-bold text-sm md:text-lg text-justify">
                       มาตรา ๒๕ สิทธิและเสรีภาพของปวงชนชาวไทย
                       นอกจากที่บัญญัติคุ้มครองไว้
                       เป็นการเฉพาะในรัฐธรรมนูญแล้วการใดที่มิได้ห้ามหรือจํากัดไว้ในรัฐธรรมนูญ
@@ -207,8 +232,8 @@ export default function Chapter() {
                       สิทธิหรือเสรีภาพใดที่รัฐธรรมนูญให้เป็นไปตามที่กฎหมายบัญญัติ
                       หรือให้
                       เป็นไปตามหลักเกณฑ์และวิธีการที่กฎหมายบัญญัติแม้ยังไม่มีการตรากฎหมายนั้นขึ้นใช้บังคับบุคคลหรือชุมชนย่อมสามารถใช้สิทธิหรือเสรีภาพนั้นได้ตาม
-                      เจตนารมณ์ของรัฐธรรมนูญ  บุคคลซึ่งถูกละเมิดสิทธิหรือเสรีภาพที่ได้รับความคุ้มครองตามรัฐธรรมนูญ
-                      สามารถยกบทบัญญัติแห่งรัฐธรรมนูญเพื่อใช้สิทธิทางศาลหรือยกขึ้นเป็นข้อต่อสู้คดีในศาลได้  บุคคลซึ่งได้รับความเสียหายจากการถูกละเมิดสิทธิหรือเสรีภาพหรือจากการกระทําความผิดอาญาของบุคคลอื่น
+                      เจตนารมณ์ของรัฐธรรมนูญบุคคลซึ่งถูกละเมิดสิทธิหรือเสรีภาพที่ได้รับความคุ้มครองตามรัฐธรรมนูญ
+                      สามารถยกบทบัญญัติแห่งรัฐธรรมนูญเพื่อใช้สิทธิทางศาลหรือยกขึ้นเป็นข้อต่อสู้คดีในศาลได้บุคคลซึ่งได้รับความเสียหายจากการถูกละเมิดสิทธิหรือเสรีภาพหรือจากการกระทําความผิดอาญาของบุคคลอื่น
                       ย่อมมีสิทธิที่จะได้รับการเยียวยาหรือช่วยเหลือจากรัฐตามที่กฎหมายบัญญัติ
                     </p>
                   </div>
