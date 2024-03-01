@@ -1,21 +1,80 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
+import { Icon } from "@iconify/react";
+
+import DiscussionistMobilePillButton from "../components/SelectDiscussionists/DiscussionistMobilePillButton";
+import SelectDiscussionistsMobile from "../components/SelectDiscussionists/SelectDiscussionistsMobile";
+import SelectDiscussionists from "../components/SelectDiscussionists/SelectDiscussionists";
+import ListItem from "../components/ListItem";
+import SortBy from "../components/SortBy";
+
+import createDataObject from "../c60-data-query/data-object.js";
+import data from "../c60-data-query/data.js";
+import chapterColorCode from "../constants/chapterColorCode.js";
+import { chapterNameToId } from "../constants/chapters.js";
 
 export default function Chapter() {
-  const [idFromURL, setIdFromURL] = useState(null);
+  const { name } = useParams();
+  const [discussionists, setDiscussionists] = useState([]);
+
+  const [sort, setSort] = useState(0);
+  const [selectedDiscussionists, setSelectedDiscussionists] = useState([]);
+  const [result, setResult] = useState([]);
+
+  // Mobile
+  const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
+  const [showSelectDiscussionists, setShowSelectDiscussionists] =
+    useState(false);
+
+  const resultDivRef = useRef(null);
+
+  const handleSelectDiscussionists = (newSelected) => {
+    setSelectedDiscussionists(newSelected);
+  };
+
+  const handleSelectModalClose = () => {
+    setShowSelectDiscussionists(false);
+    if (resultDivRef && resultDivRef.current) {
+      resultDivRef.current.scrollIntoView();
+    }
+  };
+
+  const handleRemoveDiscussionists = (discussionist) => {
+    setSelectedDiscussionists((prev) =>
+      prev.filter((s) => s !== discussionist)
+    );
+  };
+
+  const queryData = (fullDiscussionists) => {
+    const discussionistCriteria =
+      selectedDiscussionists.length >= 1
+        ? selectedDiscussionists.map((discussionist) => ({
+            ผู้อภิปราย: discussionist,
+          }))
+        : fullDiscussionists.map((discussionist) => ({
+            ผู้อภิปราย: discussionist["ผู้อภิปราย"],
+          }));
+
+    const dataObject = createDataObject(data)
+      .filter("หมวด", chapterNameToId[name])
+      .multiFilter(discussionistCriteria, [])
+      .list("มาตรา").data;
+
+    const sorted = dataObject.sort((a, b) =>
+      sort === 0 ? b.count - a.count : a.count - b.count
+    );
+    return sorted;
+  };
 
   useEffect(() => {
-    const hashValue = window.location.hash;
-    const regex = /^#\/chapter\/(\d+)$/;
-    const match = hashValue.match(regex);
+    const panelists = createDataObject(data)
+      .filter("หมวด", chapterNameToId[name])
+      .listPanelists().data;
 
-    if (match) {
-      const id = parseInt(match[1], 10);
-      setIdFromURL(id);
-    } else {
-      setIdFromURL(null);
-    }
-  }, []);
+    setDiscussionists(panelists);
+    setResult(queryData(panelists));
+  }, [sort, selectedDiscussionists, name]);
 
   return (
     <>
@@ -35,214 +94,90 @@ export default function Chapter() {
               />
             </svg>
           </Link>
-          <h1 className="text-white text-xl md:text-3xl">มาตรา {idFromURL}</h1>
+          <h1 className="text-white text-3xl">{name}</h1>
         </div>
       </div>
-      <div className="bg-[#1a1a1a] md:py-8 text-white min-h-screen">
-        <div className="flex justify-center items-center ">
-          <div className="flex flex-row md:w-10/12 gap-4">
-            <div className="bg-[#131313] p-4 rounded-2xl hidden flex-col gap-2 md:flex">
-              <div className="text-lg font-bold w-full">บันทึกการแก้ไข</div>
-              <button className="py-2 px-5 font-bold text-left w-full md:w-64 bg-white rounded-lg text-[#131313]">
-                ร่างปัจจุบัน
-              </button>
-              <button className="py-2 px-5 font-bold text-left w-full md:w-64 text-[#9F9F9F]">
-                มติในที่ประชุมครั้งที่ 1
-              </button>
-              <button className="py-2 px-5 font-bold text-left w-full md:w-64 text-[#9F9F9F]">
-                มติในที่ประชุมครั้งที่ 2
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-4 w-full">
-              <div className="flex flex-col md:flex-row justify-between flex-wrap gap-4">
+      <div
+        className="bg-[#1a1a1a] pb-4 md:pb-8 pt-8 md:pt-16 flex justify-center"
+        ref={resultDivRef}
+      >
+        <div className="w-3/4 flex flex-col items-center gap-8">
+          <h1 className="text-4xl font-bold">{name}</h1>
+          <hr className="h-[1px] border-t-0 bg-white opacity-80 w-full" />
+        </div>
+      </div>
+      <div className="bg-[#1a1a1a] py-4 md:py-8  min-h-screen flex justify-center">
+        <div className="flex flex-row w-3/4 gap-4">
+          {isMobile ? null : (
+            <SelectDiscussionists
+              selectedDiscussionists={selectedDiscussionists}
+              onChange={handleSelectDiscussionists}
+              discussionists={discussionists.map((d) => d["ผู้อภิปราย"])}
+            />
+          )}
+          <div className="flex flex-col gap-4 w-full">
+            <div className="flex flex-col md:flex-row justify-between flex-wrap gap-4">
+              {isMobile ? (
                 <div className="flex flex-col w-full gap-1">
-                <div className="w-full p-5 md:hidden bg-[#FF6000]">
-                    <div className="flex justify-between items-center gap-10 px-2">
-                      <div className="text-sm">เปรียบเทียบกับมติในที่ประชุมครั้งที่ 18</div>
-                      <div>
-                        <svg
-                          width="33"
-                          height="33"
-                          viewBox="0 0 33 33"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M6.74708 25.0795C6.74677 24.9524 6.7717 24.8265 6.82043 24.7091C6.86916 24.5917 6.94072 24.4851 7.03095 24.3956L25.0956 6.33092C25.1854 6.24103 25.292 6.16972 25.4094 6.12106C25.5267 6.07241 25.6525 6.04736 25.7795 6.04736C25.9066 6.04736 26.0323 6.07241 26.1497 6.12106C26.267 6.16972 26.3736 6.24103 26.4634 6.33092C26.5533 6.42079 26.6247 6.5275 26.6733 6.64496C26.722 6.76241 26.7471 6.8883 26.7471 7.01544C26.7471 7.14258 26.722 7.26848 26.6733 7.38593C26.6247 7.50338 26.5533 7.61009 26.4634 7.69997L8.39871 25.7647C8.26329 25.8999 8.09081 25.992 7.90308 26.0292C7.71535 26.0664 7.52079 26.0472 7.34401 25.9738C7.16722 25.9005 7.01616 25.7764 6.90991 25.6172C6.80366 25.458 6.74699 25.2709 6.74708 25.0795Z"
-                            fill="white"
-                          />
-                          <path
-                            d="M6.74704 7.0148C6.74673 6.88769 6.77167 6.76179 6.82039 6.64439C6.86913 6.52699 6.94068 6.42044 7.03092 6.33092C7.12068 6.24103 7.22728 6.16972 7.34463 6.12106C7.46198 6.07241 7.58776 6.04736 7.7148 6.04736C7.84183 6.04736 7.96762 6.07241 8.08496 6.12106C8.20231 6.16972 8.30891 6.24103 8.39867 6.33092L26.4634 24.3956C26.6397 24.5781 26.7374 24.8225 26.7353 25.0762C26.7332 25.33 26.6316 25.5727 26.4522 25.7522C26.2729 25.9318 26.0302 26.0336 25.7765 26.036C25.5227 26.0383 25.2782 25.9409 25.0956 25.7647L7.03092 7.69997C6.94076 7.61012 6.86926 7.50333 6.82054 7.38574C6.77182 7.26815 6.74685 7.14208 6.74704 7.0148Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full p-5 md:rounded-t-xl bg-white bg-opacity-5">
-                    
-                    <div className="grid grid-cols-2 justify-between">
-                      <div className="block">
-                        <h1 className="text-2xl md:text-3xl pt-5"> ร่างปัจจุบัน </h1>
-                        <h5 className="text-sm pt-3 text-[#9F9F9F]">
-                          17 กุมภาพันธ์ 2566
-                        </h5>
-                      </div>
-                      <div className="flex justify-end items-center gap-2 px-2 md:gap-5 md:px-5">
-                        <svg
-                          width="49"
-                          height="49"
-                          viewBox="0 0 49 49"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <circle
-                            cx="24.7529"
-                            cy="24.1978"
-                            r="24"
-                            fill="#2A2A2A"
-                          />
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M35.7529 13.1978H19.8562V19.301H13.7529V35.1978H29.6497V29.0945H35.7529V13.1978ZM28.0648 33.6365H15.3142V20.8859H19.8562V29.0945H28.0648V33.6365ZM34.1916 27.5096H29.6497V19.301H21.4411V14.759H34.1916V27.5096Z"
-                            fill="white"
-                          />
-                        </svg>
-
-                        <svg
-                          width="49"
-                          height="49"
-                          viewBox="0 0 49 49"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <circle
-                            cx="24.7529"
-                            cy="24.1987"
-                            r="24"
-                            fill="#2A2A2A"
-                          />
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M25.518 15.7832C27.6306 13.6706 31.0559 13.6706 33.1685 15.7832C35.2811 17.8958 35.2811 21.321 33.1685 23.4337L30.8733 25.7288C30.4509 26.1514 29.7658 26.1514 29.3432 25.7288C28.9207 25.3063 28.9207 24.6212 29.3432 24.1987L31.6384 21.9036C32.906 20.636 32.906 18.5809 31.6384 17.3133C30.3708 16.0457 28.3157 16.0457 27.0481 17.3133L24.7529 19.6084C24.3304 20.031 23.6454 20.031 23.2228 19.6084C22.8003 19.1859 22.8003 18.5009 23.2228 18.0783L25.518 15.7832ZM20.9277 28.024C20.5052 27.6015 20.5052 26.9164 20.9277 26.4939L27.0481 20.3735C27.4706 19.951 28.1557 19.951 28.5782 20.3735C29.0007 20.796 29.0007 21.4811 28.5782 21.9036L22.4578 28.024C22.0353 28.4465 21.3502 28.4465 20.9277 28.024ZM16.3374 32.6143C14.2248 30.5017 14.2248 27.0764 16.3374 24.9638L18.6325 22.6686C19.0551 22.2461 19.7401 22.2461 20.1626 22.6686C20.5852 23.0912 20.5852 23.7762 20.1626 24.1987L17.8675 26.4939C16.5999 27.7615 16.5999 29.8166 17.8675 31.0842C19.1351 32.3518 21.1902 32.3518 22.4578 31.0842L24.7529 28.789C25.1754 28.3665 25.8605 28.3665 26.283 28.789C26.7056 29.2116 26.7056 29.8967 26.283 30.3191L23.9879 32.6143C21.8752 34.7269 18.45 34.7269 16.3374 32.6143Z"
-                            fill="white"
-                          />
-                        </svg>
-
-                        <svg
-                          width="49"
-                          height="49"
-                          viewBox="0 0 49 49"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <circle
-                            cx="24.7529"
-                            cy="24.1987"
-                            r="24"
-                            fill="#2A2A2A"
-                          />
-                          <rect
-                            width="32"
-                            height="32"
-                            transform="translate(40.7529 40.1987) rotate(-180)"
-                            fill="#2A2A2A"
-                          />
-                          <path
-                            d="M32.7659 29.3947L24.7747 21.7988L16.7505 29.4278C16.5224 29.6415 16.2204 29.7585 15.9079 29.7543C15.5953 29.75 15.2966 29.6249 15.0744 29.4051C14.9708 29.302 14.889 29.1792 14.8338 29.0439C14.7786 28.9086 14.7511 28.7636 14.753 28.6175C14.755 28.4714 14.7862 28.3271 14.845 28.1934C14.9038 28.0596 14.9888 27.939 15.0951 27.8387L23.1111 20.2158L24.7665 18.6433L26.4218 20.2241L34.4337 27.8325C34.5368 27.9355 34.6181 28.0581 34.673 28.1931C34.7278 28.3281 34.7549 28.4727 34.7528 28.6184C34.7507 28.7641 34.7193 28.9079 34.6606 29.0412C34.6019 29.1746 34.517 29.2948 34.4109 29.3947C34.1885 29.6047 33.8943 29.7217 33.5884 29.7217C33.2826 29.7217 32.9883 29.6047 32.7659 29.3947Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                    <hr className="my-5 opacity-20"></hr>
-                    <div className="py-3">
-                      <h3 className="text-sm text-[#FF6000]">ผู้อภิปราย</h3>
-                      <h2 className="text-xl md:text-2xl pt-3">
-                        นายมีชัย ฤชุพันธุ์, นายอัชพร จารุจินดา
-                      </h2>
-                    </div>
-                    <div className="py-3">
-                      <h3 className="text-sm text-[#FF6000]">หน้า</h3>
-                      <h2 className="text-xl md:text-2xl pt-3">7-8</h2>
-                    </div>
-                    <div className="py-3">
-                      <h3 className="text-sm text-[#FF6000]">ผู้อภิปราย</h3>
-                      <h2 className="text-sm pt-3">
-                        ประธานกรรมการเสนอเพิ่มความดังต่อไปนี้เป็นร่างมาตรา ๗๐/๒
-                        เนื่องจากมีช่องว่างการใช้ของมาตราที่ 25 และมาตราที่
-                        50ไม่มีมติเนื่องจากเป็นวาระ
-                        พิจารณาแนวทางการดําเนินงานภายหลังการเผยแพร่ร่างรัฐธรรมนูญเบื้องต้น
-                      </h2>
-                    </div>
-                  </div>
-                  <div className="w-full p-5 hidden md:block bg-[#FF6000]">
-                    <div className="flex justify-between items-center gap-10 px-2">
-                      <div>เปรียบเทียบกับมติในที่ประชุมครั้งที่ 18</div>
-                      <div>
-                        <svg
-                          width="33"
-                          height="33"
-                          viewBox="0 0 33 33"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M6.74708 25.0795C6.74677 24.9524 6.7717 24.8265 6.82043 24.7091C6.86916 24.5917 6.94072 24.4851 7.03095 24.3956L25.0956 6.33092C25.1854 6.24103 25.292 6.16972 25.4094 6.12106C25.5267 6.07241 25.6525 6.04736 25.7795 6.04736C25.9066 6.04736 26.0323 6.07241 26.1497 6.12106C26.267 6.16972 26.3736 6.24103 26.4634 6.33092C26.5533 6.42079 26.6247 6.5275 26.6733 6.64496C26.722 6.76241 26.7471 6.8883 26.7471 7.01544C26.7471 7.14258 26.722 7.26848 26.6733 7.38593C26.6247 7.50338 26.5533 7.61009 26.4634 7.69997L8.39871 25.7647C8.26329 25.8999 8.09081 25.992 7.90308 26.0292C7.71535 26.0664 7.52079 26.0472 7.34401 25.9738C7.16722 25.9005 7.01616 25.7764 6.90991 25.6172C6.80366 25.458 6.74699 25.2709 6.74708 25.0795Z"
-                            fill="white"
-                          />
-                          <path
-                            d="M6.74704 7.0148C6.74673 6.88769 6.77167 6.76179 6.82039 6.64439C6.86913 6.52699 6.94068 6.42044 7.03092 6.33092C7.12068 6.24103 7.22728 6.16972 7.34463 6.12106C7.46198 6.07241 7.58776 6.04736 7.7148 6.04736C7.84183 6.04736 7.96762 6.07241 8.08496 6.12106C8.20231 6.16972 8.30891 6.24103 8.39867 6.33092L26.4634 24.3956C26.6397 24.5781 26.7374 24.8225 26.7353 25.0762C26.7332 25.33 26.6316 25.5727 26.4522 25.7522C26.2729 25.9318 26.0302 26.0336 25.7765 26.036C25.5227 26.0383 25.2782 25.9409 25.0956 25.7647L7.03092 7.69997C6.94076 7.61012 6.86926 7.50333 6.82054 7.38574C6.77182 7.26815 6.74685 7.14208 6.74704 7.0148Z"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full px-2 py-5 sm:p-5  bg-[#1A1A1A] bg-opacity-10">
-                    <div className="flex items-center gap-3 sm:gap-10 px-2">
-                      <div className="flex gap-2 items-center">
-                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#12AD75]"></div>
-                        <h4 className="text-sm"> เพิ่มใหม่</h4>
-                      </div>
-                      <div className="flex gap-2 items-center">
-                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#FF5151]"></div>
-                        <h4 className="text-sm"> ลบออก</h4>
-                      </div>
-                      <div className="flex gap-2 items-center">
-                        <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#4182FF]"></div>
-                        <h4 className="text-sm"> เปลี่ยนจากเดิม</h4>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full p-5 md:rounded-b-xl bg-white">
-                    <p className="md:py-10 md:px-5 text-black text-bold text-sm md:text-lg text-justify">
-                      มาตรา ๒๕ สิทธิและเสรีภาพของปวงชนชาวไทย
-                      นอกจากที่บัญญัติคุ้มครองไว้
-                      เป็นการเฉพาะในรัฐธรรมนูญแล้วการใดที่มิได้ห้ามหรือจํากัดไว้ในรัฐธรรมนูญ
-                      หรือในกฎหมายอื่นบุคคลย่อมมีสิทธิและเสรีภาพที่จะทําการนั้นได
-                      และได้รับ
-                      ความคุ้มครองตามรัฐธรรมนูญตราบเท่าที่การใช้สิทธิหรือเสรีภาพเช่นว่านั้น
-                      ไม่กระทบกระเทือนหรือเป็นอันตรายต่อความมั่นคงของรัฐ
-                      ความสงบเรียบร้อย หรือศีลธรรมอันดีของประชาชน
-                      และไม่ละเมิดสิทธิหรือเสรีภาพของบุคคลอื่น
-                      สิทธิหรือเสรีภาพใดที่รัฐธรรมนูญให้เป็นไปตามที่กฎหมายบัญญัติ
-                      หรือให้
-                      เป็นไปตามหลักเกณฑ์และวิธีการที่กฎหมายบัญญัติแม้ยังไม่มีการตรากฎหมายนั้นขึ้นใช้บังคับบุคคลหรือชุมชนย่อมสามารถใช้สิทธิหรือเสรีภาพนั้นได้ตาม
-                      เจตนารมณ์ของรัฐธรรมนูญบุคคลซึ่งถูกละเมิดสิทธิหรือเสรีภาพที่ได้รับความคุ้มครองตามรัฐธรรมนูญ
-                      สามารถยกบทบัญญัติแห่งรัฐธรรมนูญเพื่อใช้สิทธิทางศาลหรือยกขึ้นเป็นข้อต่อสู้คดีในศาลได้บุคคลซึ่งได้รับความเสียหายจากการถูกละเมิดสิทธิหรือเสรีภาพหรือจากการกระทําความผิดอาญาของบุคคลอื่น
-                      ย่อมมีสิทธิที่จะได้รับการเยียวยาหรือช่วยเหลือจากรัฐตามที่กฎหมายบัญญัติ
-                    </p>
+                  <button
+                    className="py-4 flex justify-center gap-2 w-max text-lg font-bold"
+                    onClick={() => setShowSelectDiscussionists(true)}
+                  >
+                    {selectedDiscussionists.length >= 1
+                      ? "เลือก " + selectedDiscussionists.length + " ท่าน"
+                      : "ผู้อภิปรายทั้งหมด"}
+                    <Icon
+                      style={{ fontSize: "32px" }}
+                      icon="gridicons:dropdown"
+                    ></Icon>
+                  </button>
+                  <div className="w-full flex flex-wrap gap-2">
+                    {selectedDiscussionists.map((discussionist) => (
+                      <DiscussionistMobilePillButton
+                        discussionist={discussionist}
+                        remove={handleRemoveDiscussionists}
+                      />
+                    ))}
                   </div>
                 </div>
-              </div>
+              ) : (
+                <>
+                  {selectedDiscussionists.length >= 1 ? (
+                    <div className="text-3xl font-bold">
+                      ได้เลือก {selectedDiscussionists.length} จากทั้งหมด
+                    </div>
+                  ) : (
+                    <div className="text-3xl font-bold">
+                      โดยผู้อภิปรายทั้งหมด
+                    </div>
+                  )}
+                </>
+              )}
+              <SortBy sort={sort} setSort={setSort} />
+            </div>
+            <div className="flex flex-col justify-center items-center gap-2.5 w-full">
+              {result.map(({ มาตรา, count }) => (
+                <Link to={`/section/${มาตรา}`} className="w-full" key={มาตรา}>
+                  <ListItem
+                    key={มาตรา}
+                    title={`มาตรา ${มาตรา}`}
+                    count={count}
+                    chartColor={chapterColorCode[name]}
+                  />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </div>
+      {showSelectDiscussionists && isMobile ? (
+        <SelectDiscussionistsMobile
+          selectedDiscussionists={selectedDiscussionists}
+          onChange={handleSelectDiscussionists}
+          close={handleSelectModalClose}
+          discussionists={discussionists.map((d) => d["ผู้อภิปราย"])}
+        />
+      ) : null}
     </>
   );
 }

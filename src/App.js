@@ -7,6 +7,7 @@ import Search from "./pages/Search";
 import Chapter from "./pages/Chapter";
 import Discussionist from "./pages/Discussionist";
 import ScrollToTop from "./components/ScrollToTop";
+import Section from "./pages/Section";
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/chapter/:id" element={<Chapter />} />
+        <Route path="/chapter/:name" element={<Chapter />} />
+        <Route path="/section/:id" element={<Section />} />
         <Route path="/discussionist/:name" element={<Discussionist />} />
       </Routes>
     </div>
