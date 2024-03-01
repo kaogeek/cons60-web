@@ -43,7 +43,7 @@ function ByChapter() {
         </div>
         <div className="flex flex-col justify-center items-center gap-2.5 w-full">
           {result.map(([chapterName, count]) => (
-            <Link to={`/${chapterName}`} className="w-full" key={chapterName}>
+            <Link to={`/chapter/${chapterName}`} className="w-full" key={chapterName}>
               <ListItem
                 title={chapterName}
                 count={count}
