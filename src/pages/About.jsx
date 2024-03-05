@@ -41,8 +41,8 @@ export default function About() {
           </h3>
 
           <div className="flex flex-wrap gap-8 justify-center w-3/4 gap-10 mx-auto py-12">
-            <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-            <link download=""/>
+            
+            <a href={require("../images/mainmenu.png")} download="myFile">Download file</a>
            
           </div>
 
