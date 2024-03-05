@@ -32,6 +32,29 @@ export default function About() {
         </div>
       </div>
 
+
+<div className="bg-black text-white text-center pt-20">
+        <div className="max-w-screen-xl mx-auto">
+          
+          <h3 className="font-bold text-4xl">
+            ข้อมูลอ้างอิง
+          </h3>
+
+          <div className="flex flex-wrap gap-8 justify-center w-3/4 gap-10 mx-auto py-12">
+            <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
+            <link download=""/>
+           
+          </div>
+
+          
+        </div>
+
+
+
+      </div>
+    </div>
+      
+
       <div className="bg-black text-white text-center pt-20">
         <div className="max-w-screen-xl mx-auto">
           <h4 className="font-bold text-lg">
