@@ -37,11 +37,21 @@ export default function About() {
         <div className="max-w-screen-xl mx-auto">
           
           <h3 className="font-bold text-4xl">
-            ข้อมูลอ้างอิง
+            เอกสารข้อมูลอ้างอิง
           </h3>
 
           <div className="flex flex-wrap gap-8 justify-center w-3/4 gap-10 mx-auto py-12">
-            
+            <h4 className="font-bold text-lg">
+            เอกสาร 1 :
+            </h4>
+            <a href={require("../images/mainmenu.png")} download="myFile">Download file</a>
+            <h4 className="font-bold text-lg">
+            เอกสาร 2 :
+            </h4>
+            <a href={require("../images/mainmenu.png")} download="myFile">Download file</a>
+            <h4 className="font-bold text-lg">
+            เอกสาร 3 :
+            </h4>
             <a href={require("../images/mainmenu.png")} download="myFile">Download file</a>
            
           </div>
