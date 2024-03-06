@@ -44,11 +44,13 @@ export default function About() {
             <h4 className="font-bold text-lg">
             เอกสาร 1 :
             </h4>
-            <a href={require("../images/mainmenu.png")} download="myFile">Download file</a>
+            <Link to="/logo512.png" target="_blank" download>Download Files</Link>
+            
             <h4 className="font-bold text-lg">
             เอกสาร 2 :
             </h4>
             <a href={require("../images/mainmenu.png")} download="myFile">Download file</a>
+            
             <h4 className="font-bold text-lg">
             เอกสาร 3 :
             </h4>
