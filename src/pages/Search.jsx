@@ -137,7 +137,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
             .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
             .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
-        setArticleResult([...new Set(articleSearch.data.map(obj => obj.มาตรา))].splice(0, 5));
+        setArticleResult([...new Set(articleSearch.data.map(obj => obj.มาตรา))].filter(value => value !== "").splice(0, 5));
 
         // discussionist
         // search by name
@@ -155,7 +155,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             .map(obj => obj.ผู้อภิปราย)
             .flat());
 
-        setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].splice(0, 5));
+        setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].filter(value => value !== "").splice(0, 5));
 
     }, [searchInputValue, searchInput]);
 
