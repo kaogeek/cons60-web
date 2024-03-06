@@ -1,5 +1,7 @@
 # วิธีใช้งาน web cons60 
 
+ถ้าจะทดสอบรันเว็บโปรเจคนี้ ให้รันคำสั่ง `npm run dev`
+
 To clone this repository along with its submodules, follow the instructions below. These steps will ensure that you have a complete copy of the project, including [กรธ.60 - Data Query](https://github.com/iampz/c60-data-query.git)
 
 ### Steps to Clone
