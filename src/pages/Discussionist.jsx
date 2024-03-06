@@ -9,11 +9,11 @@ import SelectChapters from "../components/SelectChapters/SelectChapters";
 import ListItem from "../components/ListItem";
 import chapterColorCode from "../constants/chapterColorCode.js";
 import SortBy from "../components/SortBy";
-import ProfileImages from "../components/ProfileImages";
 
 import createDataObject from "../c60-data-query/data-object.js";
 import data from "../c60-data-query/data.js";
 import { chapterIdToName, chapterNameToId } from "../constants/chapters.js";
+import isNumeric from "../utils/isNumeric.js";
 
 export default function Discussionist() {
   const { name } = useParams();
@@ -107,12 +107,6 @@ export default function Discussionist() {
               />
             </svg>
           </Link>
-          <ProfileImages
-            size={"40px"}
-            imageUrl={
-              "https://mpics.mgronline.com/pics/Images/558000011197301.JPEG"
-            }
-          />
           <h1 className="text-white text-3xl">{name}</h1>
         </div>
       </div>
@@ -173,7 +167,7 @@ export default function Discussionist() {
                   key={Section}
                 >
                   <ListItem
-                    title={`มาตรา ${Section}`}
+                    title={isNumeric(Section) ? `มาตรา ${Section}` : Section}
                     count={total}
                     chartColor={chapterColorCode[chapterName]}
                   />
