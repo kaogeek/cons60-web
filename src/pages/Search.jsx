@@ -35,18 +35,15 @@ export default function Search({ searchInputValue }) {
 
     // save history of search to local storage
     const saveHistory = (searchInputValue) => {
-        console.log(searchInputValue);
-        console.log("save history");
         const history = JSON.parse(localStorage.getItem("history")) || [];
-        history
-            .filter((item) => item !== searchInputValue)
-            .push(searchInputValue);
-        localStorage.setItem("history", JSON.stringify(history));
+        const updatedHistory = history.filter((item) => item !== searchInputValue).concat(searchInputValue);
+        localStorage.setItem("history", JSON.stringify(updatedHistory));
     }
 
     // get last 10 history of search from local storage
     const getHistory = () => {
         const history = JSON.parse(localStorage.getItem("history")) || [];
+        console.log(history);
         return history.slice(-10);
     }
 
@@ -86,15 +83,18 @@ export default function Search({ searchInputValue }) {
     const renderArticleResult = () => {
         if (!articleResult) return;
         return articleResult.map((item, index) => {
-            
+
             return (
-                <Link to={"/section/" + item} >
-                        <div key={index} className="border-b border-gray-500 flex items-center">
-                            <div className="pr-2">
-                                <Icon icon="bx:bx-book" className="text-2xl" />
-                            </div>
-                            <span>{item}</span>
+                <Link to={"/section/" + item}
+                    onClick={() => saveHistory(searchInputValue)}
+
+                >
+                    <div key={index} className="border-b border-gray-500 flex items-center">
+                        <div className="pr-2">
+                            <Icon icon="bx:bx-book" className="text-2xl" />
                         </div>
+                        <span>{item}</span>
+                    </div>
                 </Link>
             );
         });
@@ -104,7 +104,9 @@ export default function Search({ searchInputValue }) {
         if (!discussionistResult) return;
         return discussionistResult.map((item, index) => {
             return (
-                <Link to={"/discussionist/" + item} >
+                <Link to={"/discussionist/" + item} 
+                onClick={() => saveHistory(searchInputValue)}
+                >
                     <div key={index} className="border-b border-gray-500 flex items-center">
                         <div className="pr-2">
                             <Icon icon="bx:bx-user" className="text-2xl" />
