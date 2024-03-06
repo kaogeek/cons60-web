@@ -14,6 +14,7 @@ import ProfileImages from "../components/ProfileImages";
 import createDataObject from "../c60-data-query/data-object.js";
 import data from "../c60-data-query/data.js";
 import { chapterIdToName, chapterNameToId } from "../constants/chapters.js";
+import isNumeric from "../utils/isNumeric.js";
 
 export default function Discussionist() {
   const { name } = useParams();
@@ -173,7 +174,7 @@ export default function Discussionist() {
                   key={Section}
                 >
                   <ListItem
-                    title={`มาตรา ${Section}`}
+                    title={isNumeric(Section) ? `มาตรา ${Section}` : Section}
                     count={total}
                     chartColor={chapterColorCode[chapterName]}
                   />
