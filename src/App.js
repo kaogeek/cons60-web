@@ -8,6 +8,7 @@ import Chapter from "./pages/Chapter";
 import Discussionist from "./pages/Discussionist";
 import ScrollToTop from "./components/ScrollToTop";
 import Section from "./pages/Section";
+import RelatedInfo from "./pages/RelatedInfo";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/related-info" element={<RelatedInfo />} />
         <Route path="/search" element={<Search />} />
         <Route path="/chapter/:name" element={<Chapter />} />
         <Route path="/section/:id" element={<Section />} />
