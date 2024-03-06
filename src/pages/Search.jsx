@@ -89,7 +89,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                     onClick={() => saveHistory(searchInputValue)}
 
                 >
-                    <div key={index} className="border-b border-gray-500 flex items-center">
+                    <div key={index} className="border-b border-gray-500 flex items-center py-2">
                         <div className="pr-2">
                             <Icon icon="bx:bx-book" className="text-2xl" />
                         </div>
@@ -107,7 +107,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 <Link to={"/discussionist/" + item} 
                 onClick={() => saveHistory(searchInputValue)}
                 >
-                    <div key={index} className="border-b border-gray-500 flex items-center">
+                    <div key={index} className="border-b border-gray-500 flex items-center py-2">
                         <div className="pr-2">
                             <Icon icon="bx:bx-user" className="text-2xl" />
                         </div>
