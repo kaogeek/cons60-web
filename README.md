@@ -1,4 +1,4 @@
-# Cloning the Repository
+# วิธีใช้งาน web cons60 
 
 To clone this repository along with its submodules, follow the instructions below. These steps will ensure that you have a complete copy of the project, including [กรธ.60 - Data Query](https://github.com/iampz/c60-data-query.git)
 
