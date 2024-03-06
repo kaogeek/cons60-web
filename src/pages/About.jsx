@@ -3,6 +3,7 @@ import "../components/ProfileImages.jsx";
 import ProfileImages from "../components/ProfileImages.jsx";
 export default function About() {
   return (
+	<div>
     <div data-testid="about">
       <div className="Landing-Page-Banner-PC">
         <div className="max-w-screen-xl mx-auto" >
