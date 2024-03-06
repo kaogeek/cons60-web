@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/related-info" element={<RelatedInfo />} />
-        <Route path="/search" element={<Search searchInputValue={searchInputValue} />} />
+        <Route path="/search" element={<Search searchInputValue={searchInputValue} setSearchInputValue={setSearchInputValue} />} />
         <Route path="/chapter/:name" element={<Chapter />} />
         <Route path="/section/:id" element={<Section />} />
         <Route path="/discussionist/:name" element={<Discussionist />} />

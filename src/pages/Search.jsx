@@ -7,8 +7,8 @@ import { useState, useEffect } from "react";
 
 import createDataObject from "../c60-data-query/data-object.js";
 
-export default function Search({ searchInputValue }) {
-
+export default function Search({ searchInputValue, setSearchInputValue }) {
+    const [searchInput, setSearchInput] = useState('');
     const [articleResult, setArticleResult] = useState('');
     const [discussionistResult, setDiscussionistResult] = useState('');
 
@@ -70,7 +70,7 @@ export default function Search({ searchInputValue }) {
         const history = getHistory();
         return history.map((item, index) => {
             return (
-                <div key={index} className="border-b border-gray-500 flex items-center py-2">
+                <div key={index} className="border-b border-gray-500 flex items-center py-2" onClick={()=>{changeTextInput(item)}}>
                     <div className="pr-2">
                         <Icon icon="material-symbols:history" className="text-2xl" />
                     </div>
@@ -118,6 +118,19 @@ export default function Search({ searchInputValue }) {
         });
     }
 
+    
+
+    const changeTextInput = (message) => {
+        const searchInput = document.getElementById('search-input');
+        setSearchInput(message);
+        setSearchInputValue(message)
+        
+        if (searchInput) {
+          // Update the value directly using DOM manipulation
+          searchInput.value = message;
+        }
+      };
+
     useEffect(() => {
         const articleSearch = createDataObject(data).filter('มาตรา', extractNumbersFromString(searchInputValue))
             .append(createDataObject(data).search('มาตรา', searchInputValue))
@@ -144,7 +157,7 @@ export default function Search({ searchInputValue }) {
 
         setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].splice(0, 5));
 
-    }, [searchInputValue]);
+    }, [searchInputValue, searchInput]);
 
 
 
