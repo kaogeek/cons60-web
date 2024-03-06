@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -11,15 +12,16 @@ import Section from "./pages/Section";
 import RelatedInfo from "./pages/RelatedInfo";
 
 export default function App() {
+  const [searchInputValue, setSearchInputValue] = useState('');
   return (
     <div className="App text-white">
-      <Navbar />
+      <Navbar setSearchInputValue={setSearchInputValue} />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/related-info" element={<RelatedInfo />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search" element={<Search searchInputValue={searchInputValue} />} />
         <Route path="/chapter/:name" element={<Chapter />} />
         <Route path="/section/:id" element={<Section />} />
         <Route path="/discussionist/:name" element={<Discussionist />} />

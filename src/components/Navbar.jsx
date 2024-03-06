@@ -6,7 +6,8 @@ import { useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import React, { useEffect, useRef } from "react";
 
-function Navbar() {
+
+function Navbar({ setSearchInputValue }) {
   const [showMenu, setShowMenu] = React.useState(false);
   const location = useLocation();
   const searchInputRef = useRef(null);
@@ -15,6 +16,8 @@ function Navbar() {
     // Automatically focus the search input when on the search page
     if (location.pathname === "/search") {
       searchInputRef.current?.focus();
+      // print out search input value
+      console.log(searchInputRef.current?.value);
     }
   }, [location.pathname]); // Dependency array to re-run effect when pathname changes
 
@@ -48,6 +51,7 @@ function Navbar() {
                 name="search-input"
                 className="focus:outline-none w-full"
                 ref={searchInputRef}
+                onChange={(e) => setSearchInputValue(e.target.value)}
               ></input>
             </div>
           </div>
