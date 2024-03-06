@@ -72,39 +72,6 @@ export default function About() {
 
         </div>
       </div>
-
-
-<div className="bg-black text-white text-center pt-20">
-        <div className="max-w-screen-xl mx-auto">
-          
-          <h3 className="font-bold text-4xl">
-            เอกสารข้อมูลอ้างอิง
-          </h3>
-
-          <div className="flex flex-wrap gap-8 justify-center w-3/4 gap-10 mx-auto py-12">
-            <h4 className="font-bold text-lg">
-            เอกสาร 1 :
-            </h4>
-            <Link to="/logo512.png" target="_blank" download>Download Files</Link>
-            
-            <h4 className="font-bold text-lg">
-            เอกสาร 2 :
-            </h4>
-            <a href={require("../images/mainmenu.png")} download="myFile">Download file</a>
-            
-            <h4 className="font-bold text-lg">
-            เอกสาร 3 :
-            </h4>
-            <a href={require("../images/mainmenu.png")} download="myFile">Download file</a>
-           
-          </div>
-
-          
-        </div>
-
-
-
-      </div>
     </div>
       
 
