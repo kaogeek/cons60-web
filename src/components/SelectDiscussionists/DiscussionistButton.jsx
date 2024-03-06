@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-import ProfileImages from "../ProfileImages";
 
 function DiscussionistButton({ discussionist, selected, onClick }) {
   const activeStyle = "rounded-full text-black px-2";
@@ -16,15 +15,7 @@ function DiscussionistButton({ discussionist, selected, onClick }) {
       onClick={() => onClick(() => onClick())}
     >
       <div className="flex flex-row gap-2 items-center">
-        {!selected ? (
-          <ProfileImages
-            discussionist={discussionist}
-            size={40}
-            imageUrl={
-              "https://mpics.mgronline.com/pics/Images/558000011197301.JPEG"
-            }
-          />
-        ) : (
+        {!selected ? null : (
           <div className="bg-black rounded-full p-[8px]">
             <Icon icon="mingcute:check-fill" fontSize={"16px"} color="white" />
           </div>
