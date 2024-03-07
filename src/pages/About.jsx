@@ -3,13 +3,14 @@ import "../components/ProfileImages.jsx";
 import ProfileImages from "../components/ProfileImages.jsx";
 export default function About() {
   return (
+
 	<div>
+
     <div data-testid="about">
       <div className="Landing-Page-Banner-PC">
         <div className="max-w-screen-xl mx-auto" >
           <h1 className="text-center lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-white pt-40">
             เกี่ยวกับโครงการอาสาสมัครหอสมุดรัฐสภา กิจกรรม “Hack เจตนารมณ์รัฐธรรมนูญ 2560” และจัดทำเว็บไซต์เปรียบเทียบบทบัญญัติและเจตนารมณ์การร่างรัฐธรรมนูญ
-
 	  </h1>
           <div className="text-center text-white text-lg px-8">
             <p className="pt-20">
@@ -37,7 +38,6 @@ export default function About() {
 	ที่มีจิตสาธารณะ มีความตั้งใจเข้าร่วม Hack บันทึกการประชุมคณะกรรมการร่างรัฐธรรมนูญ 2560 จากตัวเล่มให้เป็นดิจิทัลทั้งหมด และจัดทำเครื่องมือช่วยค้นให้สามารถสืบค้นได้ทั้งจากมาตรา 
 	ชื่อผู้อภิปราย และจากถ้อยคำที่มีอยู่ในบันทึกการประชุม สามารถแสดงผลเชื่อมโยงมาตราที่เกี่ยวข้อง สามารถเปรียบเทียบการเปลี่ยนแปลงแก้ไขเพิ่มเติมแต่ละหมวด 
 	แต่ละมาตราตั้งแต่ครั้งแรกที่ประชุมจนออกมาเป็นร่างที่พร้อมจะประกาศเป็นกฎหมาย โดยใช้เวลาดำเนินการโครงการตั้งแต่วันที่ 25 กันยายน 2566 ถึงวันที่ 15 มีนาคม 2567 รวมทั้งสิ้น  173 วัน 
-
             </p>
             <p className="py-8">
         หอสมุดรัฐสภาขอยกย่องในความมีจิตสาธารณะ ความตั้งใจ และความเสียสละของอาสาสมัครหอสมุดรัฐสภา จำนวน 30 คน ดังรายนามต่อไปนี้ 
@@ -117,6 +117,6 @@ export default function About() {
 
 
       </div>
-    </div>
+
   );
 }
