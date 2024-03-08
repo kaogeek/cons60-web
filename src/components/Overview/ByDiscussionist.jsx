@@ -140,7 +140,7 @@ function ByDiscussionist() {
             <div className="flex flex-col justify-center items-center gap-2.5 w-full">
               {result.map(([discussionist, chapterCountMap]) => (
                 <Link
-                  to={`/${discussionist}`}
+                  to={`/discussionist/${discussionist}`}
                   className="w-full"
                   key={discussionist}
                 >

@@ -2,41 +2,43 @@ import Logo from "./Logo";
 import HamburgerSVG from "./HamburgerSVG";
 import CloseBtnSVG from "./CloseBtnSVG";
 import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import React, { useEffect, useRef } from "react";
 
 
-function Navbar() {
+function Navbar({ setSearchInputValue }) {
   const [showMenu, setShowMenu] = React.useState(false);
   const location = useLocation();
   const searchInputRef = useRef(null);
 
   useEffect(() => {
     // Automatically focus the search input when on the search page
-    if (location.pathname === '/search') {
+    if (location.pathname === "/search") {
       searchInputRef.current?.focus();
+      // print out search input value
+      console.log(searchInputRef.current?.value);
     }
   }, [location.pathname]); // Dependency array to re-run effect when pathname changes
-
 
   return (
     <div className="h-16 bg-black" data-testid="navbar">
       <div className="max-w-screen-xl h-full mx-auto px-4 flex justify-between items-center">
-
-
-        {location.pathname === '/search' && (
+        {location.pathname === "/search" && (
           <div className="inline-block">
             <Link to="/" className="text-2xl font-bold text-white sm:hidden">
               <Icon icon="ic:round-arrow-back-ios" />
             </Link>
-            <Link to="/" className="text-2xl font-bold text-white hidden sm:block">
+            <Link
+              to="/"
+              className="text-2xl font-bold text-white hidden sm:block"
+            >
               <Logo />
             </Link>
           </div>
         )}
 
-        {location.pathname === '/search' && (
+        {location.pathname === "/search" && (
           <div className="sm:w-3/5 w-4/5  inline-block text-sm ">
             {/* Replace this with your actual search bar component */}
 
@@ -49,19 +51,17 @@ function Navbar() {
                 name="search-input"
                 className="focus:outline-none w-full"
                 ref={searchInputRef}
+                onChange={(e) => setSearchInputValue(e.target.value)}
               ></input>
             </div>
-
-          </div>
-
-        )}
-
-        {location.pathname === '/search' && (
-          <div className="inline-block">
           </div>
         )}
 
-        {location.pathname !== '/search' && (
+        {location.pathname === "/search" && (
+          <div className="inline-block"></div>
+        )}
+
+        {location.pathname !== "/search" && (
           <div className="inline-block">
             <Link to="/" className="text-2xl font-bold text-white">
               <Logo />
@@ -70,7 +70,7 @@ function Navbar() {
         )}
 
         {/* Desktop Menu */}
-        {location.pathname !== '/search' && (
+        {location.pathname !== "/search" && (
           <div className="t">
             <div className="hidden xs:flex gap-8">
               <Link
@@ -84,6 +84,12 @@ function Navbar() {
                 className="text-white hover:underline underline-offset-4"
               >
                 เกี่ยวกับโครงการ
+              </Link>
+              <Link
+                to="/related-info"
+                className="text-white hover:underline underline-offset-4"
+              >
+                ข้อมูลที่เกี่ยวข้อง
               </Link>
             </div>
             {/* Mobile Menu */}
@@ -123,6 +129,14 @@ function Navbar() {
                         className="text-white hover:underline underline-offset-4"
                       >
                         เกี่ยวกับโครงการ
+                      </Link>
+                    </div>
+                    <div className="w-auto inline-block">
+                      <Link
+                        to="/related-info"
+                        className="text-white hover:underline underline-offset-4"
+                      >
+                        ข้อมูลที่เกี่ยวข้อง
                       </Link>
                     </div>
                   </div>

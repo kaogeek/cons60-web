@@ -1,6 +1,5 @@
 import React from "react";
 import chapterColorCode from "../constants/chapterColorCode";
-import ProfileImages from "./ProfileImages";
 
 function PersonListItem(props) {
   const { name, chapterCountMap } = props;
@@ -33,12 +32,6 @@ function PersonListItem(props) {
     >
       <div className="flex flex-row  justify-between">
         <div className="flex items-center gap-4">
-          <ProfileImages
-            size={"40px"}
-            imageUrl={
-              "https://mpics.mgronline.com/pics/Images/558000011197301.JPEG"
-            }
-          />
           <div>{name}</div>
         </div>
         <div>

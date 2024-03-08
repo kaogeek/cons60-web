@@ -13,6 +13,7 @@ import SortBy from "../SortBy";
 import createDataObject from "../../c60-data-query/data-object.js";
 import data from "../../c60-data-query/data.js";
 import { chapterIdToName } from "../../constants/chapters";
+import isNumeric from "../../utils/isNumeric.js";
 
 function BySection() {
   const [sort, setSort] = useState(0);
@@ -140,12 +141,12 @@ function BySection() {
             <div className="flex flex-col justify-center items-center gap-2.5 w-full">
               {result.map(([Section, { chapterName, total }]) => (
                 <Link
-                  to={`/chapter/${Section}`}
+                  to={`/section/${Section}`}
                   className="w-full"
                   key={Section}
                 >
                   <ListItem
-                    title={`มาตรา ${Section}`}
+                    title={isNumeric(Section) ? `มาตรา ${Section}` : Section}
                     count={total}
                     chartColor={chapterColorCode[chapterName]}
                   />
