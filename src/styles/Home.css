@@ -3,3 +3,11 @@
     background-repeat: no-repeat;
     background-size:cover;
   }
+  
+.text-header {
+  color: #cb6;
+}
+
+.text-subheader {
+  color: #feb;
+}

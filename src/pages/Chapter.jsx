@@ -78,7 +78,7 @@ export default function Chapter() {
 
   return (
     <>
-      <div className="bg-black">
+      <div className="bg-[#310]">
         <div className="max-w-screen-xl h-16 mx-auto px-4 flex gap-5 items-center">
           <Link to="/">
             <svg
@@ -98,15 +98,15 @@ export default function Chapter() {
         </div>
       </div>
       <div
-        className="bg-[#1a1a1a] pb-4 md:pb-8 pt-8 md:pt-16 flex justify-center"
+        className="bg-[#310] pb-4 md:pb-8 pt-8 md:pt-16 flex justify-center"
         ref={resultDivRef}
       >
         <div className="w-3/4 flex flex-col items-center gap-8">
-          <h1 className="text-4xl font-bold">{name}</h1>
+          <h1 className="text-4xl font-bold text-header">{name}</h1>
           <hr className="h-[1px] border-t-0 bg-white opacity-80 w-full" />
         </div>
       </div>
-      <div className="bg-[#1a1a1a] py-4 md:py-8  min-h-screen flex justify-center">
+      <div className="bg-[#310] py-4 md:py-8  min-h-screen flex justify-center">
         <div className="flex flex-row w-3/4 gap-4">
           {isMobile ? null : (
             <SelectDiscussionists
@@ -143,11 +143,11 @@ export default function Chapter() {
               ) : (
                 <>
                   {selectedDiscussionists.length >= 1 ? (
-                    <div className="text-3xl font-bold">
+                    <div className="text-3xl font-bold text-header">
                       ได้เลือก {selectedDiscussionists.length} จากทั้งหมด
                     </div>
                   ) : (
-                    <div className="text-3xl font-bold">
+                    <div className="text-3xl font-bold text-header">
                       โดยผู้อภิปรายทั้งหมด
                     </div>
                   )}

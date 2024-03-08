@@ -38,7 +38,7 @@ function ByChapter() {
     <div className="flex justify-center items-center">
       <div className="w-3/4 flex flex-col gap-4">
         <div className="flex flex-row justify-between flex-wrap gap-4">
-          <div className="text-3xl font-bold">ทุกหมวด</div>
+          <div className="text-3xl font-bold text-header">ทุกหมวด</div>
           <SortBy sort={sort} setSort={setSort} />
         </div>
         <div className="flex flex-col justify-center items-center gap-2.5 w-full">
