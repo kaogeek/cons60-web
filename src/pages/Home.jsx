@@ -12,7 +12,7 @@ export default function Home() {
 
   return (
     <div data-testid="home">
-      <div className="bg-black">
+      <div className="bg-[#310]">
         <div className="Landing-Page-Banner-PC text-center lg:pt-40 pt-40 px-2">
           <div className="lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-header">
             บันทึกการประชุม
@@ -51,7 +51,7 @@ export default function Home() {
           </Link>
           
 
-          <div className="text-neutral-400 text-center lg:py-8 py-40">
+          <div className="text-neutral-400 text-center lg:py-8 py-40 text-header">
             <div className="flex justify-center">
               <Icon icon="mingcute:up-line" className="text-4xl" />
             </div>
@@ -63,12 +63,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-black text-white flex justify-center">
+      <div className="bg-[#310] text-white flex justify-center">
         <div className="text-3xl font-bold pt-4 w-3/4 text-header">ภาพรวม</div>
       </div>
 
-      <div className="text-white flex justify-center py-5" style={{backgroundImage: "linear-gradient(#000, #310)"}}>
-        <div className="lg:w-3/6 w-5/6 rounded-full font-bold">
+      <div className="bg-[#310] text-white flex justify-center py-5">
+        <div className="lg:w-3/6 w-5/6 rounded-full font-bold block-darker">
           <button
             className={
               view === "chapter"
