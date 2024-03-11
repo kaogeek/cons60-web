@@ -2,17 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+    <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="บันทึกการประชุมคณะกรรมการร่างรัฐธรรมนูญ 2560 - รัฐสภาไทย"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -27,17 +35,29 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>บันทึกกรธ.60 - รัฐสภา</title>
 
-    <!-- Data download need prefetch as all JSON size sum will exceeded 10mb -->
-    <link rel="prefetch" href="./data/chapter-01.json?v=0.2.1" />
-    <link rel="prefetch" href="./data/chapter-13.json?v=0.2.1" />
-    <link rel="prefetch" href="./data/chapter-14.json?v=0.2.1" />
-    <link rel="prefetch" href="./data/chapter-15.json?v=0.2.1" />
-    <link rel="prefetch" href="./data/chapter-16.json?v=0.2.1" />
-    <link rel="prefetch" href="./data/transitory-provisions.json?v=0.2.1" />
-    <link rel="prefetch" href="./data/constitution.json?v=0.2.1" />
-    <link rel="prefetch" href="./data/minutes.json?v=0.2.1" />
+    <!-- JSON data prefetch -->
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-01.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-02.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-03.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-04.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-05.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-06.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-07.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-08.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-09.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-10.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-11.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-12.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-13.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-14.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-15.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/chapter-16.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/transitory-provisions.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/constitution.json" />
+    <link rel="prefetch" href="%PUBLIC_URL%/data/minutes.json" />
+    
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

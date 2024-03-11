@@ -12,20 +12,19 @@ export default function Home() {
 
   return (
     <div data-testid="home">
-      <div className="bg-black">
+      <div className="bg-[#310]">
         <div className="Landing-Page-Banner-PC text-center lg:pt-40 pt-40 px-2">
-          <div className="lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-orange-500">
+          <div className="lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-header">
             บันทึกการประชุม
           </div>
           <div className="lg:text-6xl md:text-5xl sm:text-4xl text-xl font-bold text-white pt-2">
-            คณะกรรมการยกร่างรัฐธรรมนูญ ปี 2560
+            คณะกรรมการร่างรัฐธรรมนูญ ปี 2560
           </div>
 
           <div className="text-lg text-white pt-8 hidden lg:block">
-            เรียนรู้ และเปรียบเทียบรัฐธรรมนูญฉบับปี 2560
-            ฉบับที่เป็นปัญหามากที่สุดในประวัติศาสตร์ของ<br></br>
-            ประเทศไทย พวกเค้าทำงานกันอย่างไร กฎหมายหมายนี้ออกมาเพื่อใคร
-            หาคำตอบไปด้วยกัน
+            ตอบทุกความสงสัยกว่าจะมาเป็นรัฐธรรมนูญแห่งราชอาณาจักรไทย พุทธศักราช 2560<br></br>
+            เรียนรู้เส้นทางการร่างรัฐธรรมนูญ และเปรียบเทียบบทบัญญัติของรัฐธรรมนูญแห่งราชอาณาจักรไทย<br></br>
+            พุทธศักราช 2560 กับร่างรัฐธรรมนูญที่มีการเสนอและแก้ไขเพิ่มเติมจากบันทึกการประชุม
           </div>
           <div className="text-lg text-white px-2 pt-8 block lg:hidden">
             เรียนรู้ และเปรียบเทียบรัฐธรรมนูญฉบับปี 2560 <br></br>
@@ -51,7 +50,7 @@ export default function Home() {
           </Link>
           
 
-          <div className="text-neutral-400 text-center lg:py-8 py-40">
+          <div className="text-neutral-400 text-center lg:py-8 py-40 text-header">
             <div className="flex justify-center">
               <Icon icon="mingcute:up-line" className="text-4xl" />
             </div>
@@ -63,12 +62,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-black text-white flex justify-center">
-        <div className="text-3xl font-bold pt-4 w-3/4">ภาพรวม</div>
+      <div className="bg-[#310] text-white flex justify-center">
+        <div className="text-3xl font-bold pt-4 w-3/4 text-header">ภาพรวม</div>
       </div>
 
-      <div className="bg-black text-white flex justify-center py-5">
-        <div className="bg-[#131313] lg:w-3/6 w-5/6 rounded-full font-bold">
+      <div className="bg-[#310] text-white flex justify-center py-5">
+        <div className="lg:w-3/6 w-5/6 rounded-full font-bold block-darker">
           <button
             className={
               view === "chapter"
@@ -102,7 +101,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-[#1a1a1a] py-4 md:py-8 text-white">
+      <div className="bg-[#310] py-4 md:py-8 text-white">
         {view === "chapter" && (<ByChapter />)}
         {view === "discussionist" && (<ByDiscussionist />)}
         {view === "section" && (<BySection />)}

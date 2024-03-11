@@ -1,6 +1,6 @@
 function SortBy({ sort, setSort }) {
   return (
-    <div className="bg-neutral-900 rounded-full py-2 px-2">
+    <div className="rounded-full py-2 px-2 block-darker">
       <select
         className="bg-neutral-900 rounded-full w-full"
         value={sort}

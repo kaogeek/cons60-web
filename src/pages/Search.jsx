@@ -8,8 +8,8 @@ import { useState, useEffect } from "react";
 import createDataObject from "../c60-data-query/data-object.js";
 
 export default function Search({ searchInputValue, setSearchInputValue }) {
-    const [searchInput, setSearchInput] = useState('');
-    const [articleResult, setArticleResult] = useState('');
+    const [searchInput, setSearchInput] = useState([]);
+    const [articleResult, setArticleResult] = useState([]);
     const [discussionistResult, setDiscussionistResult] = useState('');
 
     // function get List of article name from json
@@ -68,6 +68,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
     // render history of search
     const renderHistory = () => {
         const history = getHistory();
+        if(history.length === 0) return (<div className="text-gray-400 pt-2">ไม่มีประวัติการค้นหา</div>);
         return history.map((item, index) => {
             return (
                 <div key={index} className="border-b border-gray-500 flex items-center py-2" onClick={()=>{changeTextInput(item)}}>
@@ -81,38 +82,42 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
     }
 
     const renderArticleResult = () => {
-        if (!articleResult) return;
+        if (!articleResult || articleResult.length === 0) {
+            return <div className="text-gray-400 pt-2">ไม่พบข้อมูล</div>;
+        }
         return articleResult.map((item, index) => {
-
             return (
-                <Link to={"/section/" + item}
+                <Link
+                    to={"/section/" + item}
                     onClick={() => saveHistory(searchInputValue)}
-
+                    key={index}
+                    className="border-b border-gray-500 flex items-center py-2"
                 >
-                    <div key={index} className="border-b border-gray-500 flex items-center py-2">
-                        <div className="pr-2">
-                            <Icon icon="bx:bx-book" className="text-2xl" />
-                        </div>
-                        <span>{item}</span>
+                    <div className="pr-2">
+                        <Icon icon="bx:bx-book" className="text-2xl" />
                     </div>
+                    <span>{item}</span>
                 </Link>
             );
         });
     }
 
     const renderDiscussionistResult = () => {
-        if (!discussionistResult) return;
+        if (!discussionistResult || discussionistResult.length === 0) {
+            return <div className="text-gray-400 pt-2">ไม่พบข้อมูล</div>;
+        }
         return discussionistResult.map((item, index) => {
             return (
-                <Link to={"/discussionist/" + item} 
-                onClick={() => saveHistory(searchInputValue)}
+                <Link
+                    to={"/discussionist/" + item}
+                    onClick={() => saveHistory(searchInputValue)}
+                    key={index}
+                    className="border-b border-gray-500 flex items-center py-2"
                 >
-                    <div key={index} className="border-b border-gray-500 flex items-center py-2">
-                        <div className="pr-2">
-                            <Icon icon="bx:bx-user" className="text-2xl" />
-                        </div>
-                        <span>{item}</span>
+                    <div className="pr-2">
+                        <Icon icon="bx:bx-user" className="text-2xl" />
                     </div>
+                    <span>{item}</span>
                 </Link>
             );
         });
@@ -137,7 +142,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
             .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
             .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
-        setArticleResult([...new Set(articleSearch.data.map(obj => obj.มาตรา))].splice(0, 5));
+        setArticleResult([...new Set(articleSearch.data.map(obj => obj.มาตรา))].filter(value => value !== "").splice(0, 5));
 
         // discussionist
         // search by name
@@ -155,7 +160,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             .map(obj => obj.ผู้อภิปราย)
             .flat());
 
-        setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].splice(0, 5));
+        setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].filter(value => value !== "").splice(0, 5));
 
     }, [searchInputValue, searchInput]);
 

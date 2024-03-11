@@ -18,11 +18,11 @@ function ListItem({ title, count, chartColor }) {
 
   return (
     <div
-      className="flex flex-col bg-[#2a2a2a] rounded-2xl px-8 py-4 
-    gap-4 text-xl font-bold w-full"
+      className="flex flex-col rounded-2xl px-8 py-4 
+                 gap-4 text-xl font-bold w-full block-lighter"
     >
       <div className="flex flex-row  justify-between">
-        <div>{title}</div>
+        <div className="text-subheader">{title}</div>
         <div>
           {count} <span className="text-base font-normal">ครั้ง</span>
         </div>

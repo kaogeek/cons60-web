@@ -3,3 +3,17 @@
     background-repeat: no-repeat;
     background-size:cover;
   }
+  
+.text-header {
+  color: #cb6;
+}
+.text-subheader {
+  color: #feb;
+}
+
+.block-darker {
+  background-color: #240c00;
+}
+.block-lighter {
+  background-color: #482a1a;
+}

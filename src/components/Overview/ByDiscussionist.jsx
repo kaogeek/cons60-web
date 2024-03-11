@@ -127,11 +127,11 @@ function ByDiscussionist() {
               ) : (
                 <>
                   {selectedChapters.length >= 1 ? (
-                    <div className="text-3xl font-bold">
+                    <div className="text-3xl font-bold text-header">
                       ได้เลือก {selectedChapters.length} จากทั้งหมด
                     </div>
                   ) : (
-                    <div className="text-3xl font-bold">ทุกหมวด</div>
+                    <div className="text-3xl font-bold text-header">ทุกหมวด</div>
                   )}
                 </>
               )}
