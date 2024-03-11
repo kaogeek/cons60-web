@@ -30,6 +30,7 @@ If you encounter any issues with submodules, such as broken links or missing fil
 
 ```
 git submodule sync
+git submodule update --remote
 git submodule update --init --recursive
 ```
 
