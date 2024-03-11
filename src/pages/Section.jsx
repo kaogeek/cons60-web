@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// Issue #23
+
 export default function Section() {
   const [idFromURL, setIdFromURL] = useState(null);
 
