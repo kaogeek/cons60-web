@@ -1,7 +1,12 @@
+body {
+  background-color: #310;
+}
+
 .Landing-Page-Banner-PC {
     background-image: url('../images/mainmenu.png');
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
+    background-position: center top;
   }
   
 .text-header {

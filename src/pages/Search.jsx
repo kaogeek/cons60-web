@@ -181,7 +181,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
     return (
         <div data-testid="search">
             <div className="bg-[#310] h-screen">
-                <div className="max-w-screen-md mx-auto text-xl text-white pt-4" >
+                <div className="bg-[#310] max-w-screen-md mx-auto text-xl text-white pt-4" >
 
                     {searchInputValue ? (
                         <div>

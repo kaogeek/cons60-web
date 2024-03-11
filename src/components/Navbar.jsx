@@ -22,7 +22,7 @@ function Navbar({ setSearchInputValue }) {
   }, [location.pathname]); // Dependency array to re-run effect when pathname changes
 
   return (
-    <div className="h-16 bg-black" style={{backgroundImage: "linear-gradient(#410808, #820f0f)"}} data-testid="navbar">
+    <div className="h-16 bg-[#310]" style={{backgroundImage: "linear-gradient(#410808, #820f0f)"}} data-testid="navbar">
       <div className="max-w-screen-xl h-full mx-auto px-4 flex justify-between items-center">
         {location.pathname === "/search" && (
           <div className="inline-block">
@@ -112,7 +112,7 @@ function Navbar({ setSearchInputValue }) {
               )}
 
               {showMenu && (
-                <div className="md:hidden absolute top-16 left-0 right-0 bg-black">
+                <div className="md:hidden absolute top-16 left-0 right-0 bg-[#310]">
                   {/* Mobile menu items */}
                   <div className="flex flex-col gap-2 mx-4 mb-4">
                     <div className="w-auto inline-block">
