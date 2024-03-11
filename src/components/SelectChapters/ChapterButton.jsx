@@ -12,7 +12,7 @@ function ChapterButton({ chapter, selected, onClick }) {
         selected ? activeStyle : inactiveStyle
       }`}
       style={{
-        backgroundColor: selected ? chapterColorCode[chapter] : "#131313",
+        backgroundColor: selected ? chapterColorCode[chapter] : "",
       }}
       onClick={() => onClick(() => onClick())}
     >
