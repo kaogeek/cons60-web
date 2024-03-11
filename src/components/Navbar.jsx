@@ -126,7 +126,15 @@ function Navbar({ setSearchInputValue }) {
                         to="/"
                         className="text-white hover:underline underline-offset-4"
                       >
-                        ภาพรวม
+                        หน้าหลัก
+                      </Link>
+                    </div>
+                    <div className="w-auto inline-block">
+                      <Link
+                        to="/search"
+                        className="text-white hover:underline underline-offset-4"
+                      >
+                        ค้นหา
                       </Link>
                     </div>
                     <div className="w-auto inline-block">
