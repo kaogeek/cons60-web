@@ -169,26 +169,26 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
 
     return (
         <div data-testid="search">
-            <div className="bg-[#1a1a1a] h-screen">
+            <div className="bg-[#310] h-screen">
                 <div className="max-w-screen-md mx-auto text-xl text-white pt-4" >
 
                     {searchInputValue ? (
                         <div>
-                            <h4>
+                            <h4 className="text-header">
                                 ค้นหาตามมาตรา
                             </h4>
 
                             {renderArticleResult()}
 
-                            <h4 className="pt-4">
+                            <h4 className="pt-4 text-header">
                                 ค้นหาตามผู้อภิปราย
                             </h4>
 
                             {renderDiscussionistResult()}
                         </div>
                     ) : (
-                        <div className="">
-                            <h4 className="">ประวัติการค้นหา</h4>
+                        <div>
+                            <h4 className="text-header">ประวัติการค้นหา</h4>
                             {renderHistory()}
                         </div>
                     )}

@@ -17,3 +17,19 @@
 .block-lighter {
   background-color: #482a1a;
 }
+
+#about {
+  p {
+    margin-top: 20px;
+    text-indent: 5em;
+  }
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 5em;
+    margin-right: 0;
+    padding-left: 40px;
+  }
+}
