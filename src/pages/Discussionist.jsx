@@ -141,6 +141,11 @@ export default function Discussionist() {
                     {selectedChapters.map((chapter) => (
                       <ChapterMobilePillButton
                         chapter={chapter}
+                        wording={
+                          chapterNameToId[chapter].match(/^[0-9]+$/)
+                            ? 'หมวด ' + chapterNameToId[chapter] + ' ' + chapter
+                            : chapter
+                        }
                         remove={handleRemoveChapter}
                       />
                     ))}
