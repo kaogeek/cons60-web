@@ -91,7 +91,7 @@ export default function About() {
               ในโครงการอาสาสมัครหอสมุดรัฐสภากิจกรรม Hack เจตนารมณ์รัฐธรรมนูญ 2560 ของสำนักวิชาการ ที่ได้กำหนดหลักเกณฑ์และร่วมกันตรวจสอบข้อมูลบันทึกการประชุมคณะกรรมการร่างรัฐธรรมนูญในเว็บไซต์ให้ถูกต้องตรงกับต้นฉบับ
               ขอขอบคุณมา ณ โอกาสนี้
             </p>
-            <div className="text-right pr-40">
+            <div className="text-right pt-10 pr-40">
               <div className="inline-block text-center">
                 <div className="text-header">หอสมุดรัฐสภา</div>
                 <div className="text-subheader">15 มีนาคม 2567</div>
