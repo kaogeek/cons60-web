@@ -97,15 +97,6 @@ export default function Chapter() {
           <h1 className="text-header text-3xl">{name}</h1>
         </div>
       </div>
-      <div
-        className="bg-[#310] pb-4 md:pb-8 pt-8 md:pt-16 flex justify-center"
-        ref={resultDivRef}
-      >
-        <div className="w-3/4 flex flex-col items-center gap-8">
-          <h1 className="text-4xl font-bold text-header">{name}</h1>
-          <hr className="h-[1px] border-t-0 bg-white opacity-80 w-full" />
-        </div>
-      </div>
       <div className="bg-[#310] py-4 md:py-8  min-h-screen flex justify-center">
         <div className="flex flex-row w-3/4 gap-4">
           {isMobile ? null : (
