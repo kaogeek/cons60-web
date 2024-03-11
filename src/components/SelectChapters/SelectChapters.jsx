@@ -1,5 +1,5 @@
 import ChapterButton from "./ChapterButton";
-import chapters from "../../constants/chapters";
+import chapters, { chapterNameToId } from "../../constants/chapters";
 
 function SelectChapters(props) {
   const { selectedChapters, onChange } = props;
@@ -9,6 +9,7 @@ function SelectChapters(props) {
       <ChapterButton
         key={"ทั้งหมด"}
         chapter={"ทั้งหมด"}
+        wording={"ทั้งหมด"}
         selected={selectedChapters.length === 0}
         onClick={() => {
           onChange([]);
@@ -18,6 +19,11 @@ function SelectChapters(props) {
         <ChapterButton
           key={chapter}
           chapter={chapter}
+          wording={
+            chapterNameToId[chapter].match(/^[0-9]+$/)
+              ? 'หมวด ' + chapterNameToId[chapter] + ' ' + chapter
+              : chapter
+          }
           selected={selectedChapters.includes(chapter)}
           onClick={() => {
             if (selectedChapters.includes(chapter)) {
