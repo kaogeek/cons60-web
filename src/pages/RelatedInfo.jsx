@@ -1,5 +1,3 @@
-const url = "https://kaogeek.github.io";
-
 export default function RelatedInfo() {
   return (
     <div data-testid="related-doc">
@@ -10,7 +8,7 @@ export default function RelatedInfo() {
           </h1>
           <div className="text-center text-lg px-8 flex flex-col gap-8 py-20">
             <a
-              href={`${url}/pdf/2562_ความมุ่งหมาย_คำอธิบาย_รธน_2560.pdf`}
+              href="./pdf/2562_ความมุ่งหมาย_คำอธิบาย_รธน_2560.pdf"
               target="_blank"
               rel="noreferrer"
               className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
@@ -19,7 +17,7 @@ export default function RelatedInfo() {
               พุทธศักราช 2560
             </a>
             <a
-              href={`${url}/pdf/2561_ความในใจของคณะกรรมการร่างรัฐธรรมนูญ2560_ส.pdf`}
+              href="./pdf/2561_ความในใจของคณะกรรมการร่างรัฐธรรมนูญ2560_ส.pdf"
               target="_blank"
               rel="noreferrer"
               className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
@@ -27,7 +25,7 @@ export default function RelatedInfo() {
               ความในใจของคณะกรรมการร่างรัฐธรรมนูญ 2560
             </a>
             <a
-              href={`${url}/pdf/581005_105_240งพิเศษ.pdf`}
+              href="./pdf/581005_105_240งพิเศษ.pdf"
               target="_blank"
               rel="noreferrer"
               className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
@@ -36,7 +34,7 @@ export default function RelatedInfo() {
               การอำนวยความสะดวกในการจัดทำร่างรัฐธรรมนูญ
             </a>
             <a
-              href={`${url}/pdf/2054161.pdf`}
+              href="./pdf/2054161.pdf"
               target="_blank"
               rel="noreferrer"
               className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
