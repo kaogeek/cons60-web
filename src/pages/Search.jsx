@@ -5,9 +5,6 @@ import "../components/ProfileImages.jsx";
 import data from "../c60-data-query/data.js";
 import { useState, useEffect } from "react";
 import { chapterIdToName, chapterNameToId } from "../../src/constants/chapters.js";
-import Footer from "../components/Footer";
-
-
 import createDataObject from "../c60-data-query/data-object.js";
 
 export default function Search({ searchInputValue, setSearchInputValue }) {
