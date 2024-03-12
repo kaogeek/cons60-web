@@ -27,6 +27,7 @@ body {
   p {
     margin-top: 20px;
     text-indent: 5vw;
+    line-height: 2em;
     color: #edd;
   }
   ul {
