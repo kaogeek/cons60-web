@@ -9,6 +9,7 @@ import SelectChapters from "../components/SelectChapters/SelectChapters";
 import ListItem from "../components/ListItem";
 import chapterColorCode from "../constants/chapterColorCode.js";
 import SortBy from "../components/SortBy";
+import Footer from "../components/Footer";
 
 import createDataObject from "../c60-data-query/data-object.js";
 import data from "../c60-data-query/data.js";
@@ -189,6 +190,7 @@ export default function Discussionist() {
           close={handleChaptersModalClose}
         />
       ) : null}
+      <Footer />
     </>
   );
 }

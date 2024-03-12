@@ -1,6 +1,8 @@
 import React from "react";
 import "../components/ProfileImages.jsx";
 import ProfileImages from "../components/ProfileImages.jsx";
+import Footer from "../components/Footer";
+
 export default function About() {
   return (
 	
@@ -131,6 +133,8 @@ export default function About() {
           
       </div>
     </div>
+    
+    <Footer />
     
   </div>
   

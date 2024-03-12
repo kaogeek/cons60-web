@@ -6,6 +6,7 @@ import "../styles/Home.css";
 import ByChapter from "../components/Overview/ByChapter";
 import ByDiscussionist from "../components/Overview/ByDiscussionist";
 import BySection from "../components/Overview/BySection";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [view, setView] = useState("chapter");
@@ -106,6 +107,9 @@ export default function Home() {
         {view === "discussionist" && (<ByDiscussionist />)}
         {view === "section" && (<BySection />)}
       </div>
+      
+      <Footer />
+      
     </div>
   );
 }
