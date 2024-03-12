@@ -152,7 +152,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
                 .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
                 .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
-            setArticleResult([...new Set(articleSearch.data.map(obj => (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + " (หมวด "+obj.หมวด+" "+  chapterIdToName[obj.หมวด] + ")"))].filter(value => value !== "").splice(0, 5));
+            setArticleResult([...new Set(articleSearch.data.map(obj => (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + " ("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"))].filter(value => value !== "").splice(0, 5));
             // discussionist
             // search by name
             let discussionistNameSearch = [...new Set(createDataObject(data)
