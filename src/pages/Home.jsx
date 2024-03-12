@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div data-testid="home">
       <div className="bg-[#310]">
-        <div className="Landing-Page-Banner-PC text-center lg:pt-40 pt-40 px-2">
+        <div className="Landing-Page-Banner-PC text-center lg:pt-40 md:pt-30 sm:pt-20 pt-10 px-2">
           <div className="lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-header">
             บันทึกการประชุม
           </div>
@@ -26,10 +26,10 @@ export default function Home() {
             เรียนรู้เส้นทางการร่างรัฐธรรมนูญ และเปรียบเทียบบทบัญญัติของรัฐธรรมนูญแห่งราชอาณาจักรไทย<br></br>
             พุทธศักราช 2560 กับร่างรัฐธรรมนูญที่มีการเสนอและแก้ไขเพิ่มเติมจากบันทึกการประชุม
           </div>
-          <div className="text-lg text-white px-2 pt-8 block lg:hidden">
-            เรียนรู้ และเปรียบเทียบรัฐธรรมนูญฉบับปี 2560 <br></br>
-            พวกเค้าทำงานกันอย่างไร กฎหมายฉบับนี้ <br></br>
-            ออกมาเพื่อใคร หาคำตอบไปด้วยกัน
+          <div className="text-sm text-white px-2 pt-8 block lg:hidden">
+            ตอบทุกความสงสัยกว่าจะมาเป็นรัฐธรรมนูญแห่งราชอาณาจักรไทย พุทธศักราช 2560<br></br>
+            เรียนรู้เส้นทางการร่างรัฐธรรมนูญ และเปรียบเทียบบทบัญญัติของรัฐธรรมนูญแห่งราชอาณาจักรไทย<br></br>
+            พุทธศักราช 2560 กับร่างรัฐธรรมนูญที่มีการเสนอและแก้ไขเพิ่มเติมจากบันทึกการประชุม
           </div>
 
           <Link to="/search">
@@ -42,7 +42,7 @@ export default function Home() {
                   type="text"
                   id="search-input"
                   name="search-input"
-                  className="flex-auto focus:outline-none"
+                  className="flex-auto focus:outline-none w-full"
                 ></input>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function Home() {
           </Link>
           
 
-          <div className="text-neutral-400 text-center lg:py-8 py-40 text-header">
+          <div className="text-neutral-400 text-center lg:py-8 text-header">
             <div className="flex justify-center">
               <Icon icon="mingcute:up-line" className="text-4xl" />
             </div>
@@ -62,7 +62,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-[#310] text-white flex justify-center">
+      <div className="bg-[#310] text-white flex justify-center pt-10 text-center">
         <div className="text-3xl font-bold pt-4 w-3/4 text-header">ภาพรวม</div>
       </div>
 
