@@ -1,14 +1,12 @@
-import React from 'react';
-
 const ProfileImages = ({ name, imageUrl, size }) => {
     return (
         <div className="text-center">
-            <div className="rounded-full overflow-hidden h-20 w-20 border-2 border-white mx-auto"
+          <div className="rounded-full overflow-hidden h-20 w-20 bg-[#222] border-[3px] border-[#ddd] mx-auto"
                 style={{ height: size, width: size }}
             >
-              <img className="object-cover h-full w-full" src={imageUrl} alt={name} />
+              <img className="object-cover h-full w-full" src={imageUrl} alt={'ภาพถ่ายของ ' + name} />
             </div>
-            {name ? <p>{name}</p> : null}
+            {name ? <div className="mt-3 text-header">{name}</div> : null}
         </div>
     );
 };

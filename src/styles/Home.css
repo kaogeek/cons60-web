@@ -26,15 +26,16 @@ body {
 #about {
   p {
     margin-top: 20px;
-    text-indent: 5em;
+    text-indent: 5vw;
+    color: #edd;
   }
-  ol {
+  ul {
     display: block;
-    list-style-type: decimal;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    margin-left: 5em;
-    margin-right: 0;
-    padding-left: 40px;
+    margin-bottom: 70px;
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    padding: 20px;
   }
 }
