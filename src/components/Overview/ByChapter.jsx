@@ -7,7 +7,7 @@ import SortBy from "../SortBy";
 
 import createDataObject from "../../c60-data-query/data-object.js";
 import data from "../../c60-data-query/data.js";
-import { chapterIdToName } from "../../constants/chapters";
+import { chapterNameToId, chapterIdToName } from "../../constants/chapters";
 
 function ByChapter() {
   const [sort, setSort] = useState(0);
@@ -45,7 +45,11 @@ function ByChapter() {
           {result.map(([chapterName, count]) => (
             <Link to={`/chapter/${chapterName}`} className="w-full" key={chapterName}>
               <ListItem
-                title={chapterName}
+                title={
+                  chapterNameToId[chapterName].match(/^[0-9]+$/)
+                    ? 'หมวด ' + chapterNameToId[chapterName] + ' ' + chapterName
+                    : chapterName
+                }
                 count={count}
                 chartColor={chapterColorCode[chapterName]}
               />

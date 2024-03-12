@@ -11,7 +11,7 @@ import SortBy from "../SortBy";
 
 import createDataObject from "../../c60-data-query/data-object.js";
 import data from "../../c60-data-query/data.js";
-import { chapterIdToName } from "../../constants/chapters.js";
+import { chapterNameToId, chapterIdToName } from "../../constants/chapters.js";
 
 function ByDiscussionist() {
   const [sort, setSort] = useState(0);
@@ -119,6 +119,11 @@ function ByDiscussionist() {
                     {selectedChapters.map((chapter) => (
                       <ChapterMobilePillButton
                         chapter={chapter}
+                        wording={
+                          chapterNameToId[chapter].match(/^[0-9]+$/)
+                            ? 'หมวด ' + chapterNameToId[chapter] + ' ' + chapter
+                            : chapter
+                        }
                         remove={handleRemoveChapter}
                       />
                     ))}
