@@ -17,7 +17,7 @@ export default function Home() {
           <div className="lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-header">
             บันทึกการประชุม
           </div>
-          <div className="lg:text-6xl md:text-5xl sm:text-4xl text-xl font-bold text-white pt-2">
+          <div className="lg:text-6xl md:text-5xl sm:text-4xl text-xl font-bold text-white pt-2 text-subheader">
             คณะกรรมการร่างรัฐธรรมนูญ ปี 2560
           </div>
 

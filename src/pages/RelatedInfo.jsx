@@ -1,9 +1,9 @@
 export default function RelatedInfo() {
   return (
     <div data-testid="related-doc">
-      <div className="Landing-Page-Banner-PC">
+      <div className="bg-[#310]">
         <div className="max-w-screen-xl mx-auto min-h-screen">
-          <h1 className="text-center lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-white pt-40">
+          <h1 className="text-center lg:text-5xl md:text-6xl sm:text-4xl text-3xl font-bold text-header pt-40">
             ข้อมูลที่เกี่ยวข้อง
           </h1>
           <div className="text-center text-lg px-8 flex flex-col gap-8 py-20">

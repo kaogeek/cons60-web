@@ -19,7 +19,7 @@ export default function Section() {
 
   return (
     <>
-      <div className="bg-black">
+      <div className="bg-[#310]">
         <div className="max-w-screen-xl h-16 mx-auto px-4 flex gap-5 items-center">
           <Link to="/">
             <svg
@@ -31,18 +31,18 @@ export default function Section() {
             >
               <path
                 d="M21.7858 8.79072L14.1899 16.7819L21.8189 24.8062C22.0326 25.0343 22.1496 25.3363 22.1454 25.6488C22.1412 25.9613 22.016 26.26 21.7962 26.4822C21.6931 26.5858 21.5703 26.6677 21.435 26.7229C21.2997 26.7781 21.1547 26.8055 21.0086 26.8036C20.8625 26.8017 20.7183 26.7704 20.5845 26.7116C20.4507 26.6529 20.3301 26.5678 20.2298 26.4615L12.6069 18.4455L11.0344 16.7902L12.6152 15.1348L20.2236 7.12296C20.3266 7.01987 20.4492 6.9385 20.5842 6.88368C20.7192 6.82886 20.8638 6.8017 21.0095 6.80383C21.1552 6.80595 21.299 6.8373 21.4324 6.89603C21.5657 6.95476 21.6859 7.03967 21.7858 7.14572C21.9958 7.36811 22.1128 7.66237 22.1128 7.96822C22.1128 8.27407 21.9958 8.56834 21.7858 8.79072Z"
-                fill="white"
+                fill="#cb6"
               />
             </svg>
           </Link>
-          <h1 className="text-white text-xl md:text-3xl">มาตรา {idFromURL}</h1>
+          <h1 className="text-header text-xl md:text-3xl">มาตรา {idFromURL}</h1>
         </div>
       </div>
-      <div className="bg-[#1a1a1a] md:py-8 text-white min-h-screen">
+      <div className="bg-[#310] md:py-8 text-white min-h-screen">
         <div className="flex justify-center items-center ">
           <div className="flex flex-row md:w-10/12 gap-4">
-            <div className="bg-[#131313] p-4 rounded-2xl hidden flex-col gap-2 md:flex">
-              <div className="text-lg font-bold w-full">บันทึกการแก้ไข</div>
+            <div className="p-4 rounded-2xl hidden flex-col gap-2 md:flex block-darker">
+              <div className="text-lg font-bold w-full text-subheader">บันทึกการแก้ไข</div>
               <button className="py-2 px-5 font-bold text-left w-full md:w-64 bg-white rounded-lg text-[#131313]">
                 ร่างปัจจุบัน
               </button>
@@ -84,7 +84,7 @@ export default function Section() {
                     
                     <div className="grid grid-cols-2 justify-between">
                       <div className="block">
-                        <h1 className="text-2xl md:text-3xl pt-5"> ร่างปัจจุบัน </h1>
+                        <h1 className="text-2xl md:text-3xl pt-5 text-header"> ร่างปัจจุบัน </h1>
                         <h5 className="text-sm pt-3 text-[#9F9F9F]">
                           17 กุมภาพันธ์ 2566
                         </h5>
@@ -101,7 +101,7 @@ export default function Section() {
                             cx="24.7529"
                             cy="24.1978"
                             r="24"
-                            fill="#2A2A2A"
+                            fill="#240c00"
                           />
                           <path
                             fill-rule="evenodd"
@@ -122,7 +122,7 @@ export default function Section() {
                             cx="24.7529"
                             cy="24.1987"
                             r="24"
-                            fill="#2A2A2A"
+                            fill="#240c00"
                           />
                           <path
                             fill-rule="evenodd"
@@ -143,13 +143,13 @@ export default function Section() {
                             cx="24.7529"
                             cy="24.1987"
                             r="24"
-                            fill="#2A2A2A"
+                            fill="#240c00"
                           />
                           <rect
                             width="32"
                             height="32"
                             transform="translate(40.7529 40.1987) rotate(-180)"
-                            fill="#2A2A2A"
+                            fill="#240c00"
                           />
                           <path
                             d="M32.7659 29.3947L24.7747 21.7988L16.7505 29.4278C16.5224 29.6415 16.2204 29.7585 15.9079 29.7543C15.5953 29.75 15.2966 29.6249 15.0744 29.4051C14.9708 29.302 14.889 29.1792 14.8338 29.0439C14.7786 28.9086 14.7511 28.7636 14.753 28.6175C14.755 28.4714 14.7862 28.3271 14.845 28.1934C14.9038 28.0596 14.9888 27.939 15.0951 27.8387L23.1111 20.2158L24.7665 18.6433L26.4218 20.2241L34.4337 27.8325C34.5368 27.9355 34.6181 28.0581 34.673 28.1931C34.7278 28.3281 34.7549 28.4727 34.7528 28.6184C34.7507 28.7641 34.7193 28.9079 34.6606 29.0412C34.6019 29.1746 34.517 29.2948 34.4109 29.3947C34.1885 29.6047 33.8943 29.7217 33.5884 29.7217C33.2826 29.7217 32.9883 29.6047 32.7659 29.3947Z"
