@@ -118,10 +118,10 @@ function Navbar({ setSearchInputValue }) {
               )}
 
               {showMenu && (
-                <div className="md:hidden absolute top-16 left-0 right-0 bg-[#310]">
+                <div className="md:hidden absolute top-16 left-0 right-0 bg-[#131313]">
                   {/* Mobile menu items */}
                   <div className="flex flex-col gap-2 mx-4 mb-4">
-                    <div className="w-auto inline-block">
+                    <div className="w-auto inline-block pt-[5px]">
                       <Link
                         to="/"
                         className="text-white hover:underline underline-offset-4"

@@ -1,5 +1,6 @@
 import React from "react";
 import "../components/ProfileImages.jsx";
+import AnonymousSVG from "../components/AnonymousSVG.jsx";
 import ProfileImages from "../components/ProfileImages.jsx";
 export default function About() {
   return (
@@ -7,7 +8,7 @@ export default function About() {
 	<div>
 
     <div id="about" data-testid="about">
-      <div className="bg-[#310]">
+      <div className="bg-[#310] pb-20">
         <div className="max-w-screen-xl mx-auto min-h-screen">
 
           <h1 className="text-center lg:text-5xl md:text-6xl sm:text-4xl text-3xl font-bold text-subheader pt-40">
@@ -50,48 +51,50 @@ export default function About() {
               ชื่อผู้อภิปราย และจากถ้อยคำที่มีอยู่ในบันทึกการประชุม สามารถแสดงผลเชื่อมโยงมาตราที่เกี่ยวข้อง สามารถเปรียบเทียบการเปลี่ยนแปลงแก้ไขเพิ่มเติมแต่ละหมวด
               แต่ละมาตราตั้งแต่ครั้งแรกที่ประชุมจนออกมาเป็นร่างที่พร้อมจะประกาศเป็นกฎหมาย โดยใช้เวลาดำเนินการโครงการตั้งแต่วันที่ 25 กันยายน 2566 ถึงวันที่ 15 มีนาคม 2567 รวมทั้งสิ้น  173 วัน
             </p>
-            <p>
+            <div className="text-center text-subheader mt-20 mb-10">
               หอสมุดรัฐสภาขอยกย่องในความมีจิตสาธารณะ ความตั้งใจ และความเสียสละของอาสาสมัครหอสมุดรัฐสภา จำนวน 30 คน ดังรายนามต่อไปนี้
-            </p>
-            <ol>
-              <li>นายกิตติ์ธเนศ ฤทธิพรพสิษฐ์</li>
-              <li>นางสาวเมธิรา เกษมสันต์</li> 	
-              <li>นายธนากรณ์ อินทร</li>		
-              <li>นายกฤตภาส ธิติวิเชียรเลิศ</li>	
-              <li>นายสถาพร วิญญุนาวรรณ</li>	
-              <li>นายณัฐพจน์ อัฒนวานิช</li>	
-              <li>นายธนกร กิจสาระภักดี</li>	
-              <li>นางสาวยิหวา อาทรทีป</li>	
-              <li>นายเอกภพ สิทธิวรรณธนะ</li>	
-              <li>นายโชคชัย แจ้งจิต</li>		
-              <li>นางอักษิกา จันทรวินิจ</li>
-              <li>นางสาวเบญจรัตน์ สัจกุล</li>
-              <li>นางสาวสุพัชชา แก้วไชยษา</li>
-              <li>นางสาวสิริลักษณ์ บุตรศรีทัศน์</li>
-              <li>นางสาวปาณิสรา ศรีประทุม</li>
-              <li>นายนันทวัฒน์ ศักดิ์สกุลคุณากร</li>
-              <li>นายธีรัตม์ พณิชอุดมพัชร์</li>
-              <li>นายปภาวิชญ์ ศรีบริสุทธิ์</li>
-              <li>นายทัตธนนันต์ นวลมณี</li>
-              <li>นายอนุรัฐ เอี่ยมโภคลาภ</li>
-              <li>นางสาวชนิตา หัวเขา</li>
-              <li>นางสาวประภาวดี เอกวงศ์</li>
-              <li>นางสาวจิรารัตน์ จันทรัตน์</li>
-              <li>นายณรงศ์ศักย์ เหล่ารัตนเวช</li>
-              <li>นางสาวเมธาวี ศิริตรัย</li>
-              <li>นางสาวปารณีย์ จิรัสย์จินดา</li>
-              <li>นางสาวฐิติพร สุดใจ</li>
-              <li>นายภูริช สีนวลแล</li>
-              <li>นายธนดล เดชประภากร</li>
-              <li>นายธรรมทัศน์ ธรรมปัญญาวัฒน์</li>
-            </ol>
+            </div>
+            <ul>
+              <li><ProfileImages name="นายกิตติ์ธเนศ ฤทธิพรพสิษฐ์" imageUrl="/cons60-web/volunteers/01.jpg" /></li>
+              <li><AnonymousSVG name="นางสาวเมธิรา เกษมสันต์" /></li> 	
+              <li><ProfileImages name="นายธนากรณ์ อินทร" imageUrl="/cons60-web/volunteers/02.jpg" /></li>		
+              <li><ProfileImages name="นายกฤตภาส ธิติวิเชียรเลิศ" imageUrl="/cons60-web/volunteers/03.jpg" /></li>	
+              <li><AnonymousSVG name="นายสถาพร วิญญุนาวรรณ" /></li>	
+              <li><AnonymousSVG name="นายณัฐพจน์ อัฒนวานิช" /></li>	
+              <li><ProfileImages name="นายธนกร กิจสาระภักดี" imageUrl="/cons60-web/volunteers/04.jpg" /></li>	
+              <li><ProfileImages name="นางสาวยิหวา อาทรทีป" imageUrl="/cons60-web/volunteers/05.jpg" /></li>	
+              <li><AnonymousSVG name="นายเอกภพ สิทธิวรรณธนะ" /></li>	
+              <li><ProfileImages name="นายโชคชัย แจ้งจิต" imageUrl="/cons60-web/volunteers/06.jpg" /></li>		
+              <li><AnonymousSVG name="นางอักษิกา จันทรวินิจ" /></li>
+              <li><ProfileImages name="นางสาวเบญจรัตน์ สัจกุล" imageUrl="/cons60-web/volunteers/07.jpg" /></li>
+              <li><ProfileImages name="นางสาวสุพัชชา แก้วไชยษา" imageUrl="/cons60-web/volunteers/08.jpg" /></li>
+              <li><AnonymousSVG name="นางสาวสิริลักษณ์ บุตรศรีทัศน์" /></li>
+              <li><AnonymousSVG name="นางสาวปาณิสรา ศรีประทุม" /></li>
+              <li><AnonymousSVG name="นายนันทวัฒน์ ศักดิ์สกุลคุณากร" /></li>
+              <li><AnonymousSVG name="นายธีรัตม์ พณิชอุดมพัชร์" /></li>
+              <li><AnonymousSVG name="นายปภาวิชญ์ ศรีบริสุทธิ์" /></li>
+              <li><AnonymousSVG name="นายทัตธนนันต์ นวลมณี" /></li>
+              <li><ProfileImages name="นายอนุรัฐ เอี่ยมโภคลาภ" imageUrl="/cons60-web/volunteers/09.jpg" /></li>
+              <li><AnonymousSVG name="นางสาวชนิตา หัวเขา" /></li>
+              <li><AnonymousSVG name="นางสาวประภาวดี เอกวงศ์" /></li>
+              <li><AnonymousSVG name="นางสาวจิรารัตน์ จันทรัตน์" /></li>
+              <li><AnonymousSVG name="นายณรงศ์ศักย์ เหล่ารัตนเวช" /></li>
+              <li><AnonymousSVG name="นางสาวเมธาวี ศิริตรัย" /></li>
+              <li><AnonymousSVG name="นางสาวปารณีย์ จิรัสย์จินดา" /></li>
+              <li><AnonymousSVG name="นางสาวฐิติพร สุดใจ" /></li>
+              <li><AnonymousSVG name="นายภูริช สีนวลแล" /></li>
+              <li><AnonymousSVG name="นายธนดล เดชประภากร" /></li>
+              <li><ProfileImages name="นายธรรมทัศน์ ธรรมปัญญาวัฒน์" imageUrl="/cons60-web/volunteers/10.jpg" /></li>
+            </ul>
             <p>
               หอสมุดรัฐสภา สำนักวิชาการ สำนักงานเลขาธิการสภาผู้แทนราษฎร ขอขอบคุณทุกภาคส่วนที่เกี่ยวข้อง สมาชิกสภาผู้แทนราษฎร ผู้บริหารสำนักงานเลขาธิการสภาผู้แทนราษฎร 
-              ที่ได้ส่งเสริมการจัดโครงการ ตลอดจนเป็นที่ปรึกษาให้คำแนะนำตั้งแต่เริ่มต้นจนสิ้นสุดโครงการ ขอขอบคุณคณะทำงานตรวจสอบการนำเข้าข้อมูลเว็บไซต์เปรียบเทียบบทบัญญัติและเจตนารมณ์การร่างรัฐธรรมนูญ 2560
-              ในโครงการอาสาสมัครหอสมุดรัฐสภากิจกรรม Hack เจตนารมณ์รัฐธรรมนูญ 2560 ของสำนักวิชาการ ที่ได้กำหนดหลักเกณฑ์และร่วมกันตรวจสอบข้อมูลบันทึกการประชุมคณะกรรมการร่างรัฐธรรมนูญในเว็บไซต์ให้ถูกต้องตรงกับต้นฉบับ
+              ที่ได้ส่งเสริมการจัดโครงการ ตลอดจนเป็นที่ปรึกษาให้คำแนะนำตั้งแต่เริ่มต้นจนสิ้นสุดโครงการ
+              ขอขอบคุณคณะทำงานตรวจสอบการนำเข้าข้อมูลเว็บไซต์เปรียบเทียบบทบัญญัติและเจตนารมณ์การร่างรัฐธรรมนูญ 2560
+              ในโครงการอาสาสมัครหอสมุดรัฐสภากิจกรรม Hack เจตนารมณ์รัฐธรรมนูญ 2560
+              ของสำนักวิชาการที่ได้กำหนดหลักเกณฑ์และร่วมกันตรวจสอบข้อมูลบันทึกการประชุมคณะกรรมการร่างรัฐธรรมนูญในเว็บไซต์ให้ถูกต้องตรงกับต้นฉบับ
               ขอขอบคุณมา ณ โอกาสนี้
             </p>
-            <div className="text-right pt-10 pr-40">
+            <div className="text-right pt-10 pr-[15vw]">
               <div className="inline-block text-center">
                 <div className="text-header">หอสมุดรัฐสภา</div>
                 <div className="text-subheader">15 มีนาคม 2567</div>
@@ -101,34 +104,6 @@ export default function About() {
        	  </div>
 		
         </div>
-      </div>
-    </div>
-      
-    <div className="bg-[#310] text-white text-center pt-20">
-      <div className="max-w-screen-xl mx-auto">
-      
-        <h4 className="font-bold text-lg text-subheader">
-          เปิดเผยข้อมูลโดย
-        </h4>
-        <h3 className="font-bold text-4xl text-header">
-          ก้าว Geek Community
-        </h3>
-
-        <div className="flex flex-wrap gap-8 justify-center w-3/4 gap-10 mx-auto py-12">
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-          <ProfileImages imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" name="profile_name" />
-        </div>
-          
       </div>
     </div>
     
