@@ -14,6 +14,7 @@ import createDataObject from "../c60-data-query/data-object.js";
 import data from "../c60-data-query/data.js";
 import chapterColorCode from "../constants/chapterColorCode.js";
 import { chapterNameToId } from "../constants/chapters.js";
+import isNumeric from "../utils/isNumeric.js";
 
 export default function Chapter() {
   const { name } = useParams();
@@ -152,7 +153,7 @@ export default function Chapter() {
                 <Link to={`/section/${มาตรา}`} className="w-full" key={มาตรา}>
                   <ListItem
                     key={มาตรา}
-                    title={`มาตรา ${มาตรา}`}
+                    title={isNumeric(มาตรา) ? `มาตรา ${มาตรา}` : มาตรา}
                     count={count}
                     chartColor={chapterColorCode[name]}
                   />
