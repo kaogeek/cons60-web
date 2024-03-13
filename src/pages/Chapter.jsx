@@ -8,6 +8,7 @@ import SelectDiscussionistsMobile from "../components/SelectDiscussionists/Selec
 import SelectDiscussionists from "../components/SelectDiscussionists/SelectDiscussionists";
 import ListItem from "../components/ListItem";
 import SortBy from "../components/SortBy";
+import Footer from "../components/Footer";
 
 import createDataObject from "../c60-data-query/data-object.js";
 import data from "../c60-data-query/data.js";
@@ -169,6 +170,7 @@ export default function Chapter() {
           discussionists={discussionists.map((d) => d["ผู้อภิปราย"])}
         />
       ) : null}
+      <Footer />
     </>
   );
 }

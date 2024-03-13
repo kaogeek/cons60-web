@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function Section() {
   const [idFromURL, setIdFromURL] = useState(null);
@@ -243,6 +244,7 @@ export default function Section() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

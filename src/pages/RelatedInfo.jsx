@@ -1,3 +1,5 @@
+import Footer from "../components/Footer";
+
 export default function RelatedInfo() {
   return (
     <div data-testid="related-doc">
@@ -53,6 +55,7 @@ export default function RelatedInfo() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
