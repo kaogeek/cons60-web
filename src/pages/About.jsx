@@ -57,26 +57,26 @@ export default function About() {
               หอสมุดรัฐสภาขอยกย่องในความมีจิตสาธารณะ ความตั้งใจ และความเสียสละของอาสาสมัครหอสมุดรัฐสภา จำนวน 30 คน ดังรายนามต่อไปนี้
             </div>
             <ul>
-              <li><ProfileImages name="นายกิตติ์ธเนศ ฤทธิพรพสิษฐ์" imageUrl="/cons60-web/volunteers/01.jpg" /></li>
+              <li><ProfileImages name="นายกิตติ์ธเนศ ฤทธิพรพสิษฐ์" imageUrl="./volunteers/01.jpg" /></li>
               <li><AnonymousSVG name="นางสาวเมธิรา เกษมสันต์" /></li> 	
-              <li><ProfileImages name="นายธนากรณ์ อินทร" imageUrl="/cons60-web/volunteers/02.jpg" /></li>		
-              <li><ProfileImages name="นายกฤตภาส ธิติวิเชียรเลิศ" imageUrl="/cons60-web/volunteers/03.jpg" /></li>	
+              <li><ProfileImages name="นายธนากรณ์ อินทร" imageUrl="./volunteers/02.jpg" /></li>		
+              <li><ProfileImages name="นายกฤตภาส ธิติวิเชียรเลิศ" imageUrl="./volunteers/03.jpg" /></li>	
               <li><AnonymousSVG name="นายสถาพร วิญญุนาวรรณ" /></li>	
               <li><AnonymousSVG name="นายณัฐพจน์ อัฒนวานิช" /></li>	
-              <li><ProfileImages name="นายธนกร กิจสาระภักดี" imageUrl="/cons60-web/volunteers/04.jpg" /></li>	
-              <li><ProfileImages name="นางสาวยิหวา อาทรทีป" imageUrl="/cons60-web/volunteers/05.jpg" /></li>	
+              <li><ProfileImages name="นายธนกร กิจสาระภักดี" imageUrl="./volunteers/04.jpg" /></li>	
+              <li><ProfileImages name="นางสาวยิหวา อาทรทีป" imageUrl="./volunteers/05.jpg" /></li>	
               <li><AnonymousSVG name="นายเอกภพ สิทธิวรรณธนะ" /></li>	
-              <li><ProfileImages name="นายโชคชัย แจ้งจิต" imageUrl="/cons60-web/volunteers/06.jpg" /></li>		
+              <li><ProfileImages name="นายโชคชัย แจ้งจิต" imageUrl="./volunteers/06.jpg" /></li>		
               <li><AnonymousSVG name="นางอักษิกา จันทรวินิจ" /></li>
-              <li><ProfileImages name="นางสาวเบญจรัตน์ สัจกุล" imageUrl="/cons60-web/volunteers/07.jpg" /></li>
-              <li><ProfileImages name="นางสาวสุพัชชา แก้วไชยษา" imageUrl="/cons60-web/volunteers/08.jpg" /></li>
+              <li><ProfileImages name="นางสาวเบญจรัตน์ สัจกุล" imageUrl="./volunteers/07.jpg" /></li>
+              <li><ProfileImages name="นางสาวสุพัชชา แก้วไชยษา" imageUrl="./volunteers/08.jpg" /></li>
               <li><AnonymousSVG name="นางสาวสิริลักษณ์ บุตรศรีทัศน์" /></li>
               <li><AnonymousSVG name="นางสาวปาณิสรา ศรีประทุม" /></li>
               <li><AnonymousSVG name="นายนันทวัฒน์ ศักดิ์สกุลคุณากร" /></li>
               <li><AnonymousSVG name="นายธีรัตม์ พณิชอุดมพัชร์" /></li>
               <li><AnonymousSVG name="นายปภาวิชญ์ ศรีบริสุทธิ์" /></li>
               <li><AnonymousSVG name="นายทัตธนนันต์ นวลมณี" /></li>
-              <li><ProfileImages name="นายอนุรัฐ เอี่ยมโภคลาภ" imageUrl="/cons60-web/volunteers/09.jpg" /></li>
+              <li><ProfileImages name="นายอนุรัฐ เอี่ยมโภคลาภ" imageUrl="./volunteers/09.jpg" /></li>
               <li><AnonymousSVG name="นางสาวชนิตา หัวเขา" /></li>
               <li><AnonymousSVG name="นางสาวประภาวดี เอกวงศ์" /></li>
               <li><AnonymousSVG name="นางสาวจิรารัตน์ จันทรัตน์" /></li>
@@ -86,7 +86,7 @@ export default function About() {
               <li><AnonymousSVG name="นางสาวฐิติพร สุดใจ" /></li>
               <li><AnonymousSVG name="นายภูริช สีนวลแล" /></li>
               <li><AnonymousSVG name="นายธนดล เดชประภากร" /></li>
-              <li><ProfileImages name="นายธรรมทัศน์ ธรรมปัญญาวัฒน์" imageUrl="/cons60-web/volunteers/10.jpg" /></li>
+              <li><ProfileImages name="นายธรรมทัศน์ ธรรมปัญญาวัฒน์" imageUrl="./volunteers/10.jpg" /></li>
             </ul>
             <p>
               หอสมุดรัฐสภา สำนักวิชาการ สำนักงานเลขาธิการสภาผู้แทนราษฎร ขอขอบคุณทุกภาคส่วนที่เกี่ยวข้อง สมาชิกสภาผู้แทนราษฎร ผู้บริหารสำนักงานเลขาธิการสภาผู้แทนราษฎร 
