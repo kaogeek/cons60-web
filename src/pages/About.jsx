@@ -20,7 +20,7 @@ export default function About() {
             กิจกรรม “Hack เจตนารมณ์รัฐธรรมนูญ 2560” 
           </h1>
           <h1 className="text-center lg:text-3xl md:text-4xl sm:text-2xl text-xl font-bold text-subheader pt-10">
-            และจัดทำเว็บไซต์เปรียบเทียบบทบัญญัติและเจตนารมณ์การร่างรัฐธรรมนูญ
+            และจัดทำเว็บไซต์เปรียบเทียบบทบัญญัติ<br className="lg:hidden" />และเจตนารมณ์การร่างรัฐธรรมนูญ
           </h1>
 	      
           <div className="text-white text-lg px-8">
