@@ -23,20 +23,18 @@ body {
   background-color: #482a1a;
 }
 
-#about {
-  p {
-    margin-top: 20px;
-    text-indent: 5vw;
-    line-height: 2em;
-    color: #edd;
-  }
-  ul {
-    display: block;
-    margin-bottom: 70px;
-    text-align: center;
-  }
-  li {
-    display: inline-block;
-    padding: 20px;
-  }
+#about p {
+  margin-top: 20px;
+  text-indent: 5vw;
+  line-height: 2em;
+  color: #edd;
+}
+#about ul {
+  display: block;
+  margin-bottom: 70px;
+  text-align: center;
+}
+#about li {
+  display: inline-block;
+  padding: 20px;
 }
