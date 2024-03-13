@@ -13,7 +13,7 @@ export default function RelatedInfo() {
               href="./pdf/2562_ความมุ่งหมาย_คำอธิบาย_รธน_2560.pdf"
               target="_blank"
               rel="noreferrer"
-              className="text-white hover:underline underline-offset-4 visited:text-purple-600"
+              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
             >
               ความมุ่งหมายและคำอธิบายประกอบรายมาตราของรัฐธรรมนูญแห่งราชอาณาจักรไทย
               พุทธศักราช 2560
@@ -22,7 +22,7 @@ export default function RelatedInfo() {
               href="./pdf/2561_ความในใจของคณะกรรมการร่างรัฐธรรมนูญ2560_ส.pdf"
               target="_blank"
               rel="noreferrer"
-              className="text-white hover:underline underline-offset-4 visited:text-purple-600"
+              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
             >
               ความในใจของคณะกรรมการร่างรัฐธรรมนูญ 2560
             </a>
@@ -30,7 +30,7 @@ export default function RelatedInfo() {
               href="./pdf/581005_105_240งพิเศษ.pdf"
               target="_blank"
               rel="noreferrer"
-              className="text-white hover:underline underline-offset-4 visited:text-purple-600"
+              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
             >
               คำสั่งหัวหน้าคณะรักษาความสงบแห่งชาติ ที่ ๓๔/๒๕๕๘ เรื่อง
               การอำนวยความสะดวกในการจัดทำร่างรัฐธรรมนูญ
@@ -39,7 +39,7 @@ export default function RelatedInfo() {
               href="./pdf/2054161.pdf"
               target="_blank"
               rel="noreferrer"
-              className="text-white hover:underline underline-offset-4 visited:text-purple-600"
+              className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
             >
               ประกาศคณะรักษาความสงบแห่งชาติ เรื่อง
               แต่งตั้งคณะกรรมการร่างรัฐธรรมนูญ
@@ -48,7 +48,7 @@ export default function RelatedInfo() {
               href="/"
               target="_blank"
               rel="noreferrer"
-              className="pt-8 text-white hover:underline underline-offset-4 visited:text-purple-600"
+              className="pt-8 underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
             >
               แบบประเมินความพึงพอใจการใช้งานเว็บไซต์
             </a>
