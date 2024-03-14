@@ -49,3 +49,25 @@ body {
   background: #482a1a;
   color: #feb;
 }
+
+.accordion-collapsed button {
+  padding-bottom: 1.25rem;
+}
+.accordion-collapsed .accordion-collapsable {
+  display: none;
+}
+.accordion-collapsed .accordion-icon {
+  transform: rotate(180deg); 
+}
+
+.provision p {
+  text-indent: 3em;
+  line-height: 2em;
+  margin-bottom: 0.8em;
+}
+.provision u {
+  color: #12ad75;
+}
+.provision strike {
+  color: #ff5151;
+}
