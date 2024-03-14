@@ -3,7 +3,7 @@ body {
 }
 
 #nav {
-  backgroundImage: "linear-gradient(#410808, #820f0f)";
+  background-image: linear-gradient(#410808, #820f0f);
 }
 
 .main-bg {
