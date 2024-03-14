@@ -64,11 +64,11 @@ export default function Sections({sections}) {
             <div className="flex items-center gap-3 sm:gap-10 px-2">
               <div className="flex gap-2 ml-3 items-center">
                 <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#12ad75]" />
-                <h4 className="text-sm underline text-[#12ad75]">ข้อความใหม่ที่เพิ่มเข้ามา</h4>
+                <h4 className="text-sm underline text-[#12ad75]">ข้อความที่เพิ่มใหม่</h4>
               </div>
               <div className="flex gap-2 items-center">
                 <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#ff5151]" />
-                <h4 className="text-sm line-through text-[#ff5151]">ข้อความเดิมที่ลบออกไป</h4>
+                <h4 className="text-sm line-through text-[#ff5151]">ข้อความเดิมที่ลบออก</h4>
               </div>
             </div>
           </div>
