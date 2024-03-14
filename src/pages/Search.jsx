@@ -6,6 +6,7 @@ import data from "../c60-data-query/data.js";
 import { useState, useEffect } from "react";
 import { chapterIdToName, chapterNameToId } from "../../src/constants/chapters.js";
 import createDataObject from "../c60-data-query/data-object.js";
+import isNumeric from "../utils/isNumeric.js";
 
 export default function Search({ searchInputValue, setSearchInputValue }) {
     const [searchInput, setSearchInput] = useState([]);
@@ -81,11 +82,6 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         });
     }
 
-    // Check input type num?
-    const isNumeric = (value) => {
-        return /^-?\d+$/.test(value);
-    }
-
     const renderArticleResult = () => {
         if (!articleResult || articleResult.length === 0) {
             return <div className="text-gray-400 pt-2">ไม่พบข้อมูล</div>;
@@ -93,7 +89,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         return articleResult.map((item, index) => {
             return (
                 <Link
-                    to={"/section/" + item}
+                    to={"/section/" + item[0]}
                     onClick={() => saveHistory(searchInputValue)}
                     key={index}
                     className="border-b border-gray-500 flex items-center py-2"
@@ -101,7 +97,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                     <div className="pr-2">
                         <Icon icon="bx:bx-book" className="text-2xl" />
                     </div>
-                    <span>{item}</span>
+                    <span>{item[1]}</span>
                 </Link>
             );
         });
@@ -151,7 +147,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
                 .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
                 .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
-            setArticleResult([...new Set(articleSearch.data.map(obj => (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + " ("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"))].filter(value => value !== "").splice(0, 5));
+            setArticleResult([...new Set(articleSearch.data.map(obj => [obj.มาตรา, (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + " ("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"]))].filter(value => value[1] !== "").splice(0, 5));
             // discussionist
             // search by name
             let discussionistNameSearch = [...new Set(createDataObject(data)

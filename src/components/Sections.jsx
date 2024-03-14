@@ -60,15 +60,15 @@ export default function Sections({sections}) {
             </h2>
           </div>
           ) : '' }
-          <div className="w-full px-2 py-5 sm:p-5  bg-[#1A1A1A] bg-opacity-10">
+          <div className="w-full px-2 py-5 sm:p-5 bg-[#ddd]">
             <div className="flex items-center gap-3 sm:gap-10 px-2">
-              <div className="flex gap-2 items-center">
-                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#12AD75]"></div>
-                <h4 className="text-sm"> เพิ่มใหม่</h4>
+              <div className="flex gap-2 ml-3 items-center">
+                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#12ad75]" />
+                <h4 className="text-sm underline text-[#12ad75]">ข้อความใหม่ที่เพิ่มเข้ามา</h4>
               </div>
               <div className="flex gap-2 items-center">
-                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#FF5151]"></div>
-                <h4 className="text-sm"> ลบออก</h4>
+                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#ff5151]" />
+                <h4 className="text-sm line-through text-[#ff5151]">ข้อความเดิมที่ลบออกไป</h4>
               </div>
             </div>
           </div>
