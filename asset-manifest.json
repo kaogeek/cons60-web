@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/cons60-web/static/css/main.03add2ea.css",
-    "main.js": "/cons60-web/static/js/main.a7f3c16f.js",
+    "main.css": "/cons60-web/static/css/main.8ee009bf.css",
+    "main.js": "/cons60-web/static/js/main.3fe98d4e.js",
     "static/js/453.3d4c2f05.chunk.js": "/cons60-web/static/js/453.3d4c2f05.chunk.js",
     "static/media/mainmenu.png": "/cons60-web/static/media/mainmenu.9ef69981fb655c98d759.png",
     "index.html": "/cons60-web/index.html",
-    "main.03add2ea.css.map": "/cons60-web/static/css/main.03add2ea.css.map",
-    "main.a7f3c16f.js.map": "/cons60-web/static/js/main.a7f3c16f.js.map",
+    "main.8ee009bf.css.map": "/cons60-web/static/css/main.8ee009bf.css.map",
+    "main.3fe98d4e.js.map": "/cons60-web/static/js/main.3fe98d4e.js.map",
     "453.3d4c2f05.chunk.js.map": "/cons60-web/static/js/453.3d4c2f05.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.03add2ea.css",
-    "static/js/main.a7f3c16f.js"
+    "static/css/main.8ee009bf.css",
+    "static/js/main.3fe98d4e.js"
   ]
 }
