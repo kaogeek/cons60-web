@@ -113,18 +113,18 @@ export default function Chapter() {
               {isMobile ? (
                 <div className="flex flex-col w-full gap-1">
                   <button
-                    className="py-4 flex justify-center gap-2 w-max text-lg font-bold"
+                    className="mx-auto py-4 flex justify-center gap-2 w-max text-lg font-bold"
                     onClick={() => setShowSelectDiscussionists(true)}
                   >
                     {selectedDiscussionists.length >= 1
-                      ? "เลือก " + selectedDiscussionists.length + " ท่าน"
-                      : "ผู้อภิปรายทั้งหมด"}
+                      ? "กรองข้อมูลจาก " + selectedDiscussionists.length + " ผู้อภิปราย"
+                      : "ข้อมูลจากผู้อภิปรายทุกคน"}
                     <Icon
                       style={{ fontSize: "32px" }}
                       icon="gridicons:dropdown"
                     ></Icon>
                   </button>
-                  <div className="w-full flex flex-wrap gap-2">
+                  <div className="w-full flex flex-wrap gap-2 justify-center">
                     {selectedDiscussionists.map((discussionist) => (
                       <DiscussionistMobilePillButton
                         discussionist={discussionist}
@@ -137,11 +137,11 @@ export default function Chapter() {
                 <>
                   {selectedDiscussionists.length >= 1 ? (
                     <div className="text-3xl font-bold text-header">
-                      ได้เลือก {selectedDiscussionists.length} จากทั้งหมด
+                      กรองข้อมูลจาก {selectedDiscussionists.length} ผู้อภิปราย
                     </div>
                   ) : (
                     <div className="text-3xl font-bold text-header">
-                      โดยผู้อภิปรายทั้งหมด
+                      ข้อมูลจากผู้อภิปรายทุกคน
                     </div>
                   )}
                 </>

@@ -9,7 +9,7 @@ function SelectChaptersMobile(props) {
       <button className="self-end my-3" onClick={() => close()}>
         <Icon icon="line-md:close" style={{ fontSize: "32px" }}></Icon>
       </button>
-      <div className="text-base font-bold py-2">เนื้อหาแบ่งออกเป็น 18 หมวด</div>
+      <div className="text-base font-bold py-2 text-header">กรองข้อมูลในหมวด</div>
       <ChapterButton
         key={"ทั้งหมด"}
         chapter={"ทั้งหมด"}

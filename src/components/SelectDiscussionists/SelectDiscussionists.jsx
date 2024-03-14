@@ -4,7 +4,7 @@ function SelectDiscussionists(props) {
   const { selectedDiscussionists, onChange, discussionists } = props;
   return (
     <div className="p-4 rounded-2xl flex flex-col gap-2 block-darker">
-      <div className="text-xl font-bold text-subheader">ผู้อภิปรายทั้งหมด {discussionists.length} ท่าน</div>
+      <div className="text-xl font-bold text-subheader">กรองข้อมูลตามผู้อภิปราย</div>
       <DiscussionistButton
         key={"ผู้อภิปรายทั้งหมด"}
         discussionist={"ผู้อภิปรายทั้งหมด"}
