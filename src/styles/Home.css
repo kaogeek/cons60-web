@@ -2,12 +2,16 @@ body {
   background-color: #310;
 }
 
-.Landing-Page-Banner-PC {
+#nav {
+  backgroundImage: "linear-gradient(#410808, #820f0f)";
+}
+
+.main-bg {
   background-image: url('../images/mainmenu.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center top;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
   
 .text-header {
   color: #cb6;
