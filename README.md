@@ -26,6 +26,8 @@ To clone this repository along with its submodules, follow the instructions belo
 
    ```
    git submodule foreach --recursive git pull origin
+   or
+   git submodule foreach --recursive git pull origin main
    ```
 
 This command initializes your local configuration file for submodules and updates the submodules.
