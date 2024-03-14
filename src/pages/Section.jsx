@@ -55,7 +55,7 @@ export default function Section() {
         </div>
       </div>
       <div className="bg-[#310] md:py-8 text-white min-h-screen">
-        <div className="flex justify-center items-center ">
+        <div className="sm:block md:flex justify-center items-center ">
           <div className="flex flex-row md:w-10/12 gap-4">
             <div className="p-4 rounded-2xl hidden flex-col gap-2 lg:flex block-darker">
               <div className="text-lg font-bold w-full text-subheader">ที่มาของมาตรา {id}</div>
