@@ -5,7 +5,7 @@ function SelectChapters(props) {
   const { selectedChapters, onChange } = props;
   return (
     <div className="p-4 rounded-2xl flex flex-col gap-2 block-darker">
-      <div className="text-xl font-bold text-subheader">เนื้อหาแบ่งออกเป็น 18 หมวด</div>
+      <div className="text-xl font-bold text-subheader">กรองข้อมูลในหมวด</div>
       <ChapterButton
         key={"ทั้งหมด"}
         chapter={"ทั้งหมด"}

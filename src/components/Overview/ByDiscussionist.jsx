@@ -104,18 +104,18 @@ function ByDiscussionist() {
               {isMobile ? (
                 <div className="flex flex-col w-full gap-1">
                   <button
-                    className="py-4 flex justify-center gap-2 w-max text-lg font-bold"
+                    className="my-0 mx-auto py-4 flex gap-2 w-max text-lg font-bold"
                     onClick={() => setShowSelectChapters(true)}
                   >
                     {selectedChapters.length >= 1
-                      ? "เลือก " + selectedChapters.length + " หมวด"
-                      : "ทุกหมวด"}
+                      ? "กรองข้อมูลจาก " + selectedChapters.length + " หมวด"
+                      : "ข้อมูลจากทุกหมวด"}
                     <Icon
                       style={{ fontSize: "32px" }}
                       icon="gridicons:dropdown"
                     ></Icon>
                   </button>
-                  <div className="w-full flex flex-wrap gap-2">
+                  <div className="w-full flex flex-wrap gap-2 justify-center">
                     {selectedChapters.map((chapter) => (
                       <ChapterMobilePillButton
                         chapter={chapter}
@@ -133,10 +133,10 @@ function ByDiscussionist() {
                 <>
                   {selectedChapters.length >= 1 ? (
                     <div className="text-3xl font-bold text-header">
-                      ได้เลือก {selectedChapters.length} จากทั้งหมด
+                      กรองข้อมูลจาก {selectedChapters.length} หมวด
                     </div>
                   ) : (
-                    <div className="text-3xl font-bold text-header">ทุกหมวด</div>
+                    <div className="text-3xl font-bold text-header">ข้อมูลจากทุกหมวด</div>
                   )}
                 </>
               )}

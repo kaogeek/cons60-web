@@ -10,7 +10,7 @@ function DiscussionistButton({ discussionist, selected, onClick }) {
         selected ? activeStyle : inactiveStyle
       }`}
       style={{
-        backgroundColor: selected ? "#FFFFFF" : "",
+        backgroundColor: selected ? "#eee" : "",
       }}
       onClick={() => onClick(() => onClick())}
     >
