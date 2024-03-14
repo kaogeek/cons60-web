@@ -13,16 +13,13 @@ function Navbar({ setSearchInputValue }) {
   const searchInputRef = useRef(null);
 
   useEffect(() => {
-    // Automatically focus the search input when on the search page
     if (location.pathname === "/search") {
       searchInputRef.current?.focus();
-      // print out search input value
-      console.log(searchInputRef.current?.value);
     }
-  }, [location.pathname]); // Dependency array to re-run effect when pathname changes
+  }, [location.pathname]);
 
   return (
-    <div className="h-16 bg-[#310]" style={{backgroundImage: "linear-gradient(#410808, #820f0f)"}} data-testid="navbar">
+    <div id="nav" className="h-16 bg-[#310]" data-testid="navbar">
       <div className="max-w-screen-xl h-full mx-auto px-4 flex justify-between items-center">
         {location.pathname === "/search" && (
           <div className="inline-block">
@@ -40,8 +37,6 @@ function Navbar({ setSearchInputValue }) {
 
         {location.pathname === "/search" && (
           <div className="sm:w-3/5 w-4/5  inline-block text-sm ">
-            {/* Replace this with your actual search bar component */}
-
             <div className="text-2xl text-black px-6 bg-white flex content-center py-1 items-center rounded-full">
               <Icon icon="bx:bx-search-alt-2" className="text-black" />
               <div className="px-2"></div>
@@ -98,21 +93,23 @@ function Navbar({ setSearchInputValue }) {
                 ข้อมูลที่เกี่ยวข้อง
               </Link>
             </div>
+            
             {/* Mobile Menu */}
             <div className="xs:hidden flex items-center">
               {/* Hamburger menu icon for mobile */}
               {!showMenu ? (
                 <button
-                  onClick={() => setShowMenu(true)}
+                  onClick={evt => { evt.stopPropagation(); setShowMenu(true); }}
                   className="text-white focus:outline-none focus:text-white"
                 >
                   <HamburgerSVG />
                 </button>
               ) : (
                 <button
-                  onClick={() => setShowMenu(false)}
+                  onClick={evt => { evt.stopPropagation(); setShowMenu(false); }}
                   className="text-white focus:outline-none focus:text-white"
                 >
+                {document.body.addEventListener('click', evt => setShowMenu(false))}
                   <CloseBtnSVG />
                 </button>
               )}
@@ -120,35 +117,35 @@ function Navbar({ setSearchInputValue }) {
               {showMenu && (
                 <div className="md:hidden absolute top-16 left-0 right-0 bg-[#131313]">
                   {/* Mobile menu items */}
-                  <div className="flex flex-col gap-2 mx-4 mb-4">
-                    <div className="w-auto inline-block pt-[5px]">
+                  <div>
+                    <div className="block">
                       <Link
                         to="/"
-                        className="text-white hover:underline underline-offset-4"
+                        className="block px-4 py-1 text-white border-solid border-b-[1px] border-black hover:bg-black"
                       >
                         หน้าหลัก
                       </Link>
                     </div>
-                    <div className="w-auto inline-block">
+                    <div className="block">
                       <Link
                         to="/search"
-                        className="text-white hover:underline underline-offset-4"
+                        className="block px-4 py-1 text-white border-solid border-b-[1px] border-black hover:bg-black"
                       >
                         ค้นหา
                       </Link>
                     </div>
-                    <div className="w-auto inline-block">
+                    <div className="block">
                       <Link
                         to="/about"
-                        className="text-white hover:underline underline-offset-4"
+                        className="block px-4 py-1 text-white border-solid border-b-[1px] border-black hover:bg-black"
                       >
                         เกี่ยวกับโครงการ
                       </Link>
                     </div>
-                    <div className="w-auto inline-block">
+                    <div className="block">
                       <Link
                         to="/related-info"
-                        className="text-white hover:underline underline-offset-4"
+                        className="block px-4 py-1 text-white border-solid border-b-[1px] border-black hover:bg-black"
                       >
                         ข้อมูลที่เกี่ยวข้อง
                       </Link>
