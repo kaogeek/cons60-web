@@ -70,25 +70,25 @@ function Navbar({ setSearchInputValue }) {
             <div className="hidden xs:flex gap-8">
               <Link
                 to="/"
-                className="text-white hover:underline underline-offset-4"
+                className="py-4 text-white hover:underline underline-offset-4"
               >
                 หน้าหลัก
               </Link>
               <Link
                 to="/search"
-                className="text-white hover:underline underline-offset-4"
+                className="py-4 text-white hover:underline underline-offset-4"
               >
                 ค้นหา
               </Link>
               <Link
                 to="/about"
-                className="text-white hover:underline underline-offset-4"
+                className="py-4 text-white hover:underline underline-offset-4"
               >
                 เกี่ยวกับโครงการ
               </Link>
               <Link
                 to="/related-info"
-                className="text-white hover:underline underline-offset-4"
+                className="py-4 text-white hover:underline underline-offset-4"
               >
                 ข้อมูลที่เกี่ยวข้อง
               </Link>
@@ -121,7 +121,7 @@ function Navbar({ setSearchInputValue }) {
                     <div className="block">
                       <Link
                         to="/"
-                        className="block px-4 py-1 text-white border-solid border-b-[1px] border-black hover:bg-black"
+                        className="block px-4 py-1 text-white border-solid border-b-2 border-black hover:bg-black"
                       >
                         หน้าหลัก
                       </Link>
@@ -129,7 +129,7 @@ function Navbar({ setSearchInputValue }) {
                     <div className="block">
                       <Link
                         to="/search"
-                        className="block px-4 py-1 text-white border-solid border-b-[1px] border-black hover:bg-black"
+                        className="block px-4 py-1 text-white border-solid border-b-2 border-black hover:bg-black"
                       >
                         ค้นหา
                       </Link>
@@ -137,7 +137,7 @@ function Navbar({ setSearchInputValue }) {
                     <div className="block">
                       <Link
                         to="/about"
-                        className="block px-4 py-1 text-white border-solid border-b-[1px] border-black hover:bg-black"
+                        className="block px-4 py-1 text-white border-solid border-b-2 border-black hover:bg-black"
                       >
                         เกี่ยวกับโครงการ
                       </Link>
@@ -145,7 +145,7 @@ function Navbar({ setSearchInputValue }) {
                     <div className="block">
                       <Link
                         to="/related-info"
-                        className="block px-4 py-1 text-white border-solid border-b-[1px] border-black hover:bg-black"
+                        className="block px-4 py-1 text-white border-solid border-b-2 border-black hover:bg-black"
                       >
                         ข้อมูลที่เกี่ยวข้อง
                       </Link>
