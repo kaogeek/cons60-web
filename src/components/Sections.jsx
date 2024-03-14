@@ -13,9 +13,9 @@ export default function Sections({sections}) {
   };
   
   const sectionArr = sections.map((section, index) => (
-    <div id={'accordion-'+(index+1)} data-accordion-id={index+1} className="accordion accordion-collapsed flex flex-col w-full gap-1">
+    <div id={'accordion-'+(index+1)} data-accordion-id={index+1} className="accordion accordion-collapsed flex flex-col w-full gap-x-1">
       <div className="w-full md:rounded-xl bg-white bg-opacity-5">
-        <button onClick={() => accordionToggle(index+1)} className="w-full pt-5 px-5 grid grid-cols-3 justify-between">
+        <button onClick={() => accordionToggle(index+1)} className="w-full p-5 grid grid-cols-3 justify-between">
           <div className="block col-span-2 text-left">
             <h1 className="text-2xl md:text-3xl text-header">ประชุมครั้งที่ {section.ประชุมครั้งที่}</h1>
             <h5 className="text-sm pt-3 text-subheader">{convertDate(section.date)} / หน้า {section.หน้า}</h5>
@@ -35,31 +35,33 @@ export default function Sections({sections}) {
           </div>
         </button>
         <div className="accordion-collapsable">
-          <hr className="my-5 opacity-20" />
-          <div className="py-3 px-5">
-            <h3 className="text-sm text-header">ร่างมาตรา</h3>
-            <h2 className="text-lg md:text-xl pt-3 text-subheader">{section.ร่างมาตรา}</h2>
+          <hr className="opacity-20" />
+          <div className="p-5">
+            <div className="py-3">
+              <h3 className="text-sm text-header">ร่างมาตรา</h3>
+              <h2 className="text-lg md:text-xl pt-3 text-subheader">{section.ร่างมาตรา}</h2>
+            </div>
+            <div className="py-3">
+              <h3 className="text-sm text-header">ผู้อภิปราย</h3>
+              <h2 className="text-lg md:text-xl pt-3 text-subheader">
+                { section.ผู้อภิปราย.length ? section.ผู้อภิปราย.join(', ') : 'ไม่มีผู้อภิปราย' }
+              </h2>
+            </div>
+            { section.หมายเหตุ ? (
+            <div className="py-3">
+              <h3 className="text-sm text-header">หมายเหตุ</h3>
+              <h2 className="pt-3 text-subheader">{section.หมายเหตุ}</h2>
+            </div>
+            ) : '' }
+            { section.มติที่ประชุม ? (
+            <div className="py-3">
+              <h3 className="text-sm text-header">มติที่ประชุม</h3>
+              <h2 className="pt-3 text-subheader">
+                { section.มติที่ประชุม.replace(/\<\/?p\>/g,  '') }
+              </h2>
+            </div>
+            ) : '' }
           </div>
-          <div className="py-3 px-5">
-            <h3 className="text-sm text-header">ผู้อภิปราย</h3>
-            <h2 className="text-lg md:text-xl pt-3 text-subheader">
-              { section.ผู้อภิปราย.length ? section.ผู้อภิปราย.join(', ') : 'ไม่มีผู้อภิปราย' }
-            </h2>
-          </div>
-          { section.หมายเหตุ ? (
-          <div className="py-3 px-5">
-            <h3 className="text-sm text-header">หมายเหตุ</h3>
-            <h2 className="pt-3 text-subheader">{section.หมายเหตุ}</h2>
-          </div>
-          ) : '' }
-          { section.มติที่ประชุม ? (
-          <div className="py-3 px-5">
-            <h3 className="text-sm text-header">มติที่ประชุม</h3>
-            <h2 className="pt-3 text-subheader">
-              { section.มติที่ประชุม.replace(/\<\/?p\>/g,  '') }
-            </h2>
-          </div>
-          ) : '' }
           <div className="w-full px-2 py-5 sm:p-5 bg-[#ddd]">
             <div className="flex items-center gap-3 sm:gap-10 px-2">
               <div className="flex gap-2 ml-3 items-center">

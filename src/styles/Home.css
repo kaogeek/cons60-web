@@ -3,7 +3,7 @@ body {
 }
 
 .Landing-Page-Banner-PC {
-    background-image: url('../images/mainmenu.png');
+  background-image: url('../images/mainmenu.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center top;
@@ -50,9 +50,6 @@ body {
   color: #feb;
 }
 
-.accordion-collapsed button {
-  padding-bottom: 1.25rem;
-}
 .accordion-collapsed .accordion-collapsable {
   display: none;
 }
