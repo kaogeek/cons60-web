@@ -50,6 +50,16 @@ body {
   color: #feb;
 }
 
+.accordion-collapsed button {
+  padding-bottom: 1.25rem;
+}
+.accordion-collapsed .accordion-collapsable {
+  display: none;
+}
+.accordion-collapsed .accordion-icon {
+  transform: rotate(180deg); 
+}
+
 .provision p {
   text-indent: 3em;
   line-height: 2em;
