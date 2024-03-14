@@ -58,7 +58,7 @@ export default function Section() {
           <div className="flex flex-row md:w-10/12 gap-4">
           
             {/* section nav */} 
-            <div className="p-4 rounded-2xl hidden flex-col gap-2 md:flex block-darker">
+            <div className="p-4 rounded-2xl hidden flex-col gap-2 lg:flex block-darker">
               <div className="text-lg font-bold w-full text-subheader">ที่มาของมาตรา {id}</div>
               <button id="nav-0" data-id="0" onClick={() => accordionToggle(0)} className="nav nav-active py-2 px-5 font-bold text-left w-full md:w-64 bg-white rounded-lg text-[#131313]">
                 รัฐธรรมนูญ 2560
@@ -73,6 +73,7 @@ export default function Section() {
                 <Sections sections={section.rows} />
               </div>
             </div>
+            
           </div>
         </div>
       </div>
