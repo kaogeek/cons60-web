@@ -1,6 +1,4 @@
-// import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-// import { useMediaQuery } from "react-responsive";
 
 import createDataObject from "../c60-data-query/data-object.js";
 import data from "../c60-data-query/data.js";
@@ -15,9 +13,6 @@ import accordionToggle from "../utils/accordion.js";
 export default function Section() {
 
   const {id} = useParams();
-  // const isMobile = useMediaQuery({ query: `(max-width: 768px)` });
-  // const [sort, setSort] = useState(0);
-
   const query = () => {
 
     const dataObj = createDataObject(data).filter("มาตรา", id);
