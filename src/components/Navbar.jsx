@@ -109,13 +109,13 @@ function Navbar({ setSearchInputValue }) {
                   onClick={evt => { evt.stopPropagation(); setShowMenu(false); }}
                   className="text-white focus:outline-none focus:text-white"
                 >
-                {document.body.addEventListener('click', evt => setShowMenu(false))}
                   <CloseBtnSVG />
                 </button>
               )}
+              { document.body.addEventListener('click', evt => setShowMenu(false)) }
 
               {showMenu && (
-                <div className="md:hidden absolute top-16 left-0 right-0 bg-[#131313]">
+                <div className="md:hidden absolute top-16 left-0 right-0 bg-[#131313] z-30">
                   {/* Mobile menu items */}
                   <div>
                     <div className="block">

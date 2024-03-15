@@ -11,15 +11,15 @@ export default function About() {
 
     <div id="about" data-testid="about">
       <div className="bg-[#310] pb-20">
-        <div className="max-w-screen-xl mx-auto min-h-screen">
+        <div className="w-11/12 md:w-5/6 lg:w-3/4 mx-auto min-h-screen">
 
-          <h1 className="text-center lg:text-5xl md:text-6xl sm:text-4xl text-3xl font-bold text-subheader pt-40">
+          <h1 className="text-center lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold text-subheader pt-40">
             เกี่ยวกับโครงการอาสาสมัครหอสมุดรัฐสภา
           </h1>
-          <h1 className="text-center lg:text-5xl md:text-6xl sm:text-4xl text-3xl font-bold text-header pt-10">
+          <h1 className="text-center lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold text-header pt-10">
             กิจกรรม “Hack เจตนารมณ์รัฐธรรมนูญ 2560” 
           </h1>
-          <h1 className="text-center lg:text-3xl md:text-4xl sm:text-2xl text-xl font-bold text-subheader pt-10">
+          <h1 className="text-center lg:text-3xl md:text-2xl sm:text-xl text-l font-bold text-subheader pt-10">
             และจัดทำเว็บไซต์เปรียบเทียบบทบัญญัติ<br className="lg:hidden" />และเจตนารมณ์การร่างรัฐธรรมนูญ
           </h1>
 	      
@@ -54,7 +54,8 @@ export default function About() {
               แต่ละมาตราตั้งแต่ครั้งแรกที่ประชุมจนออกมาเป็นร่างที่พร้อมจะประกาศเป็นกฎหมาย โดยใช้เวลาดำเนินการโครงการตั้งแต่วันที่ 25 กันยายน 2566 ถึงวันที่ 15 มีนาคม 2567 รวมทั้งสิ้น  173 วัน
             </p>
             <div className="text-center text-subheader mt-20 mb-10">
-              หอสมุดรัฐสภาขอยกย่องในความมีจิตสาธารณะ ความตั้งใจ และความเสียสละของอาสาสมัครหอสมุดรัฐสภา จำนวน 30 คน ดังรายนามต่อไปนี้
+              หอสมุดรัฐสภาขอยกย่องในความมีจิตสาธารณะ ความตั้งใจ และความเสียสละ<br />
+              ของอาสาสมัครหอสมุดรัฐสภา จำนวน 30 คน ดังรายนามต่อไปนี้
             </div>
             <ul>
               <li><ProfileImages name="นายกิตติ์ธเนศ ฤทธิพรพสิษฐ์" imageUrl="./volunteers/01.jpg" /></li>

@@ -36,9 +36,9 @@ function ByChapter() {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="w-3/4 flex flex-col gap-4">
-        <div className="flex flex-row md:justify-between justify-center flex-wrap gap-4 text-center">
-          <div className="text-3xl font-bold text-header">ค้นหาจากหมวด</div>
+      <div className="w-11/12 md:w-5/6 lg:w-3/4 flex flex-col gap-4">
+        <div className="flex flex-row justify-between flex-wrap gap-1 text-center">
+          <div className="text-2xl md:text-3xl font-bold text-header">ค้นหาจากหมวด</div>
           <SortBy sort={sort} setSort={setSort} />
         </div>
         <div className="flex flex-col items-center gap-2 w-full">
