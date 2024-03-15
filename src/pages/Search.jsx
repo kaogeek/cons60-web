@@ -55,7 +55,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             frequencyMap[item] = (frequencyMap[item] || 0) + 1;
         }
 
-        // Step 2: Sort by frequency (descending order)
+// Step 2: Sort by frequency (descending order)
         const sortedItems = Object.entries(frequencyMap).sort(([, countA], [, countB]) => countB - countA);
 
         // Step 3: Extract unique items
@@ -71,8 +71,8 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         if (history.length === 0) return (<div className="text-gray-400 pt-2">ไม่มีประวัติการค้นหา</div>);
         return history.map((item, index) => {
             return (
-                <div key={index} className="border-b border-gray-500 flex items-center py-2" onClick={() => { changeTextInput(item) }}>
-                    <div className="pr-2">
+                <div key={index} className="border-b border-gray-500 flex items-top py-2" onClick={() => { changeTextInput(item) }}>
+                    <div className="pr-2 pt-1">
                         <Icon icon="material-symbols:history" className="text-2xl" />
                     </div>
                     <span>{item}</span>
@@ -86,17 +86,18 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             return <div className="text-gray-400 pt-2">ไม่พบข้อมูล</div>;
         }
         return articleResult.map((item, index) => {
+            const [section, chapter] = item[1].split('|');
             return (
                 <Link
                     to={"/section/" + item[0]}
                     onClick={() => saveHistory(searchInputValue)}
                     key={index}
-                    className="border-b border-gray-500 flex items-center py-2"
+                    className="border-b border-gray-500 flex item-top sm:items-top py-2"
                 >
-                    <div className="pr-2">
+                    <div className="pr-2 pt-1">
                         <Icon icon="bx:bx-book" className="text-2xl" />
                     </div>
-                    <span>{item[1]}</span>
+                    <div>{section} <br className="sm:hidden" /> <span className="text-base">{chapter}</span></div>
                 </Link>
             );
         });
@@ -112,9 +113,9 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                     to={"/discussionist/" + item}
                     onClick={() => saveHistory(searchInputValue)}
                     key={index}
-                    className="border-b border-gray-500 flex items-center py-2"
+                    className="border-b border-gray-500 flex items-top py-2"
                 >
-                    <div className="pr-2">
+                    <div className="pr-2 pt-1">
                         <Icon icon="bx:bx-user" className="text-2xl" />
                     </div>
                     <span>{item}</span>
@@ -146,7 +147,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
                 .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
                 .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
-            setArticleResult([...new Set(articleSearch.data.map(obj => [obj.มาตรา, (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + " ("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"]))].filter(value => value[1] !== "").splice(0, 5));
+            setArticleResult([...new Set(articleSearch.data.map(obj => [obj.มาตรา, (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + "|("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"]))].filter(value => value[1] !== "").splice(0, 5));
             // discussionist
             // search by name
             let discussionistNameSearch = [...new Set(createDataObject(data)
@@ -175,7 +176,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
     return (
         <div data-testid="search">
             <div className="bg-[#310] h-screen">
-                <div className="bg-[#310] max-w-screen-md mx-auto text-xl text-white pt-4" >
+                <div className="bg-[#310] w-11/12 md:w-5/6 lg:w-3/4 mx-auto min-h-screen mx-auto text-xl text-white pt-4" >
 
                     {searchInputValue ? (
                         <div>

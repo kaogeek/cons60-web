@@ -92,7 +92,7 @@ function ByDiscussionist() {
   return (
     <>
       <div className="flex justify-center items-center" ref={resultDivRef}>
-        <div className="flex flex-row w-3/4 gap-4">
+        <div className="w-11/12 md:w-5/6 lg:w-3/4 flex flex-row gap-4">
           {isMobile ? null : (
             <SelectChapters
               selectedChapters={selectedChapters}
@@ -104,7 +104,7 @@ function ByDiscussionist() {
               {isMobile ? (
                 <div className="flex flex-col w-full gap-1">
                   <button
-                    className="my-0 mx-auto py-4 flex gap-2 w-max text-lg font-bold"
+                    className="my-0 mx-auto py-4 flex gap-2 w-max text-2xl md:text-3xl font-bold text-header"
                     onClick={() => setShowSelectChapters(true)}
                   >
                     {selectedChapters.length >= 1

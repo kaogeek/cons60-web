@@ -68,7 +68,7 @@ export default function Home() {
       </div>
 
       <div className="bg-[#310] text-white flex justify-center py-5">
-        <div className="lg:w-3/6 w-5/6 rounded-full font-bold block-darker">
+        <div className="w-11/12 md:w-5/6 lg:w-3/4 rounded-full font-bold block-darker">
           <button
             className={
               view === "chapter"

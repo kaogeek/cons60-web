@@ -4,7 +4,7 @@ export default function Sections({sections}) {
   
   const convertDate = dateStr => {
     const dateArr = dateStr.split('/');
-    const date = new Date(dateArr[2]-543, dateArr[1], dateArr[0]);
+    const date = new Date(dateArr[2]-543, dateArr[1]-1, dateArr[0]);
     return date.toLocaleDateString('th-TH', {
       day: 'numeric',
       month: 'long',
@@ -14,7 +14,7 @@ export default function Sections({sections}) {
   
   const sectionArr = sections.map((section, index) => (
     <div id={'accordion-'+(index+1)} data-accordion-id={index+1} className="accordion accordion-collapsed flex flex-col w-full gap-x-1">
-      <div className="w-full md:rounded-xl bg-white bg-opacity-5">
+      <div className="w-full sm:rounded-xl bg-white bg-opacity-5">
         <button onClick={() => accordionToggle(index+1)} className="w-full p-5 grid grid-cols-3 justify-between">
           <div className="block col-span-2 text-left">
             <h1 className="text-2xl md:text-3xl text-header">ประชุมครั้งที่ {section.ประชุมครั้งที่}</h1>
@@ -74,8 +74,8 @@ export default function Sections({sections}) {
               </div>
             </div>
           </div>
-          <div className="w-full p-5 md:rounded-b-xl bg-[#eee]">
-            <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm md:text-lg text-left"
+          <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
+            <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
               dangerouslySetInnerHTML={{__html: section.ร่างบทบัญญัติ}}
             ></div>
           </div>

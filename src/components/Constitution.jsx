@@ -4,7 +4,7 @@ export default function Constitution({constitution}) {
   
   return (
     <div id="accordion-0" data-accordion-id="0" className="accordion accordion-active flex flex-col w-full gap-x-1">
-      <div className="w-full md:rounded-xl bg-white bg-opacity-5">
+      <div className="w-full sm:rounded-xl bg-white bg-opacity-5">
         <button id="constitution" onClick={() => accordionToggle(0)} className="w-full grid grid-cols-5 justify-between p-5">
           <div className="block col-span-4">
             <h1 className="text-2xl md:text-3xl pt-1 text-header text-left">รัฐธรรมนูญ 2560</h1>
@@ -19,8 +19,8 @@ export default function Constitution({constitution}) {
         </button>
       </div>
       <div className="accordion-collapsable">
-        <div className="w-full p-5 md:rounded-b-xl bg-[#eee]">
-          <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm md:text-lg text-left"
+        <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
+          <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
             dangerouslySetInnerHTML={{__html: constitution}}
           ></div>
         </div>
