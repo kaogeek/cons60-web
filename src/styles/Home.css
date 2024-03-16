@@ -54,6 +54,10 @@ body {
   color: #feb;
 }
 
+#section .discussionist > .comma:last-child {
+  display: none;
+}
+
 .accordion-collapsed .accordion-collapsable {
   display: none;
 }
