@@ -168,7 +168,7 @@ export default function Discussionist() {
                   state={{ from: '/discussionist/' + name }}
                 >
                   <ListItem
-                    title={isNumeric(Section) ? `มาตรา ${Section}` : Section}
+                    title={isNumeric(Section) ? `มาตรา ${Section}|(หมวด ${chapterNameToId[chapterName]} ${chapterName})` : Section}
                     count={total}
                     chartColor={chapterColorCode[chapterName]}
                   />
