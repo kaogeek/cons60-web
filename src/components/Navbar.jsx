@@ -7,7 +7,9 @@ import { Icon } from "@iconify/react";
 import React, { useEffect, useRef } from "react";
 
 
-function Navbar({ setSearchInputValue }) {
+function Navbar({ searchInputValue, setSearchInputValue }) {
+
+  const {state} = useLocation();
   const [showMenu, setShowMenu] = React.useState(false);
   const location = useLocation();
   const searchInputRef = useRef(null);
@@ -23,9 +25,9 @@ function Navbar({ setSearchInputValue }) {
       <div className="max-w-screen-xl h-full mx-auto px-4 flex justify-between items-center">
         {location.pathname === "/search" && (
           <div className="inline-block">
-            <Link to="/" className="text-2xl font-bold text-white sm:hidden">
+            <button value="back" onClick={() => state?.backable ? window.history.back() : window.location.hash = '/'} className="text-2xl font-bold text-white sm:hidden">
               <Icon icon="ic:round-arrow-back-ios" />
-            </Link>
+            </button>
             <Link
               to="/"
               className="text-2xl font-bold text-white hidden sm:block"
@@ -44,6 +46,7 @@ function Navbar({ setSearchInputValue }) {
                 type="text"
                 id="search-input"
                 name="search-input"
+                value={searchInputValue}
                 className="focus:outline-none w-full"
                 placeholder="ค้นหาคำภายในร่างบทบัญญัติ, เลขมาตรา หรือผู้อภิปราย"
                 ref={searchInputRef}
@@ -68,7 +71,7 @@ function Navbar({ setSearchInputValue }) {
         {/* Desktop Menu */}
         {location.pathname !== "/search" && (
           <div className="t">
-            <div className="hidden xs:flex gap-8">
+            <div className="hidden md:flex gap-8">
               <Link
                 to="/"
                 className="py-4 text-white hover:underline underline-offset-4"
@@ -78,6 +81,7 @@ function Navbar({ setSearchInputValue }) {
               <Link
                 to="/search"
                 className="py-4 text-white hover:underline underline-offset-4"
+                state={{ backable: true }}
               >
                 ค้นหา
               </Link>
@@ -96,7 +100,7 @@ function Navbar({ setSearchInputValue }) {
             </div>
             
             {/* Mobile Menu */}
-            <div className="xs:hidden flex items-center">
+            <div className="md:hidden flex items-center">
               {/* Hamburger menu icon for mobile */}
               {!showMenu ? (
                 <button
@@ -130,6 +134,7 @@ function Navbar({ setSearchInputValue }) {
                     <div className="block">
                       <Link
                         to="/search"
+                        state={{ backable: true }}
                         className="block px-4 py-1 text-white border-solid border-b-2 border-black hover:bg-black"
                       >
                         ค้นหา

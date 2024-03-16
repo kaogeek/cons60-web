@@ -149,6 +149,7 @@ function BySection() {
                   to={`/section/${Section}`}
                   className="w-full"
                   key={Section}
+                  state={{ backable: true }}
                 >
                   <ListItem
                     title={isNumeric(Section) ? `มาตรา ${Section}|(หมวด ${chapterNameToId[chapterName]} ${chapterName})` : Section}
