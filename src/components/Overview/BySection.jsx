@@ -151,7 +151,7 @@ function BySection() {
                   key={Section}
                 >
                   <ListItem
-                    title={isNumeric(Section) ? `มาตรา ${Section}` : Section}
+                    title={isNumeric(Section) ? `มาตรา ${Section}|(หมวด ${chapterNameToId[chapterName]} ${chapterName})` : Section}
                     count={total}
                     chartColor={chapterColorCode[chapterName]}
                   />
