@@ -43,7 +43,7 @@ function ByChapter() {
         </div>
         <div className="flex flex-col items-center gap-2 w-full">
           {result.map(([chapterName, count]) => (
-            <Link to={`/chapter/${chapterName}`} className="w-full" key={chapterName}>
+            <Link to={`/chapter/${chapterName}`} className="w-full" key={chapterName} state={{ backable: true }}>
               <ListItem
                 title={
                   chapterNameToId[chapterName].match(/^[0-9]+$/)

@@ -15,7 +15,7 @@ export default function App() {
   const [searchInputValue, setSearchInputValue] = useState('');
   return (
     <div className="App text-white">
-      <Navbar setSearchInputValue={setSearchInputValue} />
+      <Navbar searchInputValue={searchInputValue} setSearchInputValue={setSearchInputValue} />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />

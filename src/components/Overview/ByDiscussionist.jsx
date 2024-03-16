@@ -148,6 +148,7 @@ function ByDiscussionist() {
                   to={`/discussionist/${discussionist}`}
                   className="w-full"
                   key={discussionist}
+                  state={{ backable: true }}
                 >
                   <PersonListItem
                     name={discussionist}
