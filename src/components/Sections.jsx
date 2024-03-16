@@ -37,48 +37,62 @@ export default function Sections({sections}) {
         <div className="accordion-collapsable">
           <hr className="opacity-20" />
           <div className="p-5">
-            <div className="py-3">
-              <h3 className="text-sm text-header">ร่างมาตรา</h3>
-              <h2 className="text-lg md:text-xl pt-3 text-subheader">{section.ร่างมาตรา}</h2>
-            </div>
+            { section.ร่างมาตรา ? (
+              <div className="py-3">
+                <h3 className="text-sm text-header">ร่างมาตรา</h3>
+                <h2 className="text-lg md:text-xl pt-3 text-subheader">{section.ร่างมาตรา}</h2>
+              </div>
+            ) : '' }
             <div className="py-3">
               <h3 className="text-sm text-header">ผู้อภิปราย</h3>
-              <h2 className="text-lg md:text-xl pt-3 text-subheader">
-                { section.ผู้อภิปราย.length ? section.ผู้อภิปราย.join(', ') : 'ไม่มีผู้อภิปราย' }
+              <h2 className="discussionist text-lg md:text-xl pt-3 text-subheader">
+                { section.ผู้อภิปราย.length
+                    ? section.ผู้อภิปราย
+                      .map(s => (
+                        <>
+                          <span className="inline-block">{s}</span>
+                          <span className="comma">, </span>
+                        </>
+                      ))
+                    : 'ไม่มีผู้อภิปราย' }
               </h2>
             </div>
             { section.หมายเหตุ ? (
-            <div className="py-3">
-              <h3 className="text-sm text-header">หมายเหตุ</h3>
-              <h2 className="pt-3 text-subheader">{section.หมายเหตุ}</h2>
-            </div>
+              <div className="py-3">
+                <h3 className="text-sm text-header">หมายเหตุ</h3>
+                <h2 className="pt-3 text-subheader">{section.หมายเหตุ}</h2>
+              </div>
             ) : '' }
             { section.มติที่ประชุม ? (
-            <div className="py-3">
-              <h3 className="text-sm text-header">มติที่ประชุม</h3>
-              <h2 className="pt-3 text-subheader">
-                { section.มติที่ประชุม.replace(/\<\/?p\>/g,  '') }
-              </h2>
-            </div>
+              <div className="py-3">
+                <h3 className="text-sm text-header">มติที่ประชุม</h3>
+                <h2 className="pt-3 text-subheader">
+                  { section.มติที่ประชุม.replace(/\<\/?p\>/g,  '') }
+                </h2>
+              </div>
             ) : '' }
           </div>
-          <div className="w-full px-2 py-5 sm:p-5 bg-[#ddd]">
-            <div className="flex items-center gap-3 sm:gap-10 px-2">
-              <div className="flex gap-2 ml-3 items-center">
-                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#12ad75]" />
-                <h4 className="text-sm underline text-[#12ad75]">ข้อความที่เพิ่มใหม่</h4>
+          { section.ร่างบทบัญญัติ.length ? (
+            <>
+              <div className="w-full px-2 py-5 sm:p-5 bg-[#ddd]">
+                <div className="flex items-center gap-3 sm:gap-10 px-2">
+                  <div className="flex gap-2 ml-3 items-center">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#12ad75]" />
+                    <h4 className="text-sm underline text-[#12ad75]">ข้อความที่เพิ่มใหม่</h4>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#ff5151]" />
+                    <h4 className="text-sm line-through text-[#ff5151]">ข้อความเดิมที่ลบออก</h4>
+                  </div>
+                </div>
               </div>
-              <div className="flex gap-2 items-center">
-                <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#ff5151]" />
-                <h4 className="text-sm line-through text-[#ff5151]">ข้อความเดิมที่ลบออก</h4>
+              <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
+                <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
+                  dangerouslySetInnerHTML={{__html: section.ร่างบทบัญญัติ}}
+                ></div>
               </div>
-            </div>
-          </div>
-          <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
-            <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
-              dangerouslySetInnerHTML={{__html: section.ร่างบทบัญญัติ}}
-            ></div>
-          </div>
+            </>
+          ) : '' }
         </div>
       </div>
     </div>

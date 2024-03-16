@@ -23,7 +23,6 @@ export default function Section() {
     const minutes = dataObj.getMinutes().valueOf();
     
     const rows = dataArr
-      .filter(row => row.ร่างบทบัญญัติ.length)
       .map(row => {
         const minuteID = row.ประชุมครั้งที่;
         const minute = minutes.filter(mRow => mRow.id == minuteID)[0];
@@ -45,7 +44,7 @@ export default function Section() {
 
   return (
     <>
-      <div className="bg-[#310]">
+    <div className="bg-[#310]">
         <div className="max-w-screen-xl h-16 mx-auto px-4">
           <h1 className="text-header text-2xl sm:text-3xl truncate" style={{ lineHeight: '64px' }}>
             <Link to={state ? state.from : '/'} className="inline-block h-16 pr-2">
@@ -57,7 +56,7 @@ export default function Section() {
           </h1>
         </div>
       </div>
-      <div className="bg-[#310] sm:py-8 text-white min-h-screen">
+      <div id="section" className="bg-[#310] sm:py-8 text-white min-h-screen">
         <div className="block sm:flex justify-center items-center ">
           <div className="flex flex-row w-full sm:w-11/12 md:w-5/6 lg:w-3/4 gap-4">
             <div className="p-4 rounded-2xl hidden flex-col gap-2 lg:flex block-darker">
