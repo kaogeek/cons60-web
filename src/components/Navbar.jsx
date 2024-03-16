@@ -45,6 +45,7 @@ function Navbar({ setSearchInputValue }) {
                 id="search-input"
                 name="search-input"
                 className="focus:outline-none w-full"
+                placeholder="ค้นหาคำภายในร่างบทบัญญัติ, เลขมาตรา หรือผู้อภิปราย"
                 ref={searchInputRef}
                 onChange={(e) => setSearchInputValue(e.target.value)}
               ></input>
