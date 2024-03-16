@@ -172,7 +172,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         }
 
     }, [searchInputValue, searchInput]);
-    
+        
     
     return (
       <>
@@ -192,7 +192,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
           <div className="bg-[#310] h-screen">
             <div className="bg-[#310] w-11/12 md:w-5/6 lg:w-3/4 mx-auto min-h-screen mx-auto text-xl text-white pt-4" >
 
-              {searchInputValue ? (
+              { searchInputValue ? (
                 <div>
                   <h4 className="text-header">
                     ค้นหาตามมาตรา
@@ -206,12 +206,12 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
 
                   {renderDiscussionistResult()}
                 </div>
-              ) : (
+              ) : getHistory().length ? (
                 <div>
                   <h4 className="text-header">ประวัติการค้นหา</h4>
                   {renderHistory()}
                 </div>
-              )}
+              ) : '' }
               
             </div>
           </div>
