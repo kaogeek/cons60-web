@@ -76,3 +76,8 @@ body {
 .provision strike {
   color: #ff5151;
 }
+
+#truehits_div {
+  position: absolute;
+  left: -9999px;
+}
