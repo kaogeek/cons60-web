@@ -1,7 +1,7 @@
 {
   "name": "cons60-web",
-  "homepage": "https://kaogeek.github.io/cons60-web/",
-  "version": "0.1.0",
+  "homepage": ".",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -23,7 +23,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "eqeqeq": "off"
+    }
   },
   "browserslist": {
     "production": [

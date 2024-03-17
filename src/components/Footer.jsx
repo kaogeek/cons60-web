@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="text-center text-xl py-20 text-subheader">
         <span className="text-3xl text-header">ชอบเว็บของเราหรือไม่?</span><br />
         แสดงความคิดเห็นของท่านผ่าน <br className="lg:hidden" />
-        <a className="underline text-header" href="https://form.parliament.go.th/questionnaire/SurveyUser/SurveyUserTakeNoLogin.php?survey_id=370881" target="_blank">
+        <a className="underline text-header" href="https://form.parliament.go.th/questionnaire/SurveyUser/SurveyUserTakeNoLogin.php?survey_id=370881" target="_blank" rel="noreferrer">
           แบบประเมินความพึงพอใจ
         </a>
         &nbsp;ได้เลยนะคะ
