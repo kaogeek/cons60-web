@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useParams, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "../components/ProfileImages.jsx";
 import data from "../c60-data-query/data.js";
 import { useState, useEffect } from "react";
-import { chapterIdToName, chapterNameToId } from "../../src/constants/chapters.js";
+import { chapterIdToName } from "../../src/constants/chapters.js";
 import createDataObject from "../c60-data-query/data-object.js";
 import isNumeric from "../utils/isNumeric.js";
 
@@ -14,12 +14,6 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
     const [searchInput, setSearchInput] = useState([]);
     const [articleResult, setArticleResult] = useState([]);
     const [discussionistResult, setDiscussionistResult] = useState('');
-
-    // function get List of article name from json
-    const getArticleList = (data) => {
-        const articleList = data.map((article) => article["ชื่อมาตรา"]);
-        return articleList;
-    };
 
     function extractNumbersFromString(text) {
         // Use a regular expression to match numbers in the text

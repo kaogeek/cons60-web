@@ -80,14 +80,14 @@ export default function About() {
               <li><ProfileImages name="นายอนุรัฐ เอี่ยมโภคลาภ" imageUrl="./volunteers/09.jpg" /></li>
               <li><AnonymousSVG name="นางสาวชนิตา หัวเขา" /></li>
               <li><AnonymousSVG name="นางสาวประภาวดี เอกวงศ์" /></li>
-              <li><AnonymousSVG name="นางสาวจิรารัตน์ จันทรัตน์" /></li>
+              <li><ProfileImages name="นางสาวจิรารัตน์ จันทรัตน์" imageUrl="./volunteers/10.jpg" /></li>
               <li><AnonymousSVG name="นายณรงศ์ศักย์ เหล่ารัตนเวช" /></li>
               <li><AnonymousSVG name="นางสาวเมธาวี ศิริตรัย" /></li>
               <li><AnonymousSVG name="นางสาวปารณีย์ จิรัสย์จินดา" /></li>
               <li><AnonymousSVG name="นางสาวฐิติพร สุดใจ" /></li>
               <li><AnonymousSVG name="นายภูริช สีนวลแล" /></li>
               <li><AnonymousSVG name="นายธนดล เดชประภากร" /></li>
-              <li><ProfileImages name="นายธรรมทัศน์ ธรรมปัญญาวัฒน์" imageUrl="./volunteers/10.jpg" /></li>
+              <li><ProfileImages name="นายธรรมทัศน์ ธรรมปัญญาวัฒน์" imageUrl="./volunteers/11.jpg" /></li>
             </ul>
             <p>
               หอสมุดรัฐสภา สำนักวิชาการ สำนักงานเลขาธิการสภาผู้แทนราษฎร ขอขอบคุณทุกภาคส่วนที่เกี่ยวข้อง สมาชิกสภาผู้แทนราษฎร ผู้บริหารสำนักงานเลขาธิการสภาผู้แทนราษฎร 

@@ -1,8 +1,6 @@
 export default function accordionToggle(id) {
   
   const navActive = document.querySelector('.nav-active');
-  const navActiveID = navActive.dataset.accordionId;
-
   const accordionExpand = document.getElementById('accordion-'+id);
   const accordionActive = document.querySelector('.accordion-active');
   const accordionActiveID = accordionActive?.dataset.accordionId;

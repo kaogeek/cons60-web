@@ -1,5 +1,5 @@
 import { Link, useParams, useLocation } from "react-router-dom";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Icon } from "@iconify/react";
 
@@ -51,7 +51,7 @@ export default function Chapter() {
     );
   };
 
-  const queryData = (fullDiscussionists) => {
+  const queryData = useCallback((fullDiscussionists) => {
     const discussionistCriteria =
       selectedDiscussionists.length >= 1
         ? selectedDiscussionists.map((discussionist) => ({
@@ -70,7 +70,7 @@ export default function Chapter() {
       sort === 0 ? b.count - a.count : a.count - b.count
     );
     return sorted;
-  };
+  }, [selectedDiscussionists, name, sort]);
 
   useEffect(() => {
     const panelists = createDataObject(data)
@@ -79,7 +79,7 @@ export default function Chapter() {
 
     setDiscussionists(panelists);
     setResult(queryData(panelists));
-  }, [sort, selectedDiscussionists, name]);
+  }, [sort, selectedDiscussionists, name, queryData]);
 
   return (
     <>
