@@ -46,7 +46,7 @@ function ByChapter() {
             <Link to={`/chapter/${chapterName}`} className="w-full" key={chapterName} state={{ backable: true }}>
               <ListItem
                 title={
-                  chapterNameToId[chapterName].match(/^[0-9]+$/)
+                  chapterNameToId[chapterName].match(/^\d+$/)
                     ? 'หมวด ' + chapterNameToId[chapterName] + ' ' + chapterName
                     : chapterName
                 }

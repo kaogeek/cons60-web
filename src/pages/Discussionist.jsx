@@ -138,7 +138,7 @@ export default function Discussionist() {
                       <ChapterMobilePillButton
                         chapter={chapter}
                         wording={
-                          chapterNameToId[chapter].match(/^[0-9]+$/)
+                          isNumeric(chapterNameToId[chapter])
                             ? 'หมวด ' + chapterNameToId[chapter] + ' ' + chapter
                             : chapter
                         }
@@ -169,7 +169,15 @@ export default function Discussionist() {
                   state={{ backable: true }}
                 >
                   <ListItem
-                    title={isNumeric(Section) ? `มาตรา ${Section}|(หมวด ${chapterNameToId[chapterName]} ${chapterName})` : Section}
+                    title={
+                      isNumeric(Section)
+                        ? (
+                          isNumeric(chapterNameToId[chapterName])
+                            ? `มาตรา ${Section}|(หมวด ${chapterNameToId[chapterName]} ${chapterName})`
+                            : `มาตรา ${Section}|(${chapterName})`
+                        )
+                        : Section
+                    }
                     count={total}
                     chartColor={chapterColorCode[chapterName]}
                   />
