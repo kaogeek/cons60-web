@@ -120,7 +120,7 @@ function ByDiscussionist() {
                       <ChapterMobilePillButton
                         chapter={chapter}
                         wording={
-                          chapterNameToId[chapter].match(/^[0-9]+$/)
+                          chapterNameToId[chapter].match(/^\d+$/)
                             ? 'หมวด ' + chapterNameToId[chapter] + ' ' + chapter
                             : chapter
                         }
