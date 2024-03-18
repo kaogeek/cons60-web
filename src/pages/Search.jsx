@@ -10,7 +10,6 @@ import isNumeric from "../utils/isNumeric.js";
 
 export default function Search({ searchInputValue, setSearchInputValue }) {
   
-    const {state} = useLocation();
     const [searchInput, setSearchInput] = useState([]);
     const [articleResult, setArticleResult] = useState([]);
     const [discussionistResult, setDiscussionistResult] = useState('');

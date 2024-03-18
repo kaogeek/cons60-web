@@ -6,7 +6,19 @@ const ProfileImages = ({ name, imageUrl, size }) => {
             >
               <img className="object-cover h-full w-full" src={imageUrl} alt={'ภาพถ่ายของ ' + name} />
             </div>
-            {name ? <div className="mt-3 text-header">{name}</div> : null}
+            {
+              name
+                ? <div className="mt-3 text-header">
+                    {
+                      name
+                        .split(' ')
+                        .map(x => (
+                          <><span className="inline-block">{x}</span> </>
+                        ))
+                    }
+                  </div>
+                : null
+            }
         </div>
     );
 };
