@@ -4,8 +4,8 @@ export default function RelatedInfo() {
   return (
     <div id="related" data-testid="related-doc">
       <div className="bg-[#310]">
-        <div className="w-11/12 md:w-5/6 lg:w-3/4 mx-auto min-h-screen">
-          <h1 className="text-center lg:text-5xl md:text-4xl sm:text-3xl text-2xl font-bold text-header pt-40">
+        <div className="md:w-5/6 mx-auto min-h-screen">
+          <h1 className="text-center lg:text-5xl sm:text-4xl text-3xl font-bold text-header pt-40">
             ข้อมูลที่เกี่ยวข้อง
           </h1>
           <div className="justify-center text-center text-lg px-8 py-20">
