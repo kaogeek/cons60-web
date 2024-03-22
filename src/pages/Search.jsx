@@ -39,7 +39,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
     // get last 10 history of search from local storage
     const getHistory = () => {
         const history = JSON.parse(localStorage.getItem("history")) || [];
-        return history.slice(-10).toReversed();;
+        return history.slice(-10).reverse();;
     }
 
 
