@@ -66,12 +66,12 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         if (history.length === 0) return (<div className="text-gray-400 pt-2">ไม่มีประวัติการค้นหา</div>);
         return history.map((item, index) => {
             return (
-                <div key={index} className="border-b border-gray-500 flex items-top py-2" onClick={() => { changeTextInput(item) }}>
+                <button key={index} className="w-full border-b border-gray-500 flex items-top py-2" onClick={() => { changeTextInput(item) }}>
                     <div className="pr-2 pt-1">
                         <Icon icon="material-symbols:history" className="text-2xl" />
                     </div>
                     <span>{item}</span>
-                </div>
+                </button>
             );
         });
     }
