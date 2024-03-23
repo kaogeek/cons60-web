@@ -65,6 +65,13 @@ body {
   transform: rotate(180deg); 
 }
 
+#section-info p {
+  margin-bottom: 0.8em;
+}
+#section-info p:last-child {
+  margin-bottom: 0em;
+}
+
 .provision p {
   text-indent: 3em;
   line-height: 2em;
