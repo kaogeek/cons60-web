@@ -39,7 +39,7 @@ export default function Sections({sections}) {
         </button>
         <div className="accordion-collapsable">
           <hr className="opacity-20" />
-          <div className="p-5">
+          <div id="section-info" className="p-5">
             { section.ร่างมาตรา ? (
               <div className="py-3">
                 <h3 className="text-sm text-header">ร่างมาตรา</h3>
@@ -69,9 +69,9 @@ export default function Sections({sections}) {
             { section.มติที่ประชุม ? (
               <div className="py-3">
                 <h3 className="text-sm text-header">มติที่ประชุม</h3>
-                <h2 className="pt-3 text-subheader">
-                  { section.มติที่ประชุม.replace(/<\/?p>/g,  '') }
-                </h2>
+                <div className="pt-3 text-subheader"
+                  dangerouslySetInnerHTML={{__html: section.มติที่ประชุม}}
+                ></div>
               </div>
             ) : '' }
           </div>
