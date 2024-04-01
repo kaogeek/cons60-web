@@ -22,6 +22,12 @@ export default function RelatedInfo() {
             <a className="doc" href="./pdf/2054161.pdf" target="_blank">
               เอกสารประกาศคณะรักษาความสงบแห่งชาติ เรื่อง แต่งตั้งคณะกรรมการร่างรัฐธรรมนูญ
             </a>
+            <a className="doc" href="https://library.parliament.go.th/th/2017-Constitution-of-the-Kingdom" target="_blank" rel="noreferrer">
+              ดัชนีช่วยค้นการพิจารณาร่างรัฐธรรมนูญแห่งราชอาณาจักรไทย พุทธศักราช 2560
+            </a>
+            <a className="doc" href="https://dl.parliament.go.th/handle/20.500.13072/615371/browse" target="_blank" rel="noreferrer">
+              บันทึกการประชุมคณะกรรมการร่างรัฐธรรมนูญ ครั้งที่ 1-501
+            </a>
           </div>
         </div>
       </div>
