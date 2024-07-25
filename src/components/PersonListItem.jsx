@@ -27,7 +27,7 @@ function PersonListItem(props) {
 
   return (
     <div
-      className="flex flex-col bg-[#2a2a2a] rounded-2xl px-8 py-4 
+      className="flex flex-col bg-[#2a2a2a] rounded-2xl px-6 py-4 
     gap-4 text-xl font-bold w-full block-lighter"
     >
       <div className="flex flex-row  justify-between">

@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 
 import chapterColorCode from "../../constants/chapterColorCode";
 
-function ChapterButton({ chapter, selected, onClick }) {
+function ChapterButton({ chapter, wording, selected, onClick }) {
   const activeStyle = "rounded-full text-black px-2";
   const inactiveStyle = "text-[#9f9f9f] px-4";
 
@@ -33,7 +33,7 @@ function ChapterButton({ chapter, selected, onClick }) {
           </div>
         )}
         <div className="text-ellipsis whitespace-nowrap overflow-hidden">
-          {chapter}
+          {wording}
         </div>
       </div>
     </button>

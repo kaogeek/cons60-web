@@ -11,7 +11,7 @@ import SortBy from "../SortBy";
 
 import createDataObject from "../../c60-data-query/data-object.js";
 import data from "../../c60-data-query/data.js";
-import { chapterIdToName } from "../../constants/chapters.js";
+import { chapterNameToId, chapterIdToName } from "../../constants/chapters.js";
 
 function ByDiscussionist() {
   const [sort, setSort] = useState(0);
@@ -92,7 +92,7 @@ function ByDiscussionist() {
   return (
     <>
       <div className="flex justify-center items-center" ref={resultDivRef}>
-        <div className="flex flex-row w-3/4 gap-4">
+        <div className="w-11/12 md:w-5/6 lg:w-3/4 flex flex-row gap-4">
           {isMobile ? null : (
             <SelectChapters
               selectedChapters={selectedChapters}
@@ -104,21 +104,26 @@ function ByDiscussionist() {
               {isMobile ? (
                 <div className="flex flex-col w-full gap-1">
                   <button
-                    className="py-4 flex justify-center gap-2 w-max text-lg font-bold"
+                    className="my-0 mx-auto py-4 flex gap-2 w-max text-2xl md:text-3xl font-bold text-header"
                     onClick={() => setShowSelectChapters(true)}
                   >
                     {selectedChapters.length >= 1
-                      ? "เลือก " + selectedChapters.length + " หมวด"
-                      : "ทุกหมวด"}
+                      ? "กรองข้อมูลจาก " + selectedChapters.length + " หมวด"
+                      : "ข้อมูลจากทุกหมวด"}
                     <Icon
                       style={{ fontSize: "32px" }}
                       icon="gridicons:dropdown"
                     ></Icon>
                   </button>
-                  <div className="w-full flex flex-wrap gap-2">
+                  <div className="w-full flex flex-wrap gap-2 justify-center">
                     {selectedChapters.map((chapter) => (
                       <ChapterMobilePillButton
                         chapter={chapter}
+                        wording={
+                          chapterNameToId[chapter].match(/^\d+$/)
+                            ? 'หมวด ' + chapterNameToId[chapter] + ' ' + chapter
+                            : chapter
+                        }
                         remove={handleRemoveChapter}
                       />
                     ))}
@@ -128,10 +133,10 @@ function ByDiscussionist() {
                 <>
                   {selectedChapters.length >= 1 ? (
                     <div className="text-3xl font-bold text-header">
-                      ได้เลือก {selectedChapters.length} จากทั้งหมด
+                      กรองข้อมูลจาก {selectedChapters.length} หมวด
                     </div>
                   ) : (
-                    <div className="text-3xl font-bold text-header">ทุกหมวด</div>
+                    <div className="text-3xl font-bold text-header">ข้อมูลจากทุกหมวด</div>
                   )}
                 </>
               )}
@@ -143,6 +148,7 @@ function ByDiscussionist() {
                   to={`/discussionist/${discussionist}`}
                   className="w-full"
                   key={discussionist}
+                  state={{ backable: true }}
                 >
                   <PersonListItem
                     name={discussionist}

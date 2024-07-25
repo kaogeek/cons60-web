@@ -7,7 +7,7 @@ import SortBy from "../SortBy";
 
 import createDataObject from "../../c60-data-query/data-object.js";
 import data from "../../c60-data-query/data.js";
-import { chapterIdToName } from "../../constants/chapters";
+import { chapterNameToId, chapterIdToName } from "../../constants/chapters";
 
 function ByChapter() {
   const [sort, setSort] = useState(0);
@@ -36,16 +36,20 @@ function ByChapter() {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="w-3/4 flex flex-col gap-4">
-        <div className="flex flex-row justify-between flex-wrap gap-4">
-          <div className="text-3xl font-bold text-header">ทุกหมวด</div>
+      <div className="w-11/12 md:w-5/6 lg:w-3/4 flex flex-col gap-4">
+        <div className="flex flex-row justify-between flex-wrap gap-1 text-center">
+          <div className="text-2xl md:text-3xl font-bold text-header">ค้นหาจากหมวด</div>
           <SortBy sort={sort} setSort={setSort} />
         </div>
-        <div className="flex flex-col justify-center items-center gap-2.5 w-full">
+        <div className="flex flex-col items-center gap-2 w-full">
           {result.map(([chapterName, count]) => (
-            <Link to={`/chapter/${chapterName}`} className="w-full" key={chapterName}>
+            <Link to={`/chapter/${chapterName}`} className="w-full" key={chapterName} state={{ backable: true }}>
               <ListItem
-                title={chapterName}
+                title={
+                  chapterNameToId[chapterName].match(/^\d+$/)
+                    ? 'หมวด ' + chapterNameToId[chapterName] + ' ' + chapterName
+                    : chapterName
+                }
                 count={count}
                 chartColor={chapterColorCode[chapterName]}
               />

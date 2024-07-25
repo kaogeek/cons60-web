@@ -1,14 +1,15 @@
 import ChapterButton from "./ChapterButton";
-import chapters from "../../constants/chapters";
+import chapters, { chapterNameToId } from "../../constants/chapters";
 
 function SelectChapters(props) {
   const { selectedChapters, onChange } = props;
   return (
     <div className="p-4 rounded-2xl flex flex-col gap-2 block-darker">
-      <div className="text-xl font-bold text-subheader">เนื้อหาแบ่งออกเป็น 18 หมวด</div>
+      <div className="text-xl font-bold text-subheader">กรองข้อมูลในหมวด</div>
       <ChapterButton
         key={"ทั้งหมด"}
         chapter={"ทั้งหมด"}
+        wording={"ทั้งหมด"}
         selected={selectedChapters.length === 0}
         onClick={() => {
           onChange([]);
@@ -18,6 +19,11 @@ function SelectChapters(props) {
         <ChapterButton
           key={chapter}
           chapter={chapter}
+          wording={
+            chapterNameToId[chapter].match(/^\d+$/)
+              ? 'หมวด ' + chapterNameToId[chapter] + ' ' + chapter
+              : chapter
+          }
           selected={selectedChapters.includes(chapter)}
           onClick={() => {
             if (selectedChapters.includes(chapter)) {

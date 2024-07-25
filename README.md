@@ -1,3 +1,12 @@
+# About cons60-web
+
+เป็นที่เก็บ Source Code เว็บไซต์สำหรับโครงการ Hack เจตนารมณ์รัฐธรรมนูญ 2560 ของห้องสมุดรัฐสภา โดยเว็บนี้จะช่วยในการ Visualize, Browse และ Search ข้อมูลบันทึกการประชุมของคณะกรรมการร่างรัฐธรรมนูญ 2560 เพื่อเปรียบเทียบบทบัญญัติและทำความเข้าใจเจตนารมณ์การร่างรัฐธรรมนูญฉบับนี้
+
+### Websites
+
+- Production - https://cons60-library.parliament.go.th/
+- Staging - https://kaogeek.github.io/cons60-web/
+
 # Cloning the Repository
 
 To clone this repository along with its submodules, follow the instructions below. These steps will ensure that you have a complete copy of the project, including [กรธ.60 - Data Query](https://github.com/iampz/c60-data-query.git)
@@ -22,6 +31,14 @@ To clone this repository along with its submodules, follow the instructions belo
    git submodule update --init --recursive
    ```
 
+2. **For update all Submodule**
+
+   ```
+   git submodule foreach --recursive git pull origin
+   or
+   git submodule foreach --recursive git pull origin main
+   ```
+
 This command initializes your local configuration file for submodules and updates the submodules.
 
 ### Troubleshooting
@@ -30,6 +47,7 @@ If you encounter any issues with submodules, such as broken links or missing fil
 
 ```
 git submodule sync
+git submodule update --remote
 git submodule update --init --recursive
 ```
 

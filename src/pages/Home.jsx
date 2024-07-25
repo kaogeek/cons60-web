@@ -6,6 +6,7 @@ import "../styles/Home.css";
 import ByChapter from "../components/Overview/ByChapter";
 import ByDiscussionist from "../components/Overview/ByDiscussionist";
 import BySection from "../components/Overview/BySection";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [view, setView] = useState("chapter");
@@ -13,23 +14,20 @@ export default function Home() {
   return (
     <div data-testid="home">
       <div className="bg-[#310]">
-        <div className="Landing-Page-Banner-PC text-center lg:pt-40 pt-40 px-2">
+        <div className="main-bg text-center pt-40">
           <div className="lg:text-7xl md:text-6xl sm:text-4xl text-3xl font-bold text-header">
             บันทึกการประชุม
           </div>
-          <div className="lg:text-6xl md:text-5xl sm:text-4xl text-xl font-bold text-white pt-2">
+          <div className="lg:text-6xl md:text-5xl sm:text-4xl text-xl font-bold text-white pt-2 text-subheader">
             คณะกรรมการร่างรัฐธรรมนูญ ปี 2560
           </div>
 
-          <div className="text-lg text-white pt-8 hidden lg:block">
-            ตอบทุกความสงสัยกว่าจะมาเป็นรัฐธรรมนูญแห่งราชอาณาจักรไทย พุทธศักราช 2560<br></br>
-            เรียนรู้เส้นทางการร่างรัฐธรรมนูญ และเปรียบเทียบบทบัญญัติของรัฐธรรมนูญแห่งราชอาณาจักรไทย<br></br>
-            พุทธศักราช 2560 กับร่างรัฐธรรมนูญที่มีการเสนอและแก้ไขเพิ่มเติมจากบันทึกการประชุม
-          </div>
-          <div className="text-lg text-white px-2 pt-8 block lg:hidden">
-            เรียนรู้ และเปรียบเทียบรัฐธรรมนูญฉบับปี 2560 <br></br>
-            พวกเค้าทำงานกันอย่างไร กฎหมายฉบับนี้ <br></br>
-            ออกมาเพื่อใคร หาคำตอบไปด้วยกัน
+          <div className="text-sm md:text-lg text-white px-2 pt-8">
+            <span className="inline-block">ตอบทุกความสงสัยกว่าจะมาเป็นรัฐธรรมนูญ</span>
+            <span className="inline-block">แห่งราชอาณาจักรไทย พุทธศักราช 2560</span><br />
+            <span className="inline-block">เรียนรู้เส้นทางการร่างรัฐธรรมนูญ และเปรียบเทียบบทบัญญัติ</span>
+            <span className="inline-block">ของรัฐธรรมนูญแห่งราชอาณาจักรไทย พุทธศักราช 2560</span><br />
+            <span className="inline-block">กับร่างรัฐธรรมนูญที่มีการเสนอและแก้ไขเพิ่มเติมจากบันทึกการประชุม</span>
           </div>
 
           <Link to="/search">
@@ -42,7 +40,7 @@ export default function Home() {
                   type="text"
                   id="search-input"
                   name="search-input"
-                  className="flex-auto focus:outline-none"
+                  className="flex-auto focus:outline-none w-full"
                 ></input>
               </div>
             </div>
@@ -50,7 +48,7 @@ export default function Home() {
           </Link>
           
 
-          <div className="text-neutral-400 text-center lg:py-8 py-40 text-header">
+          <div className="text-neutral-400 text-center lg:py-8 text-header">
             <div className="flex justify-center">
               <Icon icon="mingcute:up-line" className="text-4xl" />
             </div>
@@ -62,12 +60,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-[#310] text-white flex justify-center">
+      <div className="bg-[#310] text-white flex justify-center pt-10 text-center">
         <div className="text-3xl font-bold pt-4 w-3/4 text-header">ภาพรวม</div>
       </div>
 
       <div className="bg-[#310] text-white flex justify-center py-5">
-        <div className="lg:w-3/6 w-5/6 rounded-full font-bold block-darker">
+        <div className="w-11/12 md:w-5/6 lg:w-3/4 rounded-full font-bold block-darker">
           <button
             className={
               view === "chapter"
@@ -106,6 +104,9 @@ export default function Home() {
         {view === "discussionist" && (<ByDiscussionist />)}
         {view === "section" && (<BySection />)}
       </div>
+      
+      <Footer />
+      
     </div>
   );
 }

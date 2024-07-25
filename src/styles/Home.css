@@ -1,8 +1,17 @@
-.Landing-Page-Banner-PC {
-    background-image: url('../images/mainmenu.png');
-    background-repeat: no-repeat;
-    background-size:cover;
-  }
+body {
+  background-color: #310;
+}
+
+#nav {
+  background-image: linear-gradient(#410808, #820f0f);
+}
+
+.main-bg {
+  background-image: url('../images/mainmenu.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
   
 .text-header {
   color: #cb6;
@@ -16,4 +25,66 @@
 }
 .block-lighter {
   background-color: #482a1a;
+}
+
+#about p {
+  margin-top: 20px;
+  text-indent: 4em;
+  line-height: 2em;
+  color: #edd;
+}
+#about ul {
+  display: block;
+  margin-bottom: 70px;
+  text-align: center;
+}
+#about li {
+  display: inline-block;
+  padding: 19px;
+}
+
+#related .doc {
+  display: inline-block;
+  vertical-align: top;
+  width: 275px;
+  height: 145px;
+  margin: 10px;
+  padding: 15px;
+  background: #482a1a;
+  color: #feb;
+}
+
+#section .discussionist > .comma:last-child {
+  display: none;
+}
+
+.accordion-collapsed .accordion-collapsable {
+  display: none;
+}
+.accordion-collapsed .accordion-icon {
+  transform: rotate(180deg); 
+}
+
+#section-info p {
+  margin-bottom: 0.8em;
+}
+#section-info p:last-child {
+  margin-bottom: 0em;
+}
+
+.provision p {
+  text-indent: 3em;
+  line-height: 2em;
+  margin-bottom: 0.8em;
+}
+.provision u {
+  color: #12ad75;
+}
+.provision strike {
+  color: #ff5151;
+}
+
+#truehits_div {
+  position: absolute;
+  left: -9999px;
 }

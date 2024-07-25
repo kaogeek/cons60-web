@@ -1,22 +1,18 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import "../components/ProfileImages.jsx";
 import data from "../c60-data-query/data.js";
 import { useState, useEffect } from "react";
-
+import { chapterIdToName } from "../../src/constants/chapters.js";
 import createDataObject from "../c60-data-query/data-object.js";
+import isNumeric from "../utils/isNumeric.js";
 
 export default function Search({ searchInputValue, setSearchInputValue }) {
+  
     const [searchInput, setSearchInput] = useState([]);
     const [articleResult, setArticleResult] = useState([]);
     const [discussionistResult, setDiscussionistResult] = useState('');
-
-    // function get List of article name from json
-    const getArticleList = (data) => {
-        const articleList = data.map((article) => article["ชื่อมาตรา"]);
-        return articleList;
-    };
 
     function extractNumbersFromString(text) {
         // Use a regular expression to match numbers in the text
@@ -43,8 +39,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
     // get last 10 history of search from local storage
     const getHistory = () => {
         const history = JSON.parse(localStorage.getItem("history")) || [];
-        console.log(history);
-        return history.slice(-10);
+        return history.slice(-10).reverse();;
     }
 
 
@@ -55,7 +50,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             frequencyMap[item] = (frequencyMap[item] || 0) + 1;
         }
 
-        // Step 2: Sort by frequency (descending order)
+// Step 2: Sort by frequency (descending order)
         const sortedItems = Object.entries(frequencyMap).sort(([, countA], [, countB]) => countB - countA);
 
         // Step 3: Extract unique items
@@ -68,15 +63,15 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
     // render history of search
     const renderHistory = () => {
         const history = getHistory();
-        if(history.length === 0) return (<div className="text-gray-400 pt-2">ไม่มีประวัติการค้นหา</div>);
+        if (history.length === 0) return (<div className="text-gray-400 pt-2">ไม่มีประวัติการค้นหา</div>);
         return history.map((item, index) => {
             return (
-                <div key={index} className="border-b border-gray-500 flex items-center py-2" onClick={()=>{changeTextInput(item)}}>
-                    <div className="pr-2">
+                <button key={index} className="w-full border-b border-gray-500 flex items-top py-2" onClick={() => { changeTextInput(item) }}>
+                    <div className="pr-2 pt-1">
                         <Icon icon="material-symbols:history" className="text-2xl" />
                     </div>
                     <span>{item}</span>
-                </div>
+                </button>
             );
         });
     }
@@ -86,17 +81,19 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             return <div className="text-gray-400 pt-2">ไม่พบข้อมูล</div>;
         }
         return articleResult.map((item, index) => {
+            const [section, chapter] = item[1].split('|');
             return (
                 <Link
-                    to={"/section/" + item}
+                    to={"/section/" + item[0]}
                     onClick={() => saveHistory(searchInputValue)}
                     key={index}
-                    className="border-b border-gray-500 flex items-center py-2"
+                    state={{ backable: true }}
+                    className="border-b border-gray-500 flex item-top sm:items-top py-2"
                 >
-                    <div className="pr-2">
+                    <div className="pr-2 pt-1">
                         <Icon icon="bx:bx-book" className="text-2xl" />
                     </div>
-                    <span>{item}</span>
+                    <div>{section} <br className="sm:hidden" /> <span className="text-base">{chapter}</span></div>
                 </Link>
             );
         });
@@ -112,9 +109,10 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                     to={"/discussionist/" + item}
                     onClick={() => saveHistory(searchInputValue)}
                     key={index}
-                    className="border-b border-gray-500 flex items-center py-2"
+                    state={{ backable: true }}
+                    className="border-b border-gray-500 flex items-top py-2"
                 >
-                    <div className="pr-2">
+                    <div className="pr-2 pt-1">
                         <Icon icon="bx:bx-user" className="text-2xl" />
                     </div>
                     <span>{item}</span>
@@ -123,77 +121,105 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         });
     }
 
-    
+
 
     const changeTextInput = (message) => {
         const searchInput = document.getElementById('search-input');
         setSearchInput(message);
         setSearchInputValue(message)
-        
-        if (searchInput) {
-          // Update the value directly using DOM manipulation
-          searchInput.value = message;
+
+        if (searchInput.value !== message) {
+            // Update the value directly using DOM manipulation
+            searchInput.value = message;
         }
-      };
+    };
 
     useEffect(() => {
-        const articleSearch = createDataObject(data).filter('มาตรา', extractNumbersFromString(searchInputValue))
-            .append(createDataObject(data).search('มาตรา', searchInputValue))
-            .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
-            .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
-            .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
-        setArticleResult([...new Set(articleSearch.data.map(obj => obj.มาตรา))].filter(value => value !== "").splice(0, 5));
+        if (searchInputValue.trim() === "") {
+            setArticleResult([]);
+            setDiscussionistResult([]);
+        } else {
+            const articleSearch = createDataObject(data)
+              .filter('มาตรา', extractNumbersFromString(searchInputValue))
+              .append(createDataObject(data).search('มาตรา', searchInputValue))
+              .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
+              .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
+              .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
+              .data;
+            
+            const scoring = articleSearch.reduce((scoringObj, record, index, dataArr) => {
+              if (!scoringObj[record.มาตรา]) scoringObj[record.มาตรา] = {chapter: record.หมวด, score: 0};
+              scoringObj[record.มาตรา].score += dataArr.length - index;
+              return scoringObj;
+            }, {});
 
-        // discussionist
-        // search by name
-        let discussionistNameSearch = [...new Set(createDataObject(data)
-            .data
-            .map(obj => obj.ผู้อภิปราย)
-            .flat())]
-            .filter(item => item.includes(searchInputValue));
+            const scoringArr = Object
+              .keys(scoring)
+              .map(key => [key, scoring[key].chapter, scoring[key].score])
+              .sort((a, b) => b[2] - a[2])
+              .map(item => {
+                return {
+                  มาตรา: item[0],
+                  หมวด: item[1],
+                  score: item[2],
+                };
+              });
+              
+            setArticleResult([...new Set(scoringArr.map(obj => [obj.มาตรา, (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + "|("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"]))].filter(value => value[1] !== "").splice(0, 5));
+            // discussionist
+            // search by name
+            let discussionistNameSearch = [...new Set(
+              createDataObject(data)
+                .data
+                .map(obj => obj.ผู้อภิปราย)
+                .flat()
+            )].filter(item => item.includes(searchInputValue));
 
-        // search by others
-        let discussionistOthersSearch = sortAndExtractUniqueByFrequency(createDataObject(data).search('มาตรา', searchInputValue)
-            .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
-            .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
-            .data
-            .map(obj => obj.ผู้อภิปราย)
-            .flat());
+            // search by others
+            let discussionistOthersSearch = sortAndExtractUniqueByFrequency(
+              createDataObject(data)
+                .search('มาตรา', searchInputValue)
+                .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
+                .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
+                .data
+                .map(obj => obj.ผู้อภิปราย)
+                .flat()
+            );
 
-        setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].filter(value => value !== "").splice(0, 5));
+            setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].filter(value => value !== "").splice(0, 5));
+        }
 
     }, [searchInputValue, searchInput]);
-
-
-
-
+        
+    
     return (
-        <div data-testid="search">
-            <div className="bg-[#1a1a1a] h-screen">
-                <div className="max-w-screen-md mx-auto text-xl text-white pt-4" >
+      <div data-testid="search">
+        <div className="bg-[#310] h-screen">
+          <div className="bg-[#310] w-11/12 md:w-5/6 lg:w-3/4 mx-auto min-h-screen mx-auto text-xl text-white pt-4" >
 
-                    {searchInputValue ? (
-                        <div>
-                            <h4>
-                                ค้นหาตามมาตรา
-                            </h4>
+            { searchInputValue ? (
+              <div>
+                <h4 className="text-header">
+                  ค้นหาตามมาตรา
+                </h4>
 
-                            {renderArticleResult()}
+                {renderArticleResult()}
 
-                            <h4 className="pt-4">
-                                ค้นหาตามผู้อภิปราย
-                            </h4>
+                <h4 className="pt-4 text-header">
+                  ค้นหาตามผู้อภิปราย
+                </h4>
 
-                            {renderDiscussionistResult()}
-                        </div>
-                    ) : (
-                        <div className="">
-                            <h4 className="">ประวัติการค้นหา</h4>
-                            {renderHistory()}
-                        </div>
-                    )}
-                </div>
-            </div>
+                {renderDiscussionistResult()}
+              </div>
+            ) : getHistory().length ? (
+              <div>
+                <h4 className="text-header">ประวัติการค้นหา</h4>
+                {renderHistory()}
+              </div>
+            ) : '' }
+            
+          </div>
         </div>
+      </div>
     );
 }
