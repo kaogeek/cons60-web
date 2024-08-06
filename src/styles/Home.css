@@ -84,6 +84,19 @@ body {
   color: #ff5151;
 }
 
+.truncate-7 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+
+.expanded {
+  /* Remove truncation styles */
+  -webkit-line-clamp: initial;
+  max-height: none;
+}
+
 #truehits_div {
   position: absolute;
   left: -9999px;
