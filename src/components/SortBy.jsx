@@ -1,3 +1,5 @@
+import React from 'react';
+
 function SortBy({ sort, setSort }) {
   return (
     <div className="text-center md:text-right">
@@ -5,10 +7,12 @@ function SortBy({ sort, setSort }) {
         <select
           className="bg-neutral-900 rounded-full w-full"
           value={sort}
-          onChange={(e) => setSort(parseInt(e.target.value))}
+          onChange={(e) => setSort(e.target.value)}
         >
-          <option value={0}>เรียงจากแก้ไขมาก</option>
-          <option value={1}>เรียงจากแก้ไขน้อย</option>
+          <option value="countDesc">เรียงจากแก้ไขมาก</option>
+          <option value="countAsc">เรียงจากแก้ไขน้อย</option>
+          <option value="lowest">เรียงจากมาตราที่หนึ่ง</option>
+          <option value="highest">เรียงจากมาตราที่สิบหก</option>
         </select>
       </div>
     </div>
@@ -16,3 +20,5 @@ function SortBy({ sort, setSort }) {
 }
 
 export default SortBy;
+
+
