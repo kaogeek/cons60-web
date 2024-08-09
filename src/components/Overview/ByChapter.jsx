@@ -10,7 +10,7 @@ import data from "../../c60-data-query/data.js";
 import { chapterNameToId, chapterIdToName } from "../../constants/chapters";
 
 function ByChapter() {
-  const [sort, setSort] = useState('lowest');
+  const [sort, setSort] = useState(0);
   const [result, setResult] = useState([]);
 
   useEffect(() => {
@@ -29,17 +29,17 @@ function ByChapter() {
     // Convert to array
     // [chapterName, count]
     const sorted = Object.entries(newResult).sort((a, b) => {
-      if (sort === 'lowest' || sort === 'highest') {
+      if (sort === 0 || sort === 1) {
         const idA = parseInt(chapterNameToId[a[0]].match(/\d+/), 10);
         const idB = parseInt(chapterNameToId[b[0]].match(/\d+/), 10);
 
         if (isNaN(idA)) return 1;
         if (isNaN(idB)) return -1;
 
-        return sort === 'lowest' ? idA - idB : idB - idA;
-      } else if (sort === 'countAsc') {
+        return sort === 0 ? idA - idB : idB - idA;
+      } else if (sort === 2) {
         return a[1] - b[1];
-      } else if (sort === 'countDesc') {
+      } else if (sort === 3) {
         return b[1] - a[1];
       }
       return 0;
