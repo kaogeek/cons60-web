@@ -7,12 +7,17 @@ import { useState, useEffect } from "react";
 import { chapterIdToName } from "../../src/constants/chapters.js";
 import createDataObject from "../c60-data-query/data-object.js";
 import isNumeric from "../utils/isNumeric.js";
+import ReactPaginate from 'react-paginate';
 
 export default function Search({ searchInputValue, setSearchInputValue }) {
   
     const [searchInput, setSearchInput] = useState([]);
     const [articleResult, setArticleResult] = useState([]);
     const [discussionistResult, setDiscussionistResult] = useState('');
+    const [articleResultShow, setArticleResultShow] = useState([]);
+    const [discussionistResultShow, setDiscussionistResultShow] = useState('');
+    let size = 0;
+    let items = [];
 
     function extractNumbersFromString(text) {
         // Use a regular expression to match numbers in the text
@@ -76,11 +81,28 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         });
     }
 
-    const renderArticleResult = () => {
+    function RenderArticleResult() {
+      const [itemOffset, setItemOffset] = useState(0);
+      const itemsPerPage = 5
+      const endOffset = itemOffset + itemsPerPage;
+      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+      const currentItems = articleResult.slice(itemOffset, endOffset);
+      const pageCount = Math.ceil(articleResult.length / itemsPerPage);
+      console.log(currentItems);
+
+      const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % articleResult.length;
+        console.log(
+          `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffset(newOffset);
+      };
+
         if (!articleResult || articleResult.length === 0) {
             return <div className="text-gray-400 pt-2">ไม่พบข้อมูล</div>;
         }
-        return articleResult.map((item, index) => {
+        return <div>
+          {currentItems.map((item, index) => {
             const [section, chapter] = item[1].split('|');
             return (
                 <Link
@@ -96,14 +118,52 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                     <div>{section} <br className="sm:hidden" /> <span className="text-base">{chapter}</span></div>
                 </Link>
             );
-        });
+        })}
+          <div id="react-paginate" style={{display: 'flex', justifyContent: 'center'}}>
+              <ReactPaginate
+                breakLabel="..."
+                nextLabel="next >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="< previous"
+                renderOnZeroPageCount={null}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                containerClassName={'pagination'}
+                pageClassName={'page-item'}
+                pageLinkClassName={'page-link'}
+                previousClassName={'page-item'}
+                previousLinkClassName={'page-link'}
+                nextClassName={'page-item'}
+                nextLinkClassName={'page-link'}
+                activeClassName={'active'}
+              />
+            </div>
+        </div>
     }
 
-    const renderDiscussionistResult = () => {
+    function RenderDiscussionistResult(){
+      const [itemOffset, setItemOffset] = useState(0);
+      const itemsPerPage = 5
+      const endOffset = itemOffset + itemsPerPage;
+      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+      const currentItems = discussionistResult.slice(itemOffset, endOffset);
+      const pageCount = Math.ceil(discussionistResult.length / itemsPerPage);
+      console.log(currentItems);
+
+      const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % discussionistResult.length;
+        console.log(
+          `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffset(newOffset);
+      };
         if (!discussionistResult || discussionistResult.length === 0) {
             return <div className="text-gray-400 pt-2">ไม่พบข้อมูล</div>;
         }
-        return discussionistResult.map((item, index) => {
+        return <div>
+          {currentItems.map((item, index) => {
             return (
                 <Link
                     to={"/discussionist/" + item}
@@ -118,7 +178,29 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                     <span>{item}</span>
                 </Link>
             );
-        });
+        })}
+        <div id="react-paginate" style={{display: 'flex', justifyContent: 'center'}}>
+              <ReactPaginate
+                breakLabel="..."
+                nextLabel="next >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="< previous"
+                renderOnZeroPageCount={null}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                containerClassName={'pagination'}
+                pageClassName={'page-item'}
+                pageLinkClassName={'page-link'}
+                previousClassName={'page-item'}
+                previousLinkClassName={'page-link'}
+                nextClassName={'page-item'}
+                nextLinkClassName={'page-link'}
+                activeClassName={'active'}
+              />
+            </div>
+        </div>
     }
 
 
@@ -133,6 +215,54 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             searchInput.value = message;
         }
     };
+
+    // function PaginatedItems({ itemsPerPage }) {
+    //   const [itemOffset, setItemOffset] = useState(0);
+      
+    //   const endOffset = itemOffset + itemsPerPage;
+    //   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    //   const currentItems = articleResult.slice(itemOffset, endOffset);
+    //   const pageCount = Math.ceil(articleResult.length / itemsPerPage);
+    //   console.log(currentItems);
+
+    //   // setArticleResultShow(currentItems)
+
+    //   const handlePageClick = (event) => {
+    //     const newOffset = (event.selected * itemsPerPage) % items.length;
+    //     console.log(
+    //       `User requested page number ${event.selected}, which is offset ${newOffset}`
+    //     );
+    //     setItemOffset(newOffset);
+    //     // setArticleResultShow(currentItems)
+    //   };
+    
+    //   return (
+    //     <div>
+    //       {renderArticleResult()}
+    //         <div id="react-paginate">
+    //           <ReactPaginate
+    //             breakLabel="..."
+    //             nextLabel="next >"
+    //             onPageChange={handlePageClick}
+    //             pageRangeDisplayed={5}
+    //             pageCount={pageCount}
+    //             previousLabel="< previous"
+    //             renderOnZeroPageCount={null}
+    //             breakClassName={'page-item'}
+    //             breakLinkClassName={'page-link'}
+    //             containerClassName={'pagination'}
+    //             pageClassName={'page-item'}
+    //             pageLinkClassName={'page-link'}
+    //             previousClassName={'page-item'}
+    //             previousLinkClassName={'page-link'}
+    //             nextClassName={'page-item'}
+    //             nextLinkClassName={'page-link'}
+    //             activeClassName={'active'}
+    //           />
+    //         </div>
+    //     </div>
+    //   );
+    // }
 
     useEffect(() => {
         if (searchInputValue.trim() === "") {
@@ -164,10 +294,8 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                   score: item[2],
                 };
               });
-              
-            setArticleResult([...new Set(scoringArr.map(obj => [obj.มาตรา, (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + "|("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"]))].filter(value => value[1] !== "").splice(0, 5));
-            // discussionist
-            // search by name
+            let articleResult = [...new Set(scoringArr.map(obj => [obj.มาตรา, (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + "|("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"]))].filter(value => value[1] !== "")
+            setArticleResult(articleResult)
             let discussionistNameSearch = [...new Set(
               createDataObject(data)
                 .data
@@ -186,7 +314,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 .flat()
             );
 
-            setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].filter(value => value !== "").splice(0, 5));
+            setDiscussionistResult([...new Set(discussionistNameSearch.concat(discussionistOthersSearch))].filter(value => value !== ""));
         }
 
     }, [searchInputValue, searchInput]);
@@ -203,20 +331,26 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                   ค้นหาตามมาตรา
                 </h4>
 
-                {renderArticleResult()}
+                <RenderArticleResult />
+                {/* <div style={{display: 'flex', justifyContent: 'center'}}>
+              <PaginatedItems itemsPerPage={5} />
+            </div> */}
 
                 <h4 className="pt-4 text-header">
                   ค้นหาตามผู้อภิปราย
                 </h4>
+                <RenderDiscussionistResult />
 
-                {renderDiscussionistResult()}
+                {/* {renderDiscussionistResult()} */}
               </div>
             ) : getHistory().length ? (
               <div>
                 <h4 className="text-header">ประวัติการค้นหา</h4>
                 {renderHistory()}
               </div>
-            ) : '' }
+            ) : ''
+            }
+
             
           </div>
         </div>

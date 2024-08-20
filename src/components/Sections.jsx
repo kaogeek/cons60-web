@@ -1,5 +1,4 @@
 import accordionToggle from "../utils/accordion.js";
-
 export default function Sections({sections}) {
   
   const convertDate = dateStr => {
