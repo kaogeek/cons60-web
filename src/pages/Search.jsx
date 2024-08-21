@@ -85,10 +85,8 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
       const [itemOffset, setItemOffset] = useState(0);
       const itemsPerPage = 5
       const endOffset = itemOffset + itemsPerPage;
-      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
       const currentItems = articleResult.slice(itemOffset, endOffset);
       const pageCount = Math.ceil(articleResult.length / itemsPerPage);
-      console.log(currentItems);
 
       const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % articleResult.length;
@@ -106,7 +104,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             const [section, chapter] = item[1].split('|');
             return (
                 <Link
-                    to={"/section/" + item[0]}
+                    to={"/section/" + item[0] + `/${searchInputValue}`}
                     onClick={() => saveHistory(searchInputValue)}
                     key={index}
                     state={{ backable: true }}
@@ -119,7 +117,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 </Link>
             );
         })}
-          <div id="react-paginate" style={{display: 'flex', justifyContent: 'center'}}>
+          <div id="react-paginate" style={{display: 'flex', justifyContent: 'center', marginTop: '1em'}}>
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="next >"
@@ -179,7 +177,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 </Link>
             );
         })}
-        <div id="react-paginate" style={{display: 'flex', justifyContent: 'center'}}>
+        <div id="react-paginate" style={{display: 'flex', justifyContent: 'center', marginTop: '1em'}}>
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="next >"
@@ -215,54 +213,6 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             searchInput.value = message;
         }
     };
-
-    // function PaginatedItems({ itemsPerPage }) {
-    //   const [itemOffset, setItemOffset] = useState(0);
-      
-    //   const endOffset = itemOffset + itemsPerPage;
-    //   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    //   const currentItems = articleResult.slice(itemOffset, endOffset);
-    //   const pageCount = Math.ceil(articleResult.length / itemsPerPage);
-    //   console.log(currentItems);
-
-    //   // setArticleResultShow(currentItems)
-
-    //   const handlePageClick = (event) => {
-    //     const newOffset = (event.selected * itemsPerPage) % items.length;
-    //     console.log(
-    //       `User requested page number ${event.selected}, which is offset ${newOffset}`
-    //     );
-    //     setItemOffset(newOffset);
-    //     // setArticleResultShow(currentItems)
-    //   };
-    
-    //   return (
-    //     <div>
-    //       {renderArticleResult()}
-    //         <div id="react-paginate">
-    //           <ReactPaginate
-    //             breakLabel="..."
-    //             nextLabel="next >"
-    //             onPageChange={handlePageClick}
-    //             pageRangeDisplayed={5}
-    //             pageCount={pageCount}
-    //             previousLabel="< previous"
-    //             renderOnZeroPageCount={null}
-    //             breakClassName={'page-item'}
-    //             breakLinkClassName={'page-link'}
-    //             containerClassName={'pagination'}
-    //             pageClassName={'page-item'}
-    //             pageLinkClassName={'page-link'}
-    //             previousClassName={'page-item'}
-    //             previousLinkClassName={'page-link'}
-    //             nextClassName={'page-item'}
-    //             nextLinkClassName={'page-link'}
-    //             activeClassName={'active'}
-    //           />
-    //         </div>
-    //     </div>
-    //   );
-    // }
 
     useEffect(() => {
         if (searchInputValue.trim() === "") {

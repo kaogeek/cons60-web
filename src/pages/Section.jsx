@@ -15,6 +15,7 @@ export default function Section() {
 
   const {state} = useLocation();
   const {id} = useParams();
+  const {search} = useParams();
   const query = () => {
 
     const dataObj = createDataObject(data).filter("มาตรา", id);
@@ -68,8 +69,8 @@ export default function Section() {
             </div>
             <div className="flex flex-col gap-4 w-full">
               <div className="flex flex-col md:flex-row justify-between flex-wrap gap-4">
-                <Constitution constitution={section.constitution.บทบัญญัติ} />
-                <Sections sections={section.rows} />
+                <Constitution constitution={section.constitution.บทบัญญัติ} search={search}/>
+                <Sections sections={section.rows} search={search} />
               </div>
             </div>
             
