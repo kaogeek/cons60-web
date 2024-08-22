@@ -1,6 +1,7 @@
 import accordionToggle from "../utils/accordion.js";
+import "../styles/Section.css";
 
-export default function Sections({sections}) {
+export default function Sections({sections, search = null}) {
   
   const convertDate = dateStr => {
     const dateArr = dateStr.split('/');
@@ -88,7 +89,7 @@ export default function Sections({sections}) {
               </div>
               <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
-                  dangerouslySetInnerHTML={{__html: section.ร่างบทบัญญัติ}}
+                  dangerouslySetInnerHTML={{__html: section.ร่างบทบัญญัติ.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`)}}
                 ></div>
               </div>
             </>
