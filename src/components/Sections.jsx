@@ -1,5 +1,6 @@
 import accordionToggle from "../utils/accordion.js";
 import "../styles/Section.css";
+import pdf from "../images/PDF_file_icon.svg";
 
 export default function Sections({sections, search = null}) {
   
@@ -26,7 +27,7 @@ export default function Sections({sections, search = null}) {
               evt.stopPropagation();
               accordionToggle(index+1, true);
             }} target="_blank" rel="noreferrer">
-            <img src="../images/PDF_file_icon.svg" />
+            <img src={pdf} alt="PDF link" width={"25px"}/>
             </a>
             <svg className="accordion-icon w-[36px] h-[36px] md:w-[48px] md:h-[48px]" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24.7529" cy="24.1987" r="24" fill="#240c00" />
