@@ -1,4 +1,5 @@
 import accordionToggle from "../utils/accordion.js";
+import "../styles/Normal.css";
 
 export default function Constitution({constitution, search = null}) {
   
@@ -24,6 +25,8 @@ export default function Constitution({constitution, search = null}) {
             dangerouslySetInnerHTML={{__html: constitution.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`)}}
           ></div>
         </div>
+        <button className="visually-hidden">ก่อนหน้า</button>
+        <button className="visually-hidden">ต่อไป</button>
       </div>
     </div>
   )
