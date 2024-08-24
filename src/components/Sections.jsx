@@ -1,5 +1,6 @@
 import accordionToggle from "../utils/accordion.js";
 import "../styles/Section.css";
+import "../styles/Normal.css";
 
 export default function Sections({sections, search = null}) {
   
@@ -97,6 +98,8 @@ export default function Sections({sections, search = null}) {
               </div>
             </>
           ) : '' }
+          <button className="visually-hidden">ก่อนหน้า</button>
+          <button className="visually-hidden">ต่อไป</button>
         </div>
       </div>
     </div>
