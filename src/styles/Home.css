@@ -91,6 +91,16 @@ body {
   -webkit-box-orient: vertical;
 }
 
+.truncate-500 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Adjust the number of lines as needed */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  max-height: 100ch;
+}
+
 .expanded {
   /* Remove truncation styles */
   -webkit-line-clamp: initial;

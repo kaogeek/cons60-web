@@ -22,7 +22,7 @@ export default function Sections({ sections }) {
         <button onClick={() => {
           accordionToggle(index + 1);
           setTopicIsExpanded(false);
-          setIsShown(section.ประเด็นการพิจารณา.length >= 500)
+          setIsShown(section.ประเด็นการพิจารณา.length > 500)
         }} className="w-full p-5 grid grid-cols-3 justify-between">
           <div className="block col-span-2 text-left">
             <h1 className="text-2xl md:text-3xl text-header">ประชุมครั้งที่ {section.ประชุมครั้งที่}</h1>
@@ -111,8 +111,8 @@ export default function Sections({ sections }) {
               </div>
               <div className="w-full p-5 sm:rounded-md bg-[#eee]">
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left">
-                  <div className={`truncate-7 ${isTopicExpanded ? 'expanded' : ''}`}>
-                    <div dangerouslySetInnerHTML={{ __html: section['ประเด็นการพิจารณา'] }} />
+                  <div className={`truncate-500 ${isTopicExpanded ? 'expanded' : ''}`}>
+                    <div dangerouslySetInnerHTML={{ __html: section.ประเด็นการพิจารณา }} />
                   </div>
                   {isShown &&
                     <button style={{ color: '#4caf50' }} onClick={() => setTopicIsExpanded(!isTopicExpanded)}>
