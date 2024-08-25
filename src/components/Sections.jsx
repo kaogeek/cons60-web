@@ -98,8 +98,8 @@ export default function Sections({sections, search = null}) {
               </div>
             </>
           ) : '' }
-          <button className="visually-hidden">ก่อนหน้า</button>
-          <button className="visually-hidden">ต่อไป</button>
+          <button className="visually-hidden" onClick={() => accordionToggle(index-1)} >ก่อนหน้า</button>
+          {/* ก่อนหน้าต้องย้อนกลับไปที่ประชุมครั้งก่ินด้วยและเปิดการประชุมครั้งก่อนหน้าให้เลย */}
         </div>
       </div>
     </div>

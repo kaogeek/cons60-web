@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SortBy({ sort, setSort }) {
+function SortBy({ sort, setSort, mode = "" }) {
   return (
     <div className="text-center md:text-right">
       <div className="rounded-full py-2 px-2 block-darker inline-block">
@@ -9,10 +9,12 @@ function SortBy({ sort, setSort }) {
           value={sort}
           onChange={(e) => setSort(Number(e.target.value))}
         >
-          <option value={3}>เรียงจากแก้ไขมาก</option>
-          <option value={2}>เรียงจากแก้ไขน้อย</option>
-          <option value={0}>เรียงจากมาตราที่หนึ่ง</option>
-          <option value={1}>เรียงจากมาตราที่สิบหก</option>
+          <option value={0}>เรียงจากแก้ไขมาก</option>
+          <option value={1}>เรียงจากแก้ไขน้อย</option>
+          { mode === "section" ? (
+            <option value={2}>เรียงลำตับตามมาตรา</option>
+          ) : mode === "chapter" ? ( <option value={2}>เรียงลำตับตามหมวด</option>): (<></>)
+          }
         </select>
       </div>
     </div>
