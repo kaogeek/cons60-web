@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import "../styles/Section.css";
 import pdf from "../images/PDF_file_icon.svg";
 import "../styles/Normal.css";
+
 export default function Sections({ sections }) {
 
   const convertDate = dateStr => {
@@ -110,7 +111,7 @@ export default function Sections({ sections }) {
               </div>
               <div className="w-full p-5 sm:rounded-md bg-[#eee]">
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left">
-                  <div className={`truncate-500 ${isTopicExpanded ? 'expanded' : ''}`}>
+                  <div className={`${isTopicExpanded ? 'expanded' : 'truncate-500'}`}>
                     <div dangerouslySetInnerHTML={{ __html: section.ประเด็นการพิจารณา }} />
                   </div>
                   {isShown &&
