@@ -2,9 +2,8 @@ import accordionToggle from "../utils/accordion.js";
 import React, { useState, useEffect } from 'react';
 import "../styles/Section.css";
 import "../styles/Normal.css";
+export default function Sections({ sections }) {
 
-export default function Sections({sections, search = null}) {
-  
   const convertDate = dateStr => {
     const dateArr = dateStr.split('/');
     const date = new Date(dateArr[2] - 543, dateArr[1] - 1, dateArr[0]);
@@ -125,7 +124,7 @@ export default function Sections({sections, search = null}) {
               </div>
             </>
           ) : ''}
-          <button className="visually-hidden" onClick={() => accordionToggle(index-1)} >ก่อนหน้า</button>
+          <button className="visually-hidden" onClick={() => accordionToggle(index-1)} >ก่อนหน้า</button> 
         </div>
       </div>
     </div>
@@ -134,5 +133,4 @@ export default function Sections({sections, search = null}) {
   return sectionArr;
 
 }
-
 
