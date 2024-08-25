@@ -27,7 +27,7 @@ jobs:
           node-version: 16.x
 
       - name: Installing NPM packages
-        run: npm ci
+        run: npm i
 
       - name: Building project
         run: CI=false npm run build

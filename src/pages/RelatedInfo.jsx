@@ -28,6 +28,9 @@ export default function RelatedInfo() {
             <a className="doc" href="https://dl.parliament.go.th/handle/20.500.13072/615371/browse" target="_blank" rel="noreferrer">
               บันทึกการประชุมคณะกรรมการร่างรัฐธรรมนูญ ครั้งที่ 1-501
             </a>
+            <a className="doc" href="https://dl.parliament.go.th/handle/20.500.13072/590380" target="_blank" rel="noreferrer">
+              รัฐธรรมนูญฉบับแก้ไขเพิ่มเติม 2564
+            </a>
           </div>
         </div>
       </div>

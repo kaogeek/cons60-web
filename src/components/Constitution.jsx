@@ -1,6 +1,7 @@
 import accordionToggle from "../utils/accordion.js";
+import "../styles/Normal.css";
 
-export default function Constitution({constitution}) {
+export default function Constitution({constitution, search = null}) {
   
   return (
     <div id="accordion-0" data-accordion-id="0" className="accordion accordion-active flex flex-col w-full gap-x-1">
@@ -21,7 +22,7 @@ export default function Constitution({constitution}) {
       <div className="accordion-collapsable">
         <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
           <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
-            dangerouslySetInnerHTML={{__html: constitution}}
+            dangerouslySetInnerHTML={{__html: constitution.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`)}}
           ></div>
         </div>
       </div>

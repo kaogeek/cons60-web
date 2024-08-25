@@ -46,6 +46,7 @@ function Navbar({ searchInputValue, setSearchInputValue }) {
                 type="text"
                 id="search-input"
                 name="search-input"
+                aria-label="ค้นหาคำภายในร่างบทบัญญัติ เลขมาตรา หรือผู้อภิปราย"
                 value={searchInputValue}
                 className="focus:outline-none w-full"
                 placeholder="ค้นหาคำภายในร่างบทบัญญัติ, เลขมาตรา หรือผู้อภิปราย"
