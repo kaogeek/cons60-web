@@ -1,23 +1,37 @@
 import accordionToggle from "../utils/accordion.js";
+<<<<<<< HEAD
+import React, { useState, useEffect } from 'react';
+
+export default function Sections({ sections }) {
+
+=======
 import "../styles/Section.css";
 import "../styles/Normal.css";
 
 export default function Sections({sections, search = null}) {
   
+>>>>>>> develop
   const convertDate = dateStr => {
     const dateArr = dateStr.split('/');
-    const date = new Date(dateArr[2]-543, dateArr[1]-1, dateArr[0]);
+    const date = new Date(dateArr[2] - 543, dateArr[1] - 1, dateArr[0]);
     return date.toLocaleDateString('th-TH', {
       day: 'numeric',
       month: 'long',
       year: 'numeric',
     })
   };
-  
+
+  const [isTopicExpanded, setTopicIsExpanded] = useState(false);
+  const [isShown, setIsShown] = useState(false);
+
   const sectionArr = sections.map((section, index) => (
-    <div id={'accordion-'+(index+1)} data-accordion-id={index+1} className="accordion accordion-collapsed flex flex-col w-full gap-x-1">
+    <div id={'accordion-' + (index + 1)} data-accordion-id={index + 1} className="accordion accordion-collapsed flex flex-col w-full gap-x-1">
       <div className="w-full sm:rounded-xl bg-white bg-opacity-5">
-        <button onClick={() => accordionToggle(index+1)} className="w-full p-5 grid grid-cols-3 justify-between">
+        <button onClick={() => {
+          accordionToggle(index + 1);
+          setTopicIsExpanded(false);
+          setIsShown(section.ประเด็นการพิจารณา.length > 500)
+        }} className="w-full p-5 grid grid-cols-3 justify-between">
           <div className="block col-span-2 text-left">
             <h1 className="text-2xl md:text-3xl text-header">ประชุมครั้งที่ {section.ประชุมครั้งที่}</h1>
             <h5 className="text-sm pt-3 text-subheader">{convertDate(section.date)} / หน้า {section.หน้า}</h5>
@@ -25,7 +39,7 @@ export default function Sections({sections, search = null}) {
           <div className="flex justify-end items-center gap-2">
             <a href={section.link} onClick={evt => {
               evt.stopPropagation();
-              accordionToggle(index+1, true);
+              accordionToggle(index + 1, true);
             }} target="_blank" rel="noreferrer">
               <svg className="w-[36px] h-[36px] md:w-[48px] md:h-[48px]" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="24.7529" cy="24.1987" r="24" fill="#240c00" />
@@ -42,44 +56,44 @@ export default function Sections({sections, search = null}) {
         <div className="accordion-collapsable">
           <hr className="opacity-20" />
           <div id="section-info" className="p-5">
-            { section.ร่างมาตรา ? (
+            {section.ร่างมาตรา ? (
               <div className="py-3">
                 <h3 className="text-sm text-header">ร่างมาตรา</h3>
                 <h2 className="text-lg md:text-xl pt-3 text-subheader">{section.ร่างมาตรา}</h2>
               </div>
-            ) : '' }
+            ) : ''}
             <div className="py-3">
               <h3 className="text-sm text-header">ผู้อภิปราย</h3>
               <h2 className="discussionist text-lg md:text-xl pt-3 text-subheader">
-                { section.ผู้อภิปราย.length
-                    ? section.ผู้อภิปราย
-                      .map(s => (
-                        <>
-                          <span className="inline-block">{s}</span>
-                          <span className="comma">, </span>
-                        </>
-                      ))
-                    : 'ไม่มีผู้อภิปราย' }
+                {section.ผู้อภิปราย.length
+                  ? section.ผู้อภิปราย
+                    .map(s => (
+                      <>
+                        <span className="inline-block">{s}</span>
+                        <span className="comma">, </span>
+                      </>
+                    ))
+                  : 'ไม่มีผู้อภิปราย'}
               </h2>
             </div>
-            { section.หมายเหตุ ? (
+            {section.หมายเหตุ ? (
               <div className="py-3">
                 <h3 className="text-sm text-header">หมายเหตุ</h3>
                 <h2 className="pt-3 text-subheader">{section.หมายเหตุ}</h2>
               </div>
-            ) : '' }
-            { section.มติที่ประชุม ? (
+            ) : ''}
+            {section.มติที่ประชุม ? (
               <div className="py-3">
                 <h3 className="text-sm text-header">มติที่ประชุม</h3>
                 <div className="pt-3 text-subheader"
-                  dangerouslySetInnerHTML={{__html: section.มติที่ประชุม}}
+                  dangerouslySetInnerHTML={{ __html: section.มติที่ประชุม }}
                 ></div>
               </div>
-            ) : '' }
+            ) : ''}
           </div>
-          { section.ร่างบทบัญญัติ.length ? (
+          {section.ร่างบทบัญญัติ.length ? (
             <>
-              <div className="w-full px-2 py-5 sm:p-5 bg-[#ddd]">
+              <div className="w-full px-2 py-5 sm:rounded-t-lg bg-[#ddd]">
                 <div className="flex items-center gap-3 sm:gap-10 px-2">
                   <div className="flex gap-2 ml-3 items-center">
                     <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#12ad75]" />
@@ -93,6 +107,32 @@ export default function Sections({sections, search = null}) {
               </div>
               <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
+<<<<<<< HEAD
+                  dangerouslySetInnerHTML={{ __html: section.ร่างบทบัญญัติ }}
+                ></div>
+              </div>
+            </>
+          ) : ''}
+          {section.ประเด็นการพิจารณา.length ? (
+            <>
+              <div className="py-3">
+                <h2 className="text-ml text-header">ประเด็นการพิจารณา</h2>
+              </div>
+              <div className="w-full p-5 sm:rounded-md bg-[#eee]">
+                <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left">
+                  <div className={`truncate-500 ${isTopicExpanded ? 'expanded' : ''}`}>
+                    <div dangerouslySetInnerHTML={{ __html: section.ประเด็นการพิจารณา }} />
+                  </div>
+                  {isShown &&
+                    <button style={{ color: '#4caf50' }} onClick={() => setTopicIsExpanded(!isTopicExpanded)}>
+                      {isTopicExpanded ? 'อ่านน้อยลง' : 'อ่านเพิ่มเติม'}
+                    </button>
+                  }
+                </div>
+              </div>
+            </>
+          ) : ''}
+=======
                   dangerouslySetInnerHTML={{__html: section.ร่างบทบัญญัติ.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`)}}
                 ></div>
               </div>
@@ -100,13 +140,14 @@ export default function Sections({sections, search = null}) {
           ) : '' }
           <button className="visually-hidden" onClick={() => accordionToggle(index-1)} >ก่อนหน้า</button>
           {/* ก่อนหน้าต้องย้อนกลับไปที่ประชุมครั้งก่ินด้วยและเปิดการประชุมครั้งก่อนหน้าให้เลย */}
+>>>>>>> develop
         </div>
       </div>
     </div>
   ));
-  
+
   return sectionArr;
-  
+
 }
 
 

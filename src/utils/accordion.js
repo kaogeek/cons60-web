@@ -19,7 +19,6 @@ export default function accordionToggle(id, forceOpen=false) {
   const navExpanded = document.getElementById('nav-'+id);
   navActive.className = 'nav py-2 px-5 font-bold text-left w-full md:w-64 text-[#9F9F9F]';
   navExpanded.className = 'nav nav-active py-2 px-5 font-bold text-left w-full md:w-64 bg-white rounded-lg text-[#131313]';
-    
   return;
   
 }
