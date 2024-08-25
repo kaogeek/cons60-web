@@ -79,6 +79,11 @@ export default function Discussionist() {
 
   const sortResult = useCallback(
     (result) => {
+      if (sort === 2) {
+          return result.sort((a, b) =>
+          sort === parseInt(b[0], 10) - parseInt(a[0], 10)
+        );
+      }
       return result.sort((a, b) =>
         sort === 0 ? b[1].total - a[1].total : a[1].total - b[1].total
       );
@@ -158,7 +163,7 @@ export default function Discussionist() {
                   )}
                 </>
               )}
-              <SortBy sort={sort} setSort={setSort} />
+              <SortBy sort={sort} setSort={setSort} mode="section" />
             </div>
             <div className="flex flex-col justify-center items-center gap-2.5 w-full">
               {result.map(([Section, { chapterName, total }]) => (

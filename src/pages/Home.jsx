@@ -35,11 +35,12 @@ export default function Home() {
             <div className="lg:w-2/5 md:w-3/5 sm:w-4/5 xs:w-4/5">
               <div className="text-2xl text-black px-6 bg-white flex content-center py-2 items-center rounded-full">
                 <Icon icon="bx:bx-search-alt-2" className="text-black" />
-                <div className="px-2"></div>
+                <div className="px-2 invisible">Search</div>
                 <input
                   type="text"
                   id="search-input"
                   name="search-input"
+                  aria-label="ค้นหาคำภายในร่างบทบัญญัติ เลขมาตรา หรือผู้อภิปราย"
                   className="flex-auto focus:outline-none w-full"
                 ></input>
               </div>

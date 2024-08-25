@@ -1,4 +1,5 @@
 import accordionToggle from "../utils/accordion.js";
+import "../styles/Normal.css";
 
 export default function Constitution({constitution, search = null}) {
   

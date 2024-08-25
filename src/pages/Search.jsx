@@ -90,9 +90,6 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
 
       const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % articleResult.length;
-        console.log(
-          `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffset(newOffset);
       };
 
@@ -145,16 +142,11 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
       const [itemOffset, setItemOffset] = useState(0);
       const itemsPerPage = 5
       const endOffset = itemOffset + itemsPerPage;
-      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
       const currentItems = discussionistResult.slice(itemOffset, endOffset);
       const pageCount = Math.ceil(discussionistResult.length / itemsPerPage);
-      console.log(currentItems);
 
       const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % discussionistResult.length;
-        console.log(
-          `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffset(newOffset);
       };
         if (!discussionistResult || discussionistResult.length === 0) {
@@ -214,6 +206,13 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         }
     };
 
+    function uniq(array) {
+      var seen = {};
+      return array.filter(function(item) {
+          return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+      });
+  }
+
     useEffect(() => {
         if (searchInputValue.trim() === "") {
             setArticleResult([]);
@@ -221,31 +220,21 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         } else {
             const articleSearch = createDataObject(data)
               .filter('มาตรา', extractNumbersFromString(searchInputValue))
-              .append(createDataObject(data).search('มาตรา', searchInputValue))
-              .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
-              .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
               .append(createDataObject(data).search('ร่างบทบัญญัติ', searchInputValue))
+              .append(createDataObject(data).search('ประเด็นการพิจารณา', searchInputValue))
+              .append(createDataObject(data).search('ผู้อภิปราย', searchInputValue))
               .data;
             
-            const scoring = articleSearch.reduce((scoringObj, record, index, dataArr) => {
-              if (!scoringObj[record.มาตรา]) scoringObj[record.มาตรา] = {chapter: record.หมวด, score: 0};
-              scoringObj[record.มาตรา].score += dataArr.length - index;
-              return scoringObj;
-            }, {});
-
-            const scoringArr = Object
-              .keys(scoring)
-              .map(key => [key, scoring[key].chapter, scoring[key].score])
-              .sort((a, b) => b[2] - a[2])
-              .map(item => {
-                return {
-                  มาตรา: item[0],
-                  หมวด: item[1],
-                  score: item[2],
-                };
-              });
-            let articleResult = [...new Set(scoringArr.map(obj => [obj.มาตรา, (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + "|("+(isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") + chapterIdToName[obj.หมวด] + ")"]))].filter(value => value[1] !== "")
-            setArticleResult(articleResult)
+            let articleResult = articleSearch.map(obj =>
+              [ obj.มาตรา,
+                (isNumeric(obj.มาตรา) ? "มาตรา " : "") + obj.มาตรา + "|(" +
+                (isNumeric(obj.หมวด) ? "หมวด  " + obj.หมวด + " " : "") +
+                chapterIdToName[obj.หมวด] + ")"
+              ]
+            ).filter(value => value[1] !== "");
+            articleResult = uniq(articleResult)
+            setArticleResult(articleResult);
+            
             let discussionistNameSearch = [...new Set(
               createDataObject(data)
                 .data

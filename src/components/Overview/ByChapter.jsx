@@ -28,9 +28,23 @@ function ByChapter() {
 
     // Convert to array
     // [chapterName, count]
-    const sorted = Object.entries(newResult).sort((a, b) =>
-      sort === 0 ? b[1] - a[1] : a[1] - b[1]
-    );
+    const sorted = Object.entries(newResult).sort((a, b) => {
+      if (sort === 2) {
+        const idA = parseInt(chapterNameToId[a[0]].match(/\d+/), 10);
+        const idB = parseInt(chapterNameToId[b[0]].match(/\d+/), 10);
+
+        if (isNaN(idA)) return 1;
+        if (isNaN(idB)) return -1;
+
+        return idA - idB ;
+      } else if (sort === 1) {
+        return a[1] - b[1];
+      } else if (sort === 0) {
+        return b[1] - a[1];
+      }
+      return 0;
+    });
+
     setResult(sorted);
   }, [sort]);
 
@@ -39,7 +53,7 @@ function ByChapter() {
       <div className="w-11/12 md:w-5/6 lg:w-3/4 flex flex-col gap-4">
         <div className="flex flex-row justify-between flex-wrap gap-1 text-center">
           <div className="text-2xl md:text-3xl font-bold text-header">ค้นหาจากหมวด</div>
-          <SortBy sort={sort} setSort={setSort} />
+          <SortBy sort={sort} setSort={setSort} mode="chapter"/>
         </div>
         <div className="flex flex-col items-center gap-2 w-full">
           {result.map(([chapterName, count]) => (
