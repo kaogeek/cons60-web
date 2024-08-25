@@ -90,9 +90,6 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
 
       const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % articleResult.length;
-        console.log(
-          `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffset(newOffset);
       };
 
@@ -145,16 +142,11 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
       const [itemOffset, setItemOffset] = useState(0);
       const itemsPerPage = 5
       const endOffset = itemOffset + itemsPerPage;
-      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
       const currentItems = discussionistResult.slice(itemOffset, endOffset);
       const pageCount = Math.ceil(discussionistResult.length / itemsPerPage);
-      console.log(currentItems);
 
       const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % discussionistResult.length;
-        console.log(
-          `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffset(newOffset);
       };
         if (!discussionistResult || discussionistResult.length === 0) {
@@ -214,6 +206,13 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
         }
     };
 
+    function uniq(array) {
+      var seen = {};
+      return array.filter(function(item) {
+          return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+      });
+  }
+
     useEffect(() => {
         if (searchInputValue.trim() === "") {
             setArticleResult([]);
@@ -233,6 +232,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 chapterIdToName[obj.หมวด] + ")"
               ]
             ).filter(value => value[1] !== "");
+            articleResult = uniq(articleResult)
             setArticleResult(articleResult);
             
             let discussionistNameSearch = [...new Set(

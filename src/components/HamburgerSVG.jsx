@@ -6,6 +6,7 @@ export default function HamburgerSVG() {
       height="16"
       viewBox="0 0 25 16"
       fill="none"
+      aria-label="เมนู"
     >
       <path
         fillRule="evenodd"
