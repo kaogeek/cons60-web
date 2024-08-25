@@ -1,6 +1,7 @@
 import accordionToggle from "../utils/accordion.js";
 import React, { useState, useEffect } from 'react';
 import "../styles/Section.css";
+import pdf from "../images/PDF_file_icon.svg";
 import "../styles/Normal.css";
 export default function Sections({ sections }) {
 
@@ -34,10 +35,7 @@ export default function Sections({ sections }) {
               evt.stopPropagation();
               accordionToggle(index + 1, true);
             }} target="_blank" rel="noreferrer">
-              <svg className="w-[36px] h-[36px] md:w-[48px] md:h-[48px]" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="24.7529" cy="24.1987" r="24" fill="#240c00" />
-                <path fill-rule="evenodd" clip-rule="evenodd" fill="white" d="M25.518 15.7832C27.6306 13.6706 31.0559 13.6706 33.1685 15.7832C35.2811 17.8958 35.2811 21.321 33.1685 23.4337L30.8733 25.7288C30.4509 26.1514 29.7658 26.1514 29.3432 25.7288C28.9207 25.3063 28.9207 24.6212 29.3432 24.1987L31.6384 21.9036C32.906 20.636 32.906 18.5809 31.6384 17.3133C30.3708 16.0457 28.3157 16.0457 27.0481 17.3133L24.7529 19.6084C24.3304 20.031 23.6454 20.031 23.2228 19.6084C22.8003 19.1859 22.8003 18.5009 23.2228 18.0783L25.518 15.7832ZM20.9277 28.024C20.5052 27.6015 20.5052 26.9164 20.9277 26.4939L27.0481 20.3735C27.4706 19.951 28.1557 19.951 28.5782 20.3735C29.0007 20.796 29.0007 21.4811 28.5782 21.9036L22.4578 28.024C22.0353 28.4465 21.3502 28.4465 20.9277 28.024ZM16.3374 32.6143C14.2248 30.5017 14.2248 27.0764 16.3374 24.9638L18.6325 22.6686C19.0551 22.2461 19.7401 22.2461 20.1626 22.6686C20.5852 23.0912 20.5852 23.7762 20.1626 24.1987L17.8675 26.4939C16.5999 27.7615 16.5999 29.8166 17.8675 31.0842C19.1351 32.3518 21.1902 32.3518 22.4578 31.0842L24.7529 28.789C25.1754 28.3665 25.8605 28.3665 26.283 28.789C26.7056 29.2116 26.7056 29.8967 26.283 30.3191L23.9879 32.6143C21.8752 34.7269 18.45 34.7269 16.3374 32.6143Z" />
-              </svg>
+            <img src={pdf} alt="PDF link" width={"25px"}/>
             </a>
             <svg className="accordion-icon w-[36px] h-[36px] md:w-[48px] md:h-[48px]" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24.7529" cy="24.1987" r="24" fill="#240c00" />
