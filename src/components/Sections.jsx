@@ -1,8 +1,10 @@
 import accordionToggle from "../utils/accordion.js";
 import React, { useState, useEffect } from 'react';
+import "../styles/Home.css";
 import "../styles/Section.css";
 import pdf from "../images/PDF_file_icon.svg";
 import "../styles/Normal.css";
+
 export default function Sections({ sections }) {
 
   const convertDate = dateStr => {
@@ -17,6 +19,7 @@ export default function Sections({ sections }) {
 
   const [isTopicExpanded, setTopicIsExpanded] = useState(false);
   const [isShown, setIsShown] = useState(false);
+  const [truncate, setTruncate] = React.useState("truncate-500"); 
 
   const sectionArr = sections.map((section, index) => (
     <div id={'accordion-' + (index + 1)} data-accordion-id={index + 1} className="accordion accordion-collapsed flex flex-col w-full gap-x-1">
@@ -110,11 +113,14 @@ export default function Sections({ sections }) {
               </div>
               <div className="w-full p-5 sm:rounded-md bg-[#eee]">
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left">
-                  <div className={`truncate-500 ${isTopicExpanded ? 'expanded' : ''}`}>
+                  <div className={truncate}>
                     <div dangerouslySetInnerHTML={{ __html: section.ประเด็นการพิจารณา }} />
                   </div>
                   {isShown &&
-                    <button style={{ color: '#4caf50' }} onClick={() => setTopicIsExpanded(!isTopicExpanded)}>
+                    <button style={{ color: '#4caf50' }} onClick={() => {
+                      setTopicIsExpanded(!isTopicExpanded)
+                      setTruncate(isTopicExpanded ? 'truncate-500' : 'expanded')
+                      }}>
                       {isTopicExpanded ? 'อ่านน้อยลง' : 'อ่านเพิ่มเติม'}
                     </button>
                   }

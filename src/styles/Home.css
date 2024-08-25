@@ -103,8 +103,8 @@ body {
 
 .expanded {
   /* Remove truncation styles */
-  -webkit-line-clamp: initial;
-  max-height: none;
+  -webkit-line-clamp: initial !important;
+  max-height: none !important;
 }
 
 #truehits_div {
