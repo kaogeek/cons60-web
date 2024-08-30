@@ -16,7 +16,7 @@ export default function Sections({ sections , search = null}) {
     })
   };
 
-  let searchArr
+  let searchArr = []
   if(search != null) {
     console.log(search);
     searchArr = search.split(" ")

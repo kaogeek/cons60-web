@@ -2,7 +2,10 @@ import accordionToggle from "../utils/accordion.js";
 import "../styles/Normal.css";
 
 export default function Constitution({constitution, search = null}) {
-  let searchArr = search.split(" ")
+  let searchArr = []
+  if(search !== undefined && null){
+    searchArr = search.split(" ")
+  }
   for(let s of searchArr) {
     constitution = constitution.replace(new RegExp(s, 'gi'), `<span class="highlight">${s}</span>`)
   }
