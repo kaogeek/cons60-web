@@ -4,7 +4,7 @@ import "../styles/Section.css";
 import pdf from "../images/PDF_file_icon.svg";
 import "../styles/Normal.css";
 
-export default function Sections({ sections }) {
+export default function Sections({ sections , search = null}) {
 
   const convertDate = dateStr => {
     const dateArr = dateStr.split('/');
@@ -15,6 +15,34 @@ export default function Sections({ sections }) {
       year: 'numeric',
     })
   };
+
+  let searchArr
+  if(search != null) {
+    console.log(search);
+    searchArr = search.split(" ")
+    console.log(searchArr);
+    
+  }
+  
+  function searchInput(section) {
+    let meeting = section.ร่างบทบัญญัติ
+
+    console.log(searchArr);
+    
+
+    for(let s of searchArr) {
+      console.log(s);
+      
+      meeting = meeting.replace(new RegExp(s, 'gi'), `<span class="highlight">${s}</span>`)
+    }
+
+    console.log(meeting);
+    
+    
+    return <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
+    dangerouslySetInnerHTML={{ __html: meeting }}
+  ></div> 
+  }
 
   const [isTopicExpanded, setTopicIsExpanded] = useState(false);
   const [isShown, setIsShown] = useState(false);
@@ -98,9 +126,11 @@ export default function Sections({ sections }) {
                 </div>
               </div>
               <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
-                <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
+              {searchInput(section)}
+
+                {/* <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
                   dangerouslySetInnerHTML={{ __html: section.ร่างบทบัญญัติ }}
-                ></div>
+                ></div> */}
               </div>
             </>
           ) : ''}

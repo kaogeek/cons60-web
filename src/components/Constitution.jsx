@@ -2,7 +2,11 @@ import accordionToggle from "../utils/accordion.js";
 import "../styles/Normal.css";
 
 export default function Constitution({constitution, search = null}) {
-  
+  let searchArr = search.split(" ")
+  for(let s of searchArr) {
+    constitution = constitution.replace(new RegExp(s, 'gi'), `<span class="highlight">${s}</span>`)
+  }
+
   return (
     <div id="accordion-0" data-accordion-id="0" className="accordion accordion-active flex flex-col w-full gap-x-1">
       <div className="w-full sm:rounded-xl bg-white bg-opacity-5">
@@ -22,7 +26,9 @@ export default function Constitution({constitution, search = null}) {
       <div className="accordion-collapsable">
         <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
           <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
-            dangerouslySetInnerHTML={{__html: constitution.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`)}}
+            // dangerouslySetInnerHTML={{__html: constitution.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`)}}
+            dangerouslySetInnerHTML={{__html: constitution}}
+
           ></div>
         </div>
       </div>
