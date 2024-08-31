@@ -4,7 +4,7 @@ import "../styles/Section.css";
 import pdf from "../images/PDF_file_icon.svg";
 import "../styles/Normal.css";
 
-export default function Sections({ sections }) {
+export default function Sections({ sections, search = null }) {
 
   const convertDate = dateStr => {
     const dateArr = dateStr.split('/');
@@ -99,24 +99,26 @@ export default function Sections({ sections }) {
               </div>
               <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
-                  dangerouslySetInnerHTML={{ __html: section.ร่างบทบัญญัติ }}
+                  dangerouslySetInnerHTML={{ __html: section.ร่างบทบัญญัติ.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`) }}
                 ></div>
               </div>
             </>
           ) : ''}
           {section.ประเด็นการพิจารณา.length ? (
             <>
-              <div className="py-3">
+              <div className="py-3 px-5">
                 <h2 className="text-ml text-header">ประเด็นการพิจารณา</h2>
               </div>
-              <div className="w-full p-5 sm:rounded-md bg-[#eee]">
+              <div className="w-full p-5 sm:rounded-xl bg-[#eee]">
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left">
                   <div className={`${isTopicExpanded ? 'expanded' : 'truncate-500'}`}>
-                    <div dangerouslySetInnerHTML={{ __html: section.ประเด็นการพิจารณา }} />
+                    <div
+                      dangerouslySetInnerHTML={{ __html: section.ประเด็นการพิจารณา.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`) }}
+                    />
                   </div>
                   {isShown &&
-                    <button style={{ color: '#4caf50' }} onClick={() => setTopicIsExpanded(!isTopicExpanded)}>
-                      {isTopicExpanded ? 'อ่านน้อยลง' : 'อ่านเพิ่มเติม'}
+                    <button style={{ color: '#14a', border: '1px solid #bbb', padding: '3px 7px' }} onClick={() => setTopicIsExpanded(!isTopicExpanded)}>
+                      {isTopicExpanded ? 'กดเพิ่ออ่านน้อยลง' : 'กดเพิ่ออ่านเพิ่มเติม'}
                     </button>
                   }
                 </div>
