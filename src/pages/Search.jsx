@@ -114,7 +114,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 </Link>
             );
         })}
-          <div id="react-paginate" style={{display: 'flex', justifyContent: 'center', marginTop: '1em'}}>
+          <div className="react-paginate" style={{display: 'flex', justifyContent: 'center', marginTop: '1em'}}>
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="next >"
@@ -169,7 +169,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
                 </Link>
             );
         })}
-        <div id="react-paginate" style={{display: 'flex', justifyContent: 'center', marginTop: '1em'}}>
+        <div className="react-paginate" style={{display: 'flex', justifyContent: 'center', marginTop: '1em'}}>
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="next >"

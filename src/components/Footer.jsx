@@ -10,6 +10,9 @@ export default function Footer() {
         &nbsp;ได้เลยนะคะ
       </div>
       <div className="px-5 py-3 text-[#bbb] text-center text-sm">
+        <a href="https://achecks.org/checker/" target="_blank" title="แสดงผ่านมาตรฐาน WCAG 2.0 ระดับ AA">
+          <img className="inline" src="https://achecks.org/images/icon_W2_aa.jpg" alt="WCAG 2.0 (Level AA)" title="แสดงผ่านมาตรฐาน WCAG 2.0 ระดับ AA" height="32" width="102" />
+        </a><br /><br />
         เว็บไซต์นี้จัดทำเพื่ออำนวยความสะดวกในการสืบค้นข้อมูล <br className="sm:hidden" />โปรดตรวจสอบและอ้างอิงจากต้นฉบับเท่านั้น<br />
         สำนักงานเลขาธิการสภาผู้แทนราษฎรสงวนสิทธิ์<br className="sm:hidden" />ในความรับผิดชอบต่อความถูกต้องของข้อมูลบนเว็บไซต์นี้<br /><br />
         <span className="text-header">&copy; {(new Date()).getFullYear()} สำนักงานเลขาธิการสภาผู้แทนราษฎร</span>
