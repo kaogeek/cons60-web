@@ -7,6 +7,7 @@ export default function CloseBtnSVG() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>Close Button</title>
       <g id="clsoe">
         <g id="Group 2668">
           <g id="Line 92">

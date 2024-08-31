@@ -112,13 +112,13 @@ body {
   left: -9999px;
 }
 
-#react-paginate ul {
+.react-paginate ul {
   display: inline-block;
   margin-left: 20px;
   padding-left: 0;
 }
 
-#react-paginate li {
+.react-paginate li {
   display: inline-block;
   border: 1px solid rgb(224, 224, 224);
   color: #fff;
@@ -128,14 +128,18 @@ body {
   margin-bottom: 5px;
 }
 
-#react-paginate li a {
+.react-paginate li a {
     padding: 2px 10px;
     display: inline-block;
     color: #fff;
     outline: none;
 }
 
-#react-paginate li.active {
+.react-paginate li.active {
   background: rgb(224, 224, 224);
   outline: none;
+}
+
+.react-paginate li.active a {
+  color: #000;
 }

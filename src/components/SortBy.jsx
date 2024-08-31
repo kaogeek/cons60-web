@@ -7,6 +7,7 @@ function SortBy({ sort, setSort, mode = "" }) {
         <select
           className="bg-neutral-900 rounded-full w-full"
           value={sort}
+          aria-label="วิธีการเรียงลำดับข้อมูล"
           onChange={(e) => setSort(Number(e.target.value))}
         >
           <option value={0}>เรียงจากแก้ไขมาก</option>

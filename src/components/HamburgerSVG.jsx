@@ -8,6 +8,7 @@ export default function HamburgerSVG() {
       fill="none"
       aria-label="เมนู"
     >
+      <title>Hamburger button</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"
