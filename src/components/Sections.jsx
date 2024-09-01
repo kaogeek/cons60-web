@@ -1,5 +1,6 @@
-import accordionToggle from "../utils/accordion.js";
 import React, { useState, useEffect } from 'react';
+import accordionToggle from '../utils/accordion.js';
+import highlight from '../utils/highlight.js';
 import "../styles/Section.css";
 import pdf from "../images/PDF_file_icon.svg";
 import "../styles/Normal.css";
@@ -100,7 +101,7 @@ export default function Sections({ sections, search = null }) {
               </div>
               <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
-                  dangerouslySetInnerHTML={{ __html: section.ร่างบทบัญญัติ.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`) }}
+                  dangerouslySetInnerHTML={{ __html: highlight(section.ร่างบทบัญญัติ, search) }}
                 ></div>
               </div>
             </>
@@ -114,7 +115,7 @@ export default function Sections({ sections, search = null }) {
                 <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left">
                   <div className={`${isTopicExpanded ? 'expanded' : 'truncate-500'}`}>
                     <div
-                      dangerouslySetInnerHTML={{ __html: section.ประเด็นการพิจารณา.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`) }}
+                      dangerouslySetInnerHTML={{ __html: highlight(section.ประเด็นการพิจารณา, search) }}
                     />
                   </div>
                   {isShown &&

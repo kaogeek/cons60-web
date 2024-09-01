@@ -1,4 +1,5 @@
 import accordionToggle from "../utils/accordion.js";
+import highlight from '../utils/highlight.js';
 import "../styles/Normal.css";
 
 export default function Constitution({constitution, search = null}) {
@@ -23,7 +24,7 @@ export default function Constitution({constitution, search = null}) {
       <div className="accordion-collapsable">
         <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
           <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
-            dangerouslySetInnerHTML={{__html: constitution.replace(new RegExp(search, 'gi'), `<span class="highlight">${search}</span>`)}}
+            dangerouslySetInnerHTML={{__html: highlight(constitution, search) }}
           ></div>
         </div>
       </div>
