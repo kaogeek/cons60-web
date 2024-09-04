@@ -101,7 +101,7 @@ export default function Search({ searchInputValue, setSearchInputValue }) {
             const [section, chapter] = item[1].split('|');
             return (
                 <Link
-                    to={"/section/" + item[0] + `/${searchInputValue.trim().replace(/\s/g, '+')}`}
+                    to={"/section/" + item[0] + `/${searchInputValue}`}
                     onClick={() => saveHistory(searchInputValue)}
                     key={index}
                     state={{ backable: true }}
