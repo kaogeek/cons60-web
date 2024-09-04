@@ -33,7 +33,9 @@ self.addEventListener('install', (event) => {
           '/data/chapter-16.json?v=1.0.0',
           '/data/transitory-provisions.json?v=1.0.0',
           '/static/media/mainmenu.5ad6049cfb419be336a4.jpg',
-
+          '/static/js/*',
+          '/static/js/main.d54d2d9b.js',
+          '/static/css/main.814ebbe4.css',
 
           // Add other assets and routes to cache
         ]);
