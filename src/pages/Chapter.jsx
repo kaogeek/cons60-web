@@ -66,9 +66,15 @@ export default function Chapter() {
       .multiFilter(discussionistCriteria, [])
       .list("มาตรา").data;
 
-    const sorted = dataObject.sort((a, b) =>
-      sort === 0 ? b.count - a.count : a.count - b.count
-    );
+    const sorted = dataObject.sort((a, b) => {
+      if (sort === 2) {
+        return a.มาตรา - b.มาตรา;
+      } else if (sort === 1) {
+        return a.count - b.count;
+      } else {
+        return b.count - a.count;
+      }
+    });
     return sorted;
   }, [selectedDiscussionists, name, sort]);
 
@@ -143,7 +149,7 @@ export default function Chapter() {
                   )}
                 </>
               )}
-              <SortBy sort={sort} setSort={setSort} />
+              <SortBy sort={sort} setSort={setSort} mode="section" />
             </div>
             <div className="flex flex-col justify-center items-center gap-2.5 w-full">
               {result.map(({ มาตรา, count }) => (
