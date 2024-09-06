@@ -119,8 +119,8 @@ export default function Sections({ sections, search = null }) {
                     />
                   </div>
                   {isShown &&
-                    <button style={{ color: '#14a', border: '1px solid #bbb', padding: '3px 7px' }} onClick={() => setTopicIsExpanded(!isTopicExpanded)}>
-                      {isTopicExpanded ? 'กดเพิ่ออ่านน้อยลง' : 'กดเพิ่ออ่านเพิ่มเติม'}
+                    <button style={{ color: '#14a', textDecoration: 'underline' }} onClick={() => setTopicIsExpanded(!isTopicExpanded)}>
+                      {isTopicExpanded ? 'อ่านน้อยลง' : 'อ่านเพิ่มเติม'}
                     </button>
                   }
                 </div>

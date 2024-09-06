@@ -4,7 +4,7 @@ export default function highlight(content, words='') {
   }
   return words
     .trim()
-    .split(' ')
+    .split('+')
     .reduce(
       (hc, word) => hc.replace(
         new RegExp(word, 'gi'),
