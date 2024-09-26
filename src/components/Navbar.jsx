@@ -42,6 +42,7 @@ function Navbar({ searchInputValue, setSearchInputValue }) {
             <div className="text-2xl text-black px-6 bg-white flex content-center py-1 items-center rounded-full">
               <Icon icon="bx:bx-search-alt-2" className="text-black" />
               <div className="px-2"></div>
+              <div className="visually-hidden">Search</div>
               <input
                 type="text"
                 id="search-input"
