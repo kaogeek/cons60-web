@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import accordionToggle from '../utils/accordion.js';
 import highlight from '../utils/highlight.js';
+import toggleIssue from '../utils/toggleIssue.js';
 import "../styles/Section.css";
 import pdf from "../images/PDF_file_icon.svg";
 import "../styles/Normal.css";
@@ -17,28 +18,17 @@ export default function Sections({ sections, search = null }) {
     })
   };
 
-  const [isTopicExpanded, setTopicIsExpanded] = useState(false);
-  const [isShown, setIsShown] = useState(false);
-
   const sectionArr = sections.map((section, index) => (
     <div id={'accordion-' + (index + 1)} data-accordion-id={index + 1} className="accordion accordion-collapsed flex flex-col w-full gap-x-1">
       <div className="w-full sm:rounded-xl bg-white bg-opacity-5">
         <button onClick={() => {
           accordionToggle(index + 1);
-          setTopicIsExpanded(false);
-          setIsShown(section.ประเด็นการพิจารณา.length > 500)
         }} className="w-full p-5 grid grid-cols-3 justify-between">
           <div className="block col-span-2 text-left">
             <h1 className="text-2xl md:text-3xl text-header">ประชุมครั้งที่ {section.ประชุมครั้งที่}</h1>
             <h5 className="text-sm pt-3 text-subheader">{convertDate(section.date)} / หน้า {section.หน้า}</h5>
           </div>
           <div className="flex justify-end items-center gap-2">
-            <a href={section.link} onClick={evt => {
-              evt.stopPropagation();
-              accordionToggle(index + 1, true);
-            }} target="_blank" rel="noreferrer">
-            <img src={pdf} alt="PDF link" width={"25px"}/>
-            </a>
             <svg className="accordion-icon w-[36px] h-[36px] md:w-[48px] md:h-[48px]" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
               <title>Toggle button</title>
               <circle cx="24.7529" cy="24.1987" r="24" fill="#240c00" />
@@ -48,7 +38,23 @@ export default function Sections({ sections, search = null }) {
           </div>
         </button>
         <div className="accordion-collapsable">
-          <hr className="opacity-20" />
+          <div className="section-button ml-5 mb-5">
+            <a href={section.link} onClick={evt => {
+              evt.stopPropagation();
+            }} target="_blank" rel="noreferrer">
+              บันทึกการประชุม
+            </a>
+            { section.ประเด็นการพิจารณา.length ? (
+              <a href={section.link} onClick={evt => {
+                evt.stopPropagation();
+                evt.preventDefault();
+                toggleIssue(index + 1);
+              }}>
+               ประเด็นการพิจารณา
+              </a>
+            ) : false }
+          </div>
+          <hr className="opacity-20 mt-10" />
           <div id="section-info" className="p-5">
             {section.ร่างมาตรา ? (
               <div className="py-3">
@@ -100,32 +106,39 @@ export default function Sections({ sections, search = null }) {
                 </div>
               </div>
               <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
-                <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
+                <div className="provision md:pt-3 md:px-5 text-[#222] text-sm text-left"
                   dangerouslySetInnerHTML={{ __html: highlight(section.ร่างบทบัญญัติ, search) }}
                 ></div>
               </div>
             </>
           ) : ''}
           {section.ประเด็นการพิจารณา.length ? (
-            <>
-              <div className="py-3 px-5">
-                <h2 className="text-ml text-header">ประเด็นการพิจารณา</h2>
+            <div id={'issue-' + (index + 1)} className="hidden fixed top-0 left-0 z-50 v-screen h-screen w-[100vw] overflow-scroll sm:py-8 min-h-screen bg-[#eee] text-[#111]">
+              <div className="m-auto lg:w-[70%] md:w-[80%] sm:w-[90%] w-[95%]">
+                <h3 className="text-2xl mt-8 sm:mt-0">
+                  <button value="back" onClick={() => toggleIssue(index + 1) } className="inline-block h-16 pr-2">
+                    <svg className="inline" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <title>Back button</title>
+                      <path fill="#000" d="M21.7858 8.79072L14.1899 16.7819L21.8189 24.8062C22.0326 25.0343 22.1496 25.3363 22.1454 25.6488C22.1412 25.9613 22.016 26.26 21.7962 26.4822C21.6931 26.5858 21.5703 26.6677 21.435 26.7229C21.2997 26.7781 21.1547 26.8055 21.0086 26.8036C20.8625 26.8017 20.7183 26.7704 20.5845 26.7116C20.4507 26.6529 20.3301 26.5678 20.2298 26.4615L12.6069 18.4455L11.0344 16.7902L12.6152 15.1348L20.2236 7.12296C20.3266 7.01987 20.4492 6.9385 20.5842 6.88368C20.7192 6.82886 20.8638 6.8017 21.0095 6.80383C21.1552 6.80595 21.299 6.8373 21.4324 6.89603C21.5657 6.95476 21.6859 7.03967 21.7858 7.14572C21.9958 7.36811 22.1128 7.66237 22.1128 7.96822C22.1128 8.27407 21.9958 8.56834 21.7858 8.79072Z" />
+                    </svg>
+                    ประชุมครั้งที่ {section.ประชุมครั้งที่}
+                  </button>
+                </h3>
+                <h4 className="mt-5 mx-3 text-xl">ประเด็นการพิจารณา</h4>
+                <div className="provision m-3 text-sm text-left"
+                  dangerouslySetInnerHTML={{ __html: highlight(section.ประเด็นการพิจารณา, search) }}
+                />
+                <h3 className="text-2xl mb-8 sm:mb-0">
+                  <button value="back" onClick={() => toggleIssue(index + 1) } className="inline-block h-16 pr-2">
+                    <svg className="inline" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <title>Back button</title>
+                      <path fill="#000" d="M21.7858 8.79072L14.1899 16.7819L21.8189 24.8062C22.0326 25.0343 22.1496 25.3363 22.1454 25.6488C22.1412 25.9613 22.016 26.26 21.7962 26.4822C21.6931 26.5858 21.5703 26.6677 21.435 26.7229C21.2997 26.7781 21.1547 26.8055 21.0086 26.8036C20.8625 26.8017 20.7183 26.7704 20.5845 26.7116C20.4507 26.6529 20.3301 26.5678 20.2298 26.4615L12.6069 18.4455L11.0344 16.7902L12.6152 15.1348L20.2236 7.12296C20.3266 7.01987 20.4492 6.9385 20.5842 6.88368C20.7192 6.82886 20.8638 6.8017 21.0095 6.80383C21.1552 6.80595 21.299 6.8373 21.4324 6.89603C21.5657 6.95476 21.6859 7.03967 21.7858 7.14572C21.9958 7.36811 22.1128 7.66237 22.1128 7.96822C22.1128 8.27407 21.9958 8.56834 21.7858 8.79072Z" />
+                    </svg>
+                    ประชุมครั้งที่ {section.ประชุมครั้งที่}
+                  </button>
+                </h3>
               </div>
-              <div className="w-full p-5 sm:rounded-xl bg-[#eee]">
-                <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left">
-                  <div className={`${isTopicExpanded ? 'expanded' : 'truncate-500'}`}>
-                    <div
-                      dangerouslySetInnerHTML={{ __html: highlight(section.ประเด็นการพิจารณา, search) }}
-                    />
-                  </div>
-                  {isShown &&
-                    <button style={{ color: '#14a', textDecoration: 'underline' }} onClick={() => setTopicIsExpanded(!isTopicExpanded)}>
-                      {isTopicExpanded ? 'อ่านน้อยลง' : 'อ่านเพิ่มเติม'}
-                    </button>
-                  }
-                </div>
-              </div>
-            </>
+            </div>
           ) : ''}
           <button className="visually-hidden" onClick={() => accordionToggle(index-1)} >ก่อนหน้า</button> 
         </div>

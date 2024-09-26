@@ -72,6 +72,17 @@ body {
   margin-bottom: 0em;
 }
 
+.section-button a {
+  color: #feb;
+  background: #310;
+  border: 1px solid #cb6;
+  margin-right: 12px;
+  padding: 6px 14px 8px 14px;
+}
+  .section-button a:last-child {
+    margin-right: 0px;
+  }
+
 .provision p {
   text-indent: 3em;
   line-height: 2em;
@@ -142,4 +153,8 @@ body {
 
 .react-paginate li.active a {
   color: #000;
+}
+
+.no-scroll {
+  overflow-y: hidden;
 }

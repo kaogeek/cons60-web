@@ -23,7 +23,7 @@ export default function Constitution({constitution, search = null}) {
       </div>
       <div className="accordion-collapsable">
         <div className="w-full p-5 sm:rounded-b-xl bg-[#eee]">
-          <div className="provision md:pt-3 md:px-5 text-[#222] text-bold text-sm text-left"
+          <div className="provision md:pt-3 md:px-5 text-[#222] text-sm text-left"
             dangerouslySetInnerHTML={{__html: highlight(constitution, search) }}
           ></div>
         </div>
