@@ -13,8 +13,8 @@ function SortBy({ sort, setSort, mode = "" }) {
           <option value={0}>เรียงจากแก้ไขมาก</option>
           <option value={1}>เรียงจากแก้ไขน้อย</option>
           { mode === "section" ? (
-            <option value={2}>เรียงลำตับตามมาตรา</option>
-          ) : mode === "chapter" ? ( <option value={2}>เรียงลำตับตามหมวด</option>): (<></>)
+            <option value={2}>เรียงลำดับตามมาตรา</option>
+          ) : mode === "chapter" ? ( <option value={2}>เรียงลำดับตามหมวด</option>): (<></>)
           }
         </select>
       </div>
