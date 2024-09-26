@@ -42,6 +42,7 @@ export default function Home() {
                   name="search-input"
                   aria-label="ค้นหาคำภายในร่างบทบัญญัติ เลขมาตรา หรือผู้อภิปราย"
                   className="flex-auto focus:outline-none w-full"
+                  autocomplete="off"
                 ></input>
               </div>
             </div>

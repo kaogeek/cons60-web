@@ -49,6 +49,7 @@ function Navbar({ searchInputValue, setSearchInputValue }) {
                 aria-label="ค้นหาคำภายในร่างบทบัญญัติ เลขมาตรา หรือผู้อภิปราย"
                 value={searchInputValue}
                 className="focus:outline-none w-full"
+                autocomplete="off"
                 placeholder="ค้นหาคำภายในร่างบทบัญญัติ, เลขมาตรา หรือผู้อภิปราย"
                 ref={searchInputRef}
                 onChange={(e) => setSearchInputValue(e.target.value)}
